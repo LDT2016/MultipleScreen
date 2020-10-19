@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Forms;
+using MultipleScreen.Common;
 
 namespace MultipleScreen
 {
@@ -59,5 +60,11 @@ namespace MultipleScreen
             // ClickEvent?.Invoke(new Notify(){DeviceStatus = ""});
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FormDisplay.Instance.Close();
+            FormControl.Instance.Close();
+            Application.Exit();
+        }
     }
 }

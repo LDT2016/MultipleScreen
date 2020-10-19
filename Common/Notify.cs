@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultipleScreen
+namespace MultipleScreen.Common
 {
     [Serializable]
 
@@ -25,18 +25,11 @@ namespace MultipleScreen
                 {
                     _deviceStatus = value;
                     PropertyChanged(this, new PropertyChangedEventArgs("DeviceStatus"));
-                    OnPropertyChanged();
                 }
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
     }
 }

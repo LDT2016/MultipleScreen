@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Forms;
+using MultipleScreen.Common;
 
 namespace MultipleScreen
 {
@@ -49,14 +50,6 @@ namespace MultipleScreen
         private static void FormDisplay_ClickEvent(Notify message)
         {
 
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [Annotations.NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void Player_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)

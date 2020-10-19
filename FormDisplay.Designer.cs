@@ -41,7 +41,6 @@
             this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
             this.Player.Size = new System.Drawing.Size(572, 483);
             this.Player.TabIndex = 3;
-            this.Player.Visible = false;
             this.Player.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.Player_PlayStateChange);
             // 
             // FormDisplay

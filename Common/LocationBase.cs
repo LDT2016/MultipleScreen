@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace MultipleScreen
+namespace MultipleScreen.Common
 {
     public class LocationBase : ApplicationContext
     {
@@ -38,7 +38,7 @@ namespace MultipleScreen
                 {
                     var f = formlist[i];
                     f.StartPosition = FormStartPosition.CenterScreen;
-                    f.WindowState = FormWindowState.Maximized;
+                    //f.WindowState = FormWindowState.Maximized;
 
                     f.Location = new Point(screens[i]
                                            .Bounds.Left,
