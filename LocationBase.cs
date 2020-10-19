@@ -32,13 +32,18 @@ namespace MultipleScreen
                            };
 
 
-            if (screens.Length > 1)
+            if (screens.Length > 1 && formlist.Count == screens.Length)
             {
-                foreach (var f in formlist)
+                for (var i = 0; i < formlist.Count; i++)
                 {
+                    var f = formlist[i];
                     f.StartPosition = FormStartPosition.CenterScreen;
                     f.WindowState = FormWindowState.Maximized;
-                    f.Location = new Point(screens[1].Bounds.Left, screens[1].Bounds.Top);
+
+                    f.Location = new Point(screens[i]
+                                           .Bounds.Left,
+                                           screens[i]
+                                               .Bounds.Top);
                 }
             }
 
