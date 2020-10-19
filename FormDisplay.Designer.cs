@@ -28,12 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDisplay));
+            this.Player = new AxWMPLib.AxWindowsMediaPlayer();
+            ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // Player
+            // 
+            this.Player.Enabled = true;
+            this.Player.Location = new System.Drawing.Point(69, 41);
+            this.Player.Name = "Player";
+            this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
+            this.Player.Size = new System.Drawing.Size(572, 483);
+            this.Player.TabIndex = 3;
+            this.Player.Visible = false;
+            this.Player.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.Player_PlayStateChange);
+            // 
+            // FormDisplay
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(822, 536);
+            this.Controls.Add(this.Player);
+            this.Name = "FormDisplay";
             this.Text = "FormDisplay";
+            ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private AxWMPLib.AxWindowsMediaPlayer Player;
     }
 }
