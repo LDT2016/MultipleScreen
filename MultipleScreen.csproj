@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
@@ -54,6 +54,7 @@
       <HintPath>Lib\Interop.WMPLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -68,26 +69,47 @@
     <Compile Include="Common\DependentFiles.cs" />
     <Compile Include="Common\Notify.cs" />
     <Compile Include="Common\Annotations.cs" />
-    <Compile Include="FormControl.cs">
+    <Compile Include="Common\ShowStatusEnum.cs" />
+    <Compile Include="Common\Util.cs" />
+    <Compile Include="Common\Win32.cs" />
+    <Compile Include="Control\FormLeadGuide.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormControl.Designer.cs">
-      <DependentUpon>FormControl.cs</DependentUpon>
+    <Compile Include="Control\FormLeadGuide.Designer.cs">
+      <DependentUpon>FormLeadGuide.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDisplay.cs">
+    <Compile Include="Control\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDisplay.Designer.cs">
+    <Compile Include="Control\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FormTaxPublicity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\FormTaxPublicity.Designer.cs">
+      <DependentUpon>FormTaxPublicity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Display\FormDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Display\FormDisplay.Designer.cs">
       <DependentUpon>FormDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\LocationBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormControl.resx">
-      <DependentUpon>FormControl.cs</DependentUpon>
+    <EmbeddedResource Include="Control\FormLeadGuide.resx">
+      <DependentUpon>FormLeadGuide.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormDisplay.resx">
+    <EmbeddedResource Include="Control\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\FormTaxPublicity.resx">
+      <DependentUpon>FormTaxPublicity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Display\FormDisplay.resx">
       <DependentUpon>FormDisplay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -116,6 +138,7 @@
     <Content Include="Lib\AxInterop.WMPLib.dll" />
     <Content Include="Lib\Interop.SHDocVw.dll" />
     <Content Include="Lib\Interop.WMPLib.dll" />
+    <None Include="Resources\图片3.jpg" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="stdole">

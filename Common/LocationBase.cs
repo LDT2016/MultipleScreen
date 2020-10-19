@@ -1,29 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using MultipleScreen.Control;
+using MultipleScreen.Display;
 
 namespace MultipleScreen.Common
 {
     public class LocationBase : ApplicationContext
     {
-
-        private void OnFormClose(object sendr, EventArgs e)
-        {
-
-            if (Application.OpenForms.Count == 0)
-            {
-                ExitThread();
-            }
-        }
+        #region constructors
 
         public LocationBase()
         {
             var screens = Screen.AllScreens;
             var f0 = FormDisplay.Instance;
-            var f1 = FormControl.Instance;
+            f0.Player.Dock = DockStyle.Fill;
+            f0.PicPanel.Dock = DockStyle.Fill;
+            f0.Browser.Dock = DockStyle.Fill;
+            f0.Player.Visible = false;
+            f0.PicPanel.Visible = false;
+            f0.Browser.Visible = false;
+            var f1 = FormMain.Instance;
 
             var formlist = new List<Form>
                            {
@@ -31,14 +29,17 @@ namespace MultipleScreen.Common
                                f1
                            };
 
-
             if (screens.Length > 1 && formlist.Count == screens.Length)
             {
                 for (var i = 0; i < formlist.Count; i++)
                 {
                     var f = formlist[i];
+#if !DEBUG
                     f.StartPosition = FormStartPosition.CenterScreen;
-                    //f.WindowState = FormWindowState.Maximized;
+                    f.FormBorderStyle = FormBorderStyle.None;
+                    f.ClientSize = new Size(1920, 1080);
+                    f.WindowState = FormWindowState.Maximized;
+#endif
 
                     f.Location = new Point(screens[i]
                                            .Bounds.Left,
@@ -53,5 +54,18 @@ namespace MultipleScreen.Common
             }
         }
 
+        #endregion
+
+        #region methods
+
+        private void OnFormClose(object sendr, EventArgs e)
+        {
+            if (Application.OpenForms.Count == 0)
+            {
+                ExitThread();
+            }
+        }
+
+        #endregion
     }
 }

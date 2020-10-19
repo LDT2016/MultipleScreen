@@ -1,35 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 
 namespace MultipleScreen.Common
 {
     [Serializable]
-
-    public class Notify : INotifyPropertyChanged
+    public class Notify
     {
-        private string _deviceStatus = string.Empty;
-        public string DeviceStatus
-        {
-            get
-            {
-                return _deviceStatus;
-            }
-            set
-            {
-                if (_deviceStatus != value)
-                {
-                    _deviceStatus = value;
-                    PropertyChanged(this, new PropertyChangedEventArgs("DeviceStatus"));
-                }
-            }
-        }
+        #region properties
 
-        public event PropertyChangedEventHandler PropertyChanged = delegate { };
-
+        public int Command { get; set; } = -1;
+        public Image ImageUrl{ get; set; }
+        public string VideoUrl { get; set; } = string.Empty;
+        #endregion
     }
 }

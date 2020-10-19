@@ -32,7 +32,7 @@ namespace MultipleScreen.Common
             }
 
             var nameSpace = Assembly.GetEntryAssembly()
-                                      ?.GetTypes()[0]
+                                    ?.GetTypes()[0]
                                     .Namespace;
             var rm = new ResourceManager(nameSpace + ".Properties.Resources", Assembly.GetExecutingAssembly());
             var bytes = (byte[])rm.GetObject(dllName);
