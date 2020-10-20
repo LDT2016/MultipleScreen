@@ -2,9 +2,7 @@
 using System.Configuration;
 using System.Drawing;
 using System.IO;
-using System.Threading;
 using System.Windows.Forms;
-using AxWMPLib;
 using MultipleScreen.Common;
 
 namespace MultipleScreen.Control
@@ -217,45 +215,6 @@ namespace MultipleScreen.Control
             backLbl.Size = new Size(215, 82);
 
             // 
-            // eventThumbnail0
-            // 
-            eventThumbnail0.Location = new Point(453, 235);
-            eventThumbnail0.Size = new Size(245, 134);
-
-            // 
-            // eventInfo0
-            // 
-            eventInfo0.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold, GraphicsUnit.Point, 134);
-            eventInfo0.Location = new Point(400, 391);
-            eventInfo0.Size = new Size(350, 25);
-
-            // 
-            // eventThumbnail1
-            // 
-            eventThumbnail1.Location = new Point(845, 235);
-            eventThumbnail1.Size = new Size(251, 134);
-
-            // 
-            // eventInfo1
-            // 
-            eventInfo1.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold);
-            eventInfo1.Location = new Point(809, 391);
-            eventInfo1.Size = new Size(350, 25);
-
-            // 
-            // eventThumbnail2
-            // 
-            eventThumbnail2.Location = new Point(1243, 235);
-            eventThumbnail2.Size = new Size(247, 134);
-
-            // 
-            // eventInfo2
-            // 
-            eventInfo2.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold);
-            eventInfo2.Location = new Point(1190, 391);
-            eventInfo2.Size = new Size(350, 25);
-
-            // 
             // eventThumbnail5
             // 
             eventThumbnail5.Location = new Point(273, 544);
@@ -264,7 +223,7 @@ namespace MultipleScreen.Control
             // 
             // eventInfo5
             // 
-            eventInfo5.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold);
+            eventInfo5.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold, GraphicsUnit.Point, 134);
             eventInfo5.Location = new Point(216, 824);
             eventInfo5.Size = new Size(250, 25);
 
@@ -277,7 +236,7 @@ namespace MultipleScreen.Control
             // 
             // eventInfo6
             // 
-            eventInfo6.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold);
+            eventInfo6.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold, GraphicsUnit.Point, 134);
             eventInfo6.Location = new Point(539, 824);
             eventInfo6.Size = new Size(250, 25);
 
@@ -290,7 +249,7 @@ namespace MultipleScreen.Control
             // 
             // eventInfo7
             // 
-            eventInfo7.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold);
+            eventInfo7.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold, GraphicsUnit.Point, 134);
             eventInfo7.Location = new Point(864, 824);
             eventInfo7.Size = new Size(250, 25);
 
@@ -309,16 +268,81 @@ namespace MultipleScreen.Control
             // 
             // eventInfo8
             // 
-            eventInfo8.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold);
+            eventInfo8.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold, GraphicsUnit.Point, 134);
             eventInfo8.Location = new Point(1174, 824);
             eventInfo8.Size = new Size(250, 25);
 
             // 
             // eventInfo9
             // 
-            eventInfo9.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold);
+            eventInfo9.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold, GraphicsUnit.Point, 134);
             eventInfo9.Location = new Point(1502, 824);
             eventInfo9.Size = new Size(250, 25);
+
+            // 
+            // eventThumbnail0
+            // 
+            eventThumbnail0.Location = new Point(268, 173);
+            eventThumbnail0.Size = new Size(145, 240);
+
+            // 
+            // eventThumbnail1
+            // 
+            eventThumbnail1.Location = new Point(587, 173);
+            eventThumbnail1.Size = new Size(145, 240);
+
+            // 
+            // eventThumbnail3
+            // 
+            eventThumbnail3.Location = new Point(1222, 173);
+            eventThumbnail3.Size = new Size(145, 240);
+
+            // 
+            // eventThumbnail2
+            // 
+            eventThumbnail2.Location = new Point(907, 173);
+            eventThumbnail2.Size = new Size(145, 240);
+
+            // 
+            // eventThumbnail4
+            // 
+            eventThumbnail4.Location = new Point(1542, 173);
+            eventThumbnail4.Size = new Size(145, 240);
+
+            // 
+            // eventInfo0
+            // 
+            eventInfo0.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            eventInfo0.Location = new Point(216, 450);
+            eventInfo0.Size = new Size(250, 25);
+
+            // 
+            // eventInfo1
+            // 
+            eventInfo1.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            eventInfo1.Location = new Point(539, 450);
+            eventInfo1.Size = new Size(250, 25);
+
+            // 
+            // eventInfo3
+            // 
+            eventInfo3.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            eventInfo3.Location = new Point(864, 450);
+            eventInfo3.Size = new Size(250, 25);
+
+            // 
+            // eventInfo2
+            // 
+            eventInfo2.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            eventInfo2.Location = new Point(1502, 450);
+            eventInfo2.Size = new Size(250, 25);
+
+            // 
+            // eventInfo4
+            // 
+            eventInfo4.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            eventInfo4.Location = new Point(1174, 450);
+            eventInfo4.Size = new Size(250, 25);
         }
 
         public void TaxPubliclyThumbnailSetup()
@@ -359,17 +383,6 @@ namespace MultipleScreen.Control
             }
         }
 
-        private void Thumb_Click(object sender, EventArgs e)
-        {
-            var thumb = (PictureBox)sender;
-
-            ClickEvent?.Invoke(new Notify
-                               {
-                                   Command = 5,
-                                   ImageUrl = thumb.Image
-            });
-        }
-
         private void backLbl_Click(object sender, EventArgs e)
         {
             Close();
@@ -378,6 +391,17 @@ namespace MultipleScreen.Control
         private void FormBigEvent_Load(object sender, EventArgs e)
         {
             //Win32.AnimateWindow(Handle, 1000, Win32.AW_VER_POSITIVE);
+        }
+
+        private void Thumb_Click(object sender, EventArgs e)
+        {
+            var thumb = (PictureBox)sender;
+
+            ClickEvent?.Invoke(new Notify
+                               {
+                                   Command = 5,
+                                   ImageUrl = thumb.Image
+                               });
         }
 
         #endregion

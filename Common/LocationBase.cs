@@ -58,6 +58,11 @@ namespace MultipleScreen.Common
                 FormTaxPublicity.Instance.ClientSize = new Size(1920, 1080);
                 FormTaxPublicity.Instance.WindowState = FormWindowState.Maximized;
                 FormTaxPublicity.Instance.ResizeSetupRelease();
+                FormBigEvent.Instance.StartPosition = FormStartPosition.CenterScreen;
+                FormBigEvent.Instance.FormBorderStyle = FormBorderStyle.None;
+                FormBigEvent.Instance.ClientSize = new Size(1920, 1080);
+                FormBigEvent.Instance.WindowState = FormWindowState.Maximized;
+                FormBigEvent.Instance.ResizeSetupRelease();
             }
 
             foreach (var f in formlist)
