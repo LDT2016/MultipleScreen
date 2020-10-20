@@ -10,20 +10,6 @@ namespace MultipleScreen.Control
     {
         #region fields
 
-        private const int DEBUG_LABEL_HEIGHT = 144;
-        private const int DEBUG_LABEL_WIDTH = 163;
-        private const int DEBUG_LABEL_X= 69;
-        private const int DEBUG_LABEL_X_GAP = 78;
-        private const int DEBUG_LABEL_Y= 79;
-        private const int DEBUG_LABEL_Y_GAP = 25;
-
-        private const int RELEASE_LABEL_HEIGHT = 144;
-        private const int RELEASE_LABEL_WIDTH = 163;
-        private const int RELEASE_LABEL_X = 69;
-        private const int RELEASE_LABEL_X_GAP = 78;
-        private const int RELEASE_LABEL_Y = 79;
-        private const int RELEASE_LABEL_Y_GAP = 25;
-
         private static FormMain instance;
 
         #endregion
@@ -92,10 +78,6 @@ namespace MultipleScreen.Control
             //领导批示
             if (cmd == 2)
             {
-                FormLeadGuide.Instance.StartPosition = FormStartPosition.CenterScreen;
-                FormLeadGuide.Instance.FormBorderStyle = FormBorderStyle.None;
-                FormLeadGuide.Instance.ClientSize = new Size(1920, 1080);
-                FormLeadGuide.Instance.WindowState = FormWindowState.Maximized;
 
                 FormLeadGuide.Instance.ShowDialog();
             }
@@ -103,10 +85,6 @@ namespace MultipleScreen.Control
             //税收宣传
             else if (cmd == 4)
             {
-                FormTaxPublicity.Instance.StartPosition = FormStartPosition.CenterScreen;
-                FormTaxPublicity.Instance.FormBorderStyle = FormBorderStyle.None;
-                FormTaxPublicity.Instance.ClientSize = new Size(1920, 1080);
-                FormTaxPublicity.Instance.WindowState = FormWindowState.Maximized;
                 FormTaxPublicity.Instance.ShowDialog();
             }
             else
@@ -145,59 +123,59 @@ namespace MultipleScreen.Control
             ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl6.Size = labelSize;
         }
 
-        private void ControlResizeDebug1()
-        {
-            this.panel1.Size = new System.Drawing.Size(800, 450);
+        //private void ControlResizeDebug1()
+        //{
+        //    this.panel1.Size = new System.Drawing.Size(800, 450);
 
-            var LabelX = 69;
-            var LabelWidth = 163;
-            var LabelXGap = 78;
-            var LabelY = 79;
-            var LabelHeight = 144;
-            var LabelYGap = 25;
+        //    var LabelX = 69;
+        //    var LabelWidth = 163;
+        //    var LabelXGap = 78;
+        //    var LabelY = 79;
+        //    var LabelHeight = 144;
+        //    var LabelYGap = 25;
 
-            var LabelSize = new Size(LabelWidth, LabelHeight);
-            var LabelLocation0 = new Point(LabelX + LabelWidth * 0 + LabelXGap * 0, LabelY + LabelHeight * 0 + LabelYGap * 0); //69=69+163*0+78*0; 79=79+144*0+25*0;
-            var LabelLocation1 = new Point(LabelX + LabelWidth * 1 + LabelXGap * 1, LabelY + LabelHeight * 0 + LabelYGap * 0); //310=69+163*1+78*1; 79=79+144*0+25*0;
-            var LabelLocation2 = new Point(LabelX + LabelWidth * 2 + LabelXGap * 2, LabelY + LabelHeight * 0 + LabelYGap * 0); //555=69+163*2+78*2; 79=79+144*0+25*0;
+        //    var LabelSize = new Size(LabelWidth, LabelHeight);
+        //    var LabelLocation0 = new Point(LabelX + LabelWidth * 0 + LabelXGap * 0, LabelY + LabelHeight * 0 + LabelYGap * 0); //69=69+163*0+78*0; 79=79+144*0+25*0;
+        //    var LabelLocation1 = new Point(LabelX + LabelWidth * 1 + LabelXGap * 1, LabelY + LabelHeight * 0 + LabelYGap * 0); //310=69+163*1+78*1; 79=79+144*0+25*0;
+        //    var LabelLocation2 = new Point(LabelX + LabelWidth * 2 + LabelXGap * 2, LabelY + LabelHeight * 0 + LabelYGap * 0); //555=69+163*2+78*2; 79=79+144*0+25*0;
 
-            var LabelLocation3 = new Point(LabelX + LabelWidth * 0 + LabelXGap * 0, LabelY + LabelHeight * 1 + LabelYGap * 1); //69=69+163*0+78*0; 79=79+144*1+25*1;
-            var LabelLocation4 = new Point(LabelX + LabelWidth * 1 + LabelXGap * 1, LabelY + LabelHeight * 1 + LabelYGap * 1); //310=69+163*1+78*1; 79=79+144*1+25*1;
-            var LabelLocation5 = new Point(LabelX + LabelWidth * 2 + LabelXGap * 2, LabelY + LabelHeight * 1 + LabelYGap * 1); //310=69+163*2+78*2; 79=79+144*1+25*1;
-            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl6.Size = LabelSize;
-            ctrlLbl0.Location = LabelLocation0;
-            ctrlLbl1.Location = LabelLocation1;
-            ctrlLbl2.Location = LabelLocation2;
-            ctrlLbl3.Location = LabelLocation3;
-            ctrlLbl4.Location = LabelLocation4;
-            ctrlLbl6.Location = LabelLocation5;
-        }
+        //    var LabelLocation3 = new Point(LabelX + LabelWidth * 0 + LabelXGap * 0, LabelY + LabelHeight * 1 + LabelYGap * 1); //69=69+163*0+78*0; 79=79+144*1+25*1;
+        //    var LabelLocation4 = new Point(LabelX + LabelWidth * 1 + LabelXGap * 1, LabelY + LabelHeight * 1 + LabelYGap * 1); //310=69+163*1+78*1; 79=79+144*1+25*1;
+        //    var LabelLocation5 = new Point(LabelX + LabelWidth * 2 + LabelXGap * 2, LabelY + LabelHeight * 1 + LabelYGap * 1); //310=69+163*2+78*2; 79=79+144*1+25*1;
+        //    ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl6.Size = LabelSize;
+        //    ctrlLbl0.Location = LabelLocation0;
+        //    ctrlLbl1.Location = LabelLocation1;
+        //    ctrlLbl2.Location = LabelLocation2;
+        //    ctrlLbl3.Location = LabelLocation3;
+        //    ctrlLbl4.Location = LabelLocation4;
+        //    ctrlLbl6.Location = LabelLocation5;
+        //}
 
-        private void ControlResizeRelease1()
-        {
-            var LabelX = 69;
-            var LabelWidth = 163;
-            var LabelXGap = 78;
-            var LabelY = 79;
-            var LabelHeight = 144;
-            var LabelYGap = 25;
+        //private void ControlResizeRelease1()
+        //{
+        //    var LabelX = 69;
+        //    var LabelWidth = 163;
+        //    var LabelXGap = 78;
+        //    var LabelY = 79;
+        //    var LabelHeight = 144;
+        //    var LabelYGap = 25;
 
-            var LabelSize = new Size(LabelWidth, LabelHeight);
-            var LabelLocation0 = GetLabelPoint(0, 0);
-            var LabelLocation1 = GetLabelPoint(1, 0);
-            var LabelLocation2 = GetLabelPoint(2, 0);
+        //    var LabelSize = new Size(LabelWidth, LabelHeight);
+        //    var LabelLocation0 = GetLabelPoint(0, 0);
+        //    var LabelLocation1 = GetLabelPoint(1, 0);
+        //    var LabelLocation2 = GetLabelPoint(2, 0);
 
-            var LabelLocation3 = GetLabelPoint(0, 1);
-            var LabelLocation4 = GetLabelPoint(1, 1);
-            var LabelLocation5 = GetLabelPoint(2, 1);
-            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl6.Size = LabelSize;
-            ctrlLbl0.Location = LabelLocation0;
-            ctrlLbl1.Location = LabelLocation1;
-            ctrlLbl2.Location = LabelLocation2;
-            ctrlLbl3.Location = LabelLocation3;
-            ctrlLbl4.Location = LabelLocation4;
-            ctrlLbl6.Location = LabelLocation5;
-        }
+        //    var LabelLocation3 = GetLabelPoint(0, 1);
+        //    var LabelLocation4 = GetLabelPoint(1, 1);
+        //    var LabelLocation5 = GetLabelPoint(2, 1);
+        //    ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl6.Size = LabelSize;
+        //    ctrlLbl0.Location = LabelLocation0;
+        //    ctrlLbl1.Location = LabelLocation1;
+        //    ctrlLbl2.Location = LabelLocation2;
+        //    ctrlLbl3.Location = LabelLocation3;
+        //    ctrlLbl4.Location = LabelLocation4;
+        //    ctrlLbl6.Location = LabelLocation5;
+        //}
 
         private Point GetLabelPoint(int lblXIndex, int lblYIndex)
         {

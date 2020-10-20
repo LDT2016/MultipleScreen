@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDisplay));
             this.Player = new AxWMPLib.AxWindowsMediaPlayer();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.PicPanel = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Browser = new System.Windows.Forms.WebBrowser();
@@ -47,6 +46,7 @@
             this.Player.Size = new System.Drawing.Size(415, 313);
             this.Player.TabIndex = 3;
             this.Player.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.Player_PlayStateChange);
+    
             // 
             // PicPanel
             // 
@@ -62,6 +62,7 @@
             this.Browser.Location = new System.Drawing.Point(12, 331);
             this.Browser.MinimumSize = new System.Drawing.Size(20, 20);
             this.Browser.Name = "Browser";
+            this.Browser.ScriptErrorsSuppressed = true;
             this.Browser.Size = new System.Drawing.Size(384, 193);
             this.Browser.TabIndex = 5;
             // 
@@ -82,7 +83,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.ColorDialog colorDialog1;
         public System.Windows.Forms.Panel PicPanel;
         public AxWMPLib.AxWindowsMediaPlayer Player;
         private System.Windows.Forms.Timer timer1;

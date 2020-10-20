@@ -121,14 +121,22 @@ namespace MultipleScreen.Display
                         instance.Player.Visible = true;
                         break;
                     }
-                case 5://"局间内网":
-                    {
-                        DisplayReset();
-                        var regionalNetworkUrl = ConfigurationManager.AppSettings["RegionalNetworkUrl"];
-                        instance.Browser.Url = new Uri(regionalNetworkUrl);
-                        instance.Browser.Visible = true;
-                        break;
-                    }
+                case 5://"区局十大事件":
+                {
+                    DisplayReset();
+                    var regionalNetworkUrl = ConfigurationManager.AppSettings["RegionalNetworkUrl"];
+                    instance.Browser.Url = new Uri(regionalNetworkUrl);
+                    instance.Browser.Visible = true;
+                    break;
+                }
+                case 6://"局间内网":
+                {
+                    DisplayReset();
+                    var regionalNetworkUrl = ConfigurationManager.AppSettings["RegionalNetworkUrl"];
+                    instance.Browser.Url = new Uri(regionalNetworkUrl);
+                    instance.Browser.Visible = true;
+                    break;
+                }
             }
 
         }
@@ -161,17 +169,14 @@ namespace MultipleScreen.Display
                 11 Reconnecting Reconnecting to stream.(重新连接) 
             */
             //判断视频是否已停止播放  
-            if ((int)Player.playState == 1)
-            {
-                //停顿2秒钟再重新播放
-                Thread.Sleep(2000);
+            //if ((int)Player.playState == 3)
+            //{
+            //    //停顿2秒钟再重新播放
+            //    Thread.Sleep(100);
 
-                //重新播放  
-                Player.Ctlcontrols.play();
-
-                //Player.URL = url;
-                //Player.currentPlaylist = Player.currentPlaylist;
-            }
+            //    //重新播放  
+            //    Player.Ctlcontrols.pause();
+            //}
         }
 
         #endregion
@@ -243,6 +248,7 @@ namespace MultipleScreen.Display
                         Player.currentPlaylist.appendItem(Player.newMedia(file.FullName)); // 将视频逐个添加至播放列表
                     }
                 }
+
                 Player.Ctlcontrols.play();
             }
 

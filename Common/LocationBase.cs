@@ -48,7 +48,15 @@ namespace MultipleScreen.Common
                 f0.Player.Location = new Point(0, 0);
                 
                 f1.ControlResizeRelease();
+                FormLeadGuide.Instance.StartPosition = FormStartPosition.CenterScreen;
+                FormLeadGuide.Instance.FormBorderStyle = FormBorderStyle.None;
+                FormLeadGuide.Instance.ClientSize = new Size(1920, 1080);
+                FormLeadGuide.Instance.WindowState = FormWindowState.Maximized;
                 FormLeadGuide.Instance.ResizeSetupRelease();
+                FormTaxPublicity.Instance.StartPosition = FormStartPosition.CenterScreen;
+                FormTaxPublicity.Instance.FormBorderStyle = FormBorderStyle.None;
+                FormTaxPublicity.Instance.ClientSize = new Size(1920, 1080);
+                FormTaxPublicity.Instance.WindowState = FormWindowState.Maximized;
             }
 
             foreach (var f in formlist)
