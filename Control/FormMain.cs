@@ -8,11 +8,21 @@ namespace MultipleScreen.Control
 {
     public partial class FormMain : Form
     {
-        #region delegates
-
-        #endregion
-
         #region fields
+
+        private const int DEBUG_LABEL_HEIGHT = 144;
+        private const int DEBUG_LABEL_WIDTH = 163;
+        private const int DEBUG_LABEL_X= 69;
+        private const int DEBUG_LABEL_X_GAP = 78;
+        private const int DEBUG_LABEL_Y= 79;
+        private const int DEBUG_LABEL_Y_GAP = 25;
+
+        private const int RELEASE_LABEL_HEIGHT = 144;
+        private const int RELEASE_LABEL_WIDTH = 163;
+        private const int RELEASE_LABEL_X = 69;
+        private const int RELEASE_LABEL_X_GAP = 78;
+        private const int RELEASE_LABEL_Y = 79;
+        private const int RELEASE_LABEL_Y_GAP = 25;
 
         private static FormMain instance;
 
@@ -42,6 +52,7 @@ namespace MultipleScreen.Control
                 if (instance == null)
                 {
                     instance = new FormMain();
+                    instance.ControlResizeDebug();
                 }
 
                 return instance;
@@ -65,83 +76,10 @@ namespace MultipleScreen.Control
         #endregion
 
         #region methods
-        private float X;
-        private float Y;
-
-        private void Form_Resize(object sender, EventArgs e)
-        {
-            var newx = Width / X;
-            var newy = Height / Y;
-            SetControl(newx, newy, this);
-            //Text = "窗体尺寸：" + Width + " X " + Height;
-        }
-
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-            //label1的字体样式设置
-            //this.label1.ForeColor = System.Drawing.Color.Black;
-            //this.label1.Font = new System.Drawing.Font("黑体", 23F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            //base.OnResize(e);
-            //int x = (int)(0.5 * (this.Width - label1.Width));
-            //int y = label1.Location.Y;
-            //label1.Location = new System.Drawing.Point(x, y);
-
-            //控件根据窗体的大小变化而变化，等比例放大缩小
-            Resize += Form_Resize;
-            X = Width;
-            Y = Height;
-            SetTag(this);
-            Form_Resize(new object(), new EventArgs());
-        }
-
-        private void SetControl(float newx, float newy, System.Windows.Forms.Control cons)
-        {
-            foreach (System.Windows.Forms.Control con in cons.Controls)
-            {
-                var mytag = con.Tag.ToString()
-                               .Split(':');
-                var a = Convert.ToSingle(mytag[0]) * newx;
-                con.Width = (int)a;
-                a = Convert.ToSingle(mytag[1]) * newy;
-                con.Height = (int)a;
-                a = Convert.ToSingle(mytag[2]) * newx;
-                con.Left = (int)a;
-                a = Convert.ToSingle(mytag[3]) * newy;
-                con.Top = (int)a;
-                var currentsize = Convert.ToSingle(mytag[4]) * Math.Min(newx, newy);
-                con.Font = new Font(con.Font.Name, currentsize, con.Font.Style, con.Font.Unit);
-
-                if (con.Controls.Count > 0)
-                {
-                    SetControl(newx, newy, con);
-                }
-            }
-        }
-
-        private void SetTag(System.Windows.Forms.Control cons)
-        {
-            foreach (System.Windows.Forms.Control con in cons.Controls)
-            {
-                con.Tag = con.Width + ":" + con.Height + ":" + con.Left + ":" + con.Top + ":" + con.Font.Size;
-
-                if (con.Controls.Count > 0)
-                {
-                    SetTag(con);
-                }
-            }
-        }
-
-        #endregion
 
         private void closeLbl_Click(object sender, EventArgs e)
         {
-            FormDisplay.Instance.Close();
-            Instance.Close();
-            Application.Exit();
-        }
-
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
+            notifyIcon1.Dispose();
             FormDisplay.Instance.Close();
             Instance.Close();
             Application.Exit();
@@ -150,40 +88,109 @@ namespace MultipleScreen.Control
         private void command_Click(object sender, EventArgs e)
         {
             int.TryParse(((Label)sender).AccessibleName, out var cmd);
+
             //领导批示
             if (cmd == 2)
             {
-#if !DEBUG
-                    FormLeadGuide.Instance.StartPosition = FormStartPosition.CenterScreen;
-                    FormLeadGuide.Instance.FormBorderStyle = FormBorderStyle.None;
-                    FormLeadGuide.Instance.ClientSize = new Size(1920, 1080);
-                    FormLeadGuide.Instance.WindowState = FormWindowState.Maximized;
-#endif
+                FormLeadGuide.Instance.StartPosition = FormStartPosition.CenterScreen;
+                FormLeadGuide.Instance.FormBorderStyle = FormBorderStyle.None;
+                FormLeadGuide.Instance.ClientSize = new Size(1920, 1080);
+                FormLeadGuide.Instance.WindowState = FormWindowState.Maximized;
 
                 FormLeadGuide.Instance.ShowDialog();
-
             }
+
             //税收宣传
             else if (cmd == 4)
             {
-#if !DEBUG
-                    FormTaxPublicity.Instance.StartPosition = FormStartPosition.CenterScreen;
-                    FormTaxPublicity.Instance.FormBorderStyle = FormBorderStyle.None;
-                    FormTaxPublicity.Instance.ClientSize = new Size(1920, 1080);
-                    FormTaxPublicity.Instance.WindowState = FormWindowState.Maximized;
-#endif
-
+                FormTaxPublicity.Instance.StartPosition = FormStartPosition.CenterScreen;
+                FormTaxPublicity.Instance.FormBorderStyle = FormBorderStyle.None;
+                FormTaxPublicity.Instance.ClientSize = new Size(1920, 1080);
+                FormTaxPublicity.Instance.WindowState = FormWindowState.Maximized;
                 FormTaxPublicity.Instance.ShowDialog();
-
             }
             else
             {
                 ClickEvent?.Invoke(new Notify
-                                   {
-                                       Command = cmd
+                {
+                    Command = cmd
                 });
-
             }
         }
+
+        private void ControlResizeDebug()
+        {
+            var LabelX = 69;
+            var LabelWidth = 163;
+            var LabelXGap = 78;
+            var LabelY = 79;
+            var LabelHeight = 144;
+            var LabelYGap = 25;
+
+            var LabelSize = new Size(LabelWidth, LabelHeight);
+            var LabelLocation0 = new Point(LabelX + LabelWidth * 0 + LabelXGap * 0, LabelY + LabelHeight * 0 + LabelYGap * 0); //69=69+163*0+78*0; 79=79+144*0+25*0;
+            var LabelLocation1 = new Point(LabelX + LabelWidth * 1 + LabelXGap * 1, LabelY + LabelHeight * 0 + LabelYGap * 0); //310=69+163*1+78*1; 79=79+144*0+25*0;
+            var LabelLocation2 = new Point(LabelX + LabelWidth * 2 + LabelXGap * 2, LabelY + LabelHeight * 0 + LabelYGap * 0); //555=69+163*2+78*2; 79=79+144*0+25*0;
+
+            var LabelLocation3 = new Point(LabelX + LabelWidth * 0 + LabelXGap * 0, LabelY + LabelHeight * 1 + LabelYGap * 1); //69=69+163*0+78*0; 79=79+144*1+25*1;
+            var LabelLocation4 = new Point(LabelX + LabelWidth * 1 + LabelXGap * 1, LabelY + LabelHeight * 1 + LabelYGap * 1); //310=69+163*1+78*1; 79=79+144*1+25*1;
+            var LabelLocation5 = new Point(LabelX + LabelWidth * 2 + LabelXGap * 2, LabelY + LabelHeight * 1 + LabelYGap * 1); //310=69+163*2+78*2; 79=79+144*1+25*1;
+            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl5.Size = LabelSize;
+            ctrlLbl0.Location = LabelLocation0;
+            ctrlLbl1.Location = LabelLocation1;
+            ctrlLbl2.Location = LabelLocation2;
+            ctrlLbl3.Location = LabelLocation3;
+            ctrlLbl4.Location = LabelLocation4;
+            ctrlLbl5.Location = LabelLocation5;
+        }
+
+        private void ControlResizeRelease()
+        {
+            var LabelX = 69;
+            var LabelWidth = 163;
+            var LabelXGap = 78;
+            var LabelY = 79;
+            var LabelHeight = 144;
+            var LabelYGap = 25;
+
+            var LabelSize = new Size(LabelWidth, LabelHeight);
+            var LabelLocation0 = GetLabelPoint(0, 0);
+            var LabelLocation1 = GetLabelPoint(1, 0);
+            var LabelLocation2 = GetLabelPoint(2, 0);
+
+            var LabelLocation3 = GetLabelPoint(0, 1);
+            var LabelLocation4 = GetLabelPoint(1, 1);
+            var LabelLocation5 = GetLabelPoint(2, 1);
+            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl5.Size = LabelSize;
+            ctrlLbl0.Location = LabelLocation0;
+            ctrlLbl1.Location = LabelLocation1;
+            ctrlLbl2.Location = LabelLocation2;
+            ctrlLbl3.Location = LabelLocation3;
+            ctrlLbl4.Location = LabelLocation4;
+            ctrlLbl5.Location = LabelLocation5;
+        }
+
+        private Point GetLabelPoint(int lblXIndex, int lblYIndex)
+        {
+            var LabelX = 69;
+            var LabelWidth = 163;
+            var LabelXGap = 78;
+            var LabelY = 79;
+            var LabelHeight = 144;
+            var LabelYGap = 25;
+            return new Point(LabelX + LabelWidth * lblXIndex + LabelXGap * lblXIndex, LabelY + LabelHeight * lblYIndex + LabelYGap * lblYIndex);
+        }
+
+        private void FormMain_Load(object sender, EventArgs e) { }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            notifyIcon1.Dispose();
+            FormDisplay.Instance.Close();
+            Instance.Close();
+            Application.Exit();
+        }
+
+        #endregion
     }
 }

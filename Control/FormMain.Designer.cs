@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.ctrlLbl5 = new System.Windows.Forms.Label();
+            this.ctrlLbl4 = new System.Windows.Forms.Label();
+            this.ctrlLbl2 = new System.Windows.Forms.Label();
+            this.ctrlLbl3 = new System.Windows.Forms.Label();
+            this.ctrlLbl1 = new System.Windows.Forms.Label();
+            this.ctrlLbl0 = new System.Windows.Forms.Label();
             this.closeLbl = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel1.SuspendLayout();
@@ -46,12 +46,12 @@
             // 
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.ctrlLbl5);
+            this.panel1.Controls.Add(this.ctrlLbl4);
+            this.panel1.Controls.Add(this.ctrlLbl2);
+            this.panel1.Controls.Add(this.ctrlLbl3);
+            this.panel1.Controls.Add(this.ctrlLbl1);
+            this.panel1.Controls.Add(this.ctrlLbl0);
             this.panel1.Controls.Add(this.closeLbl);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -59,79 +59,79 @@
             this.panel1.Size = new System.Drawing.Size(800, 450);
             this.panel1.TabIndex = 0;
             // 
-            // label7
+            // ctrlLbl5
             // 
-            this.label7.AccessibleName = "5";
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label7.ForeColor = System.Drawing.Color.Transparent;
-            this.label7.Location = new System.Drawing.Point(555, 245);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(163, 147);
-            this.label7.TabIndex = 3;
-            this.label7.Click += new System.EventHandler(this.command_Click);
+            this.ctrlLbl5.AccessibleName = "5";
+            this.ctrlLbl5.BackColor = System.Drawing.Color.Transparent;
+            this.ctrlLbl5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ctrlLbl5.ForeColor = System.Drawing.Color.Transparent;
+            this.ctrlLbl5.Location = new System.Drawing.Point(555, 248);
+            this.ctrlLbl5.Name = "ctrlLbl5";
+            this.ctrlLbl5.Size = new System.Drawing.Size(163, 144);
+            this.ctrlLbl5.TabIndex = 3;
+            this.ctrlLbl5.Click += new System.EventHandler(this.command_Click);
             // 
-            // label6
+            // ctrlLbl4
             // 
-            this.label6.AccessibleName = "4";
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label6.ForeColor = System.Drawing.Color.Transparent;
-            this.label6.Location = new System.Drawing.Point(310, 245);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(163, 147);
-            this.label6.TabIndex = 2;
-            this.label6.Click += new System.EventHandler(this.command_Click);
+            this.ctrlLbl4.AccessibleName = "4";
+            this.ctrlLbl4.BackColor = System.Drawing.Color.Transparent;
+            this.ctrlLbl4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ctrlLbl4.ForeColor = System.Drawing.Color.Transparent;
+            this.ctrlLbl4.Location = new System.Drawing.Point(310, 248);
+            this.ctrlLbl4.Name = "ctrlLbl4";
+            this.ctrlLbl4.Size = new System.Drawing.Size(163, 144);
+            this.ctrlLbl4.TabIndex = 2;
+            this.ctrlLbl4.Click += new System.EventHandler(this.command_Click);
             // 
-            // label4
+            // ctrlLbl2
             // 
-            this.label4.AccessibleName = "2";
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label4.ForeColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(555, 79);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(163, 147);
-            this.label4.TabIndex = 3;
-            this.label4.Click += new System.EventHandler(this.command_Click);
+            this.ctrlLbl2.AccessibleName = "2";
+            this.ctrlLbl2.BackColor = System.Drawing.Color.Transparent;
+            this.ctrlLbl2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ctrlLbl2.ForeColor = System.Drawing.Color.Transparent;
+            this.ctrlLbl2.Location = new System.Drawing.Point(555, 79);
+            this.ctrlLbl2.Name = "ctrlLbl2";
+            this.ctrlLbl2.Size = new System.Drawing.Size(163, 145);
+            this.ctrlLbl2.TabIndex = 3;
+            this.ctrlLbl2.Click += new System.EventHandler(this.command_Click);
             // 
-            // label5
+            // ctrlLbl3
             // 
-            this.label5.AccessibleName = "3";
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label5.ForeColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(69, 245);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(163, 147);
-            this.label5.TabIndex = 1;
-            this.label5.Click += new System.EventHandler(this.command_Click);
+            this.ctrlLbl3.AccessibleName = "3";
+            this.ctrlLbl3.BackColor = System.Drawing.Color.Transparent;
+            this.ctrlLbl3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ctrlLbl3.ForeColor = System.Drawing.Color.Transparent;
+            this.ctrlLbl3.Location = new System.Drawing.Point(69, 248);
+            this.ctrlLbl3.Name = "ctrlLbl3";
+            this.ctrlLbl3.Size = new System.Drawing.Size(163, 144);
+            this.ctrlLbl3.TabIndex = 1;
+            this.ctrlLbl3.Click += new System.EventHandler(this.command_Click);
             // 
-            // label3
+            // ctrlLbl1
             // 
-            this.label3.AccessibleName = "1";
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.ForeColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(310, 79);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(163, 147);
-            this.label3.TabIndex = 2;
-            this.label3.Click += new System.EventHandler(this.command_Click);
+            this.ctrlLbl1.AccessibleName = "1";
+            this.ctrlLbl1.BackColor = System.Drawing.Color.Transparent;
+            this.ctrlLbl1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ctrlLbl1.ForeColor = System.Drawing.Color.Transparent;
+            this.ctrlLbl1.Location = new System.Drawing.Point(310, 79);
+            this.ctrlLbl1.Name = "ctrlLbl1";
+            this.ctrlLbl1.Size = new System.Drawing.Size(163, 145);
+            this.ctrlLbl1.TabIndex = 2;
+            this.ctrlLbl1.Click += new System.EventHandler(this.command_Click);
             // 
-            // label2
+            // ctrlLbl0
             // 
-            this.label2.AccessibleName = "0";
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.ForeColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(69, 79);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(163, 147);
-            this.label2.TabIndex = 1;
-            this.label2.Tag = "";
-            this.label2.Click += new System.EventHandler(this.command_Click);
+            this.ctrlLbl0.AccessibleName = "0";
+            this.ctrlLbl0.BackColor = System.Drawing.Color.Transparent;
+            this.ctrlLbl0.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ctrlLbl0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ctrlLbl0.ForeColor = System.Drawing.Color.Transparent;
+            this.ctrlLbl0.Location = new System.Drawing.Point(69, 79);
+            this.ctrlLbl0.Name = "ctrlLbl0";
+            this.ctrlLbl0.Size = new System.Drawing.Size(163, 145);
+            this.ctrlLbl0.TabIndex = 1;
+            this.ctrlLbl0.Tag = "";
+            this.ctrlLbl0.Click += new System.EventHandler(this.command_Click);
             // 
             // closeLbl
             // 
@@ -169,12 +169,12 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label closeLbl;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label ctrlLbl0;
+        private System.Windows.Forms.Label ctrlLbl5;
+        private System.Windows.Forms.Label ctrlLbl4;
+        private System.Windows.Forms.Label ctrlLbl2;
+        private System.Windows.Forms.Label ctrlLbl3;
+        private System.Windows.Forms.Label ctrlLbl1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
