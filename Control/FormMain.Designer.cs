@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.panel1 = new System.Windows.Forms.Panel();
             this.ctrlLbl5 = new System.Windows.Forms.Label();
+            this.ctrlLbl6 = new System.Windows.Forms.Label();
             this.ctrlLbl4 = new System.Windows.Forms.Label();
             this.ctrlLbl2 = new System.Windows.Forms.Label();
             this.ctrlLbl3 = new System.Windows.Forms.Label();
@@ -47,6 +48,7 @@
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.ctrlLbl5);
+            this.panel1.Controls.Add(this.ctrlLbl6);
             this.panel1.Controls.Add(this.ctrlLbl4);
             this.panel1.Controls.Add(this.ctrlLbl2);
             this.panel1.Controls.Add(this.ctrlLbl3);
@@ -65,11 +67,22 @@
             this.ctrlLbl5.BackColor = System.Drawing.Color.Transparent;
             this.ctrlLbl5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ctrlLbl5.ForeColor = System.Drawing.Color.Transparent;
-            this.ctrlLbl5.Location = new System.Drawing.Point(555, 248);
+            this.ctrlLbl5.Location = new System.Drawing.Point(415, 248);
             this.ctrlLbl5.Name = "ctrlLbl5";
-            this.ctrlLbl5.Size = new System.Drawing.Size(163, 144);
-            this.ctrlLbl5.TabIndex = 3;
-            this.ctrlLbl5.Click += new System.EventHandler(this.command_Click);
+            this.ctrlLbl5.Size = new System.Drawing.Size(151, 132);
+            this.ctrlLbl5.TabIndex = 4;
+            // 
+            // ctrlLbl6
+            // 
+            this.ctrlLbl6.AccessibleName = "6";
+            this.ctrlLbl6.BackColor = System.Drawing.Color.Transparent;
+            this.ctrlLbl6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ctrlLbl6.ForeColor = System.Drawing.Color.Transparent;
+            this.ctrlLbl6.Location = new System.Drawing.Point(612, 248);
+            this.ctrlLbl6.Name = "ctrlLbl6";
+            this.ctrlLbl6.Size = new System.Drawing.Size(152, 132);
+            this.ctrlLbl6.TabIndex = 3;
+            this.ctrlLbl6.Click += new System.EventHandler(this.command_Click);
             // 
             // ctrlLbl4
             // 
@@ -77,9 +90,9 @@
             this.ctrlLbl4.BackColor = System.Drawing.Color.Transparent;
             this.ctrlLbl4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ctrlLbl4.ForeColor = System.Drawing.Color.Transparent;
-            this.ctrlLbl4.Location = new System.Drawing.Point(310, 248);
+            this.ctrlLbl4.Location = new System.Drawing.Point(219, 248);
             this.ctrlLbl4.Name = "ctrlLbl4";
-            this.ctrlLbl4.Size = new System.Drawing.Size(163, 144);
+            this.ctrlLbl4.Size = new System.Drawing.Size(152, 132);
             this.ctrlLbl4.TabIndex = 2;
             this.ctrlLbl4.Click += new System.EventHandler(this.command_Click);
             // 
@@ -89,9 +102,9 @@
             this.ctrlLbl2.BackColor = System.Drawing.Color.Transparent;
             this.ctrlLbl2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ctrlLbl2.ForeColor = System.Drawing.Color.Transparent;
-            this.ctrlLbl2.Location = new System.Drawing.Point(555, 79);
+            this.ctrlLbl2.Location = new System.Drawing.Point(533, 92);
             this.ctrlLbl2.Name = "ctrlLbl2";
-            this.ctrlLbl2.Size = new System.Drawing.Size(163, 145);
+            this.ctrlLbl2.Size = new System.Drawing.Size(152, 132);
             this.ctrlLbl2.TabIndex = 3;
             this.ctrlLbl2.Click += new System.EventHandler(this.command_Click);
             // 
@@ -101,9 +114,9 @@
             this.ctrlLbl3.BackColor = System.Drawing.Color.Transparent;
             this.ctrlLbl3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ctrlLbl3.ForeColor = System.Drawing.Color.Transparent;
-            this.ctrlLbl3.Location = new System.Drawing.Point(69, 248);
+            this.ctrlLbl3.Location = new System.Drawing.Point(27, 248);
             this.ctrlLbl3.Name = "ctrlLbl3";
-            this.ctrlLbl3.Size = new System.Drawing.Size(163, 144);
+            this.ctrlLbl3.Size = new System.Drawing.Size(152, 132);
             this.ctrlLbl3.TabIndex = 1;
             this.ctrlLbl3.Click += new System.EventHandler(this.command_Click);
             // 
@@ -113,9 +126,9 @@
             this.ctrlLbl1.BackColor = System.Drawing.Color.Transparent;
             this.ctrlLbl1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ctrlLbl1.ForeColor = System.Drawing.Color.Transparent;
-            this.ctrlLbl1.Location = new System.Drawing.Point(310, 79);
+            this.ctrlLbl1.Location = new System.Drawing.Point(310, 92);
             this.ctrlLbl1.Name = "ctrlLbl1";
-            this.ctrlLbl1.Size = new System.Drawing.Size(163, 145);
+            this.ctrlLbl1.Size = new System.Drawing.Size(152, 132);
             this.ctrlLbl1.TabIndex = 2;
             this.ctrlLbl1.Click += new System.EventHandler(this.command_Click);
             // 
@@ -126,9 +139,9 @@
             this.ctrlLbl0.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ctrlLbl0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ctrlLbl0.ForeColor = System.Drawing.Color.Transparent;
-            this.ctrlLbl0.Location = new System.Drawing.Point(69, 79);
+            this.ctrlLbl0.Location = new System.Drawing.Point(85, 92);
             this.ctrlLbl0.Name = "ctrlLbl0";
-            this.ctrlLbl0.Size = new System.Drawing.Size(163, 145);
+            this.ctrlLbl0.Size = new System.Drawing.Size(152, 132);
             this.ctrlLbl0.TabIndex = 1;
             this.ctrlLbl0.Tag = "";
             this.ctrlLbl0.Click += new System.EventHandler(this.command_Click);
@@ -170,11 +183,12 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label closeLbl;
         private System.Windows.Forms.Label ctrlLbl0;
-        private System.Windows.Forms.Label ctrlLbl5;
+        private System.Windows.Forms.Label ctrlLbl6;
         private System.Windows.Forms.Label ctrlLbl4;
         private System.Windows.Forms.Label ctrlLbl2;
         private System.Windows.Forms.Label ctrlLbl3;
         private System.Windows.Forms.Label ctrlLbl1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Label ctrlLbl5;
     }
 }

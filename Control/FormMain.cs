@@ -117,9 +117,38 @@ namespace MultipleScreen.Control
                 });
             }
         }
-
-        private void ControlResizeDebug()
+        public void ControlResizeDebug()
         {
+            panel1.Size = new Size(800, 450);
+            var labelSize = new Size(152, 132);
+
+            ctrlLbl0.Location = new Point(87, 92);
+            ctrlLbl1.Location = new Point(310, 92);
+            ctrlLbl2.Location = new Point(533, 92);
+            ctrlLbl3.Location = new Point(27, 248);
+            ctrlLbl4.Location = new Point(219, 248);
+            ctrlLbl6.Location = new Point(612, 248);
+            ctrlLbl5.Location = new Point(415, 248);
+            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl6.Size = labelSize;
+        }
+        public void ControlResizeRelease()
+        {
+            panel1.Size = new Size(1920, 1080);
+            var labelSize = new Size(359, 319);
+            ctrlLbl0.Location = new Point(210, 215);
+            ctrlLbl1.Location = new Point(741, 215);
+            ctrlLbl2.Location = new Point(1283, 215);
+            ctrlLbl3.Location = new Point(61, 586);
+            ctrlLbl4.Location = new Point(530, 586);
+            ctrlLbl5.Location = new Point(999, 586);
+            ctrlLbl6.Location = new Point(1469, 586);
+            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl6.Size = labelSize;
+        }
+
+        private void ControlResizeDebug1()
+        {
+            this.panel1.Size = new System.Drawing.Size(800, 450);
+
             var LabelX = 69;
             var LabelWidth = 163;
             var LabelXGap = 78;
@@ -135,16 +164,16 @@ namespace MultipleScreen.Control
             var LabelLocation3 = new Point(LabelX + LabelWidth * 0 + LabelXGap * 0, LabelY + LabelHeight * 1 + LabelYGap * 1); //69=69+163*0+78*0; 79=79+144*1+25*1;
             var LabelLocation4 = new Point(LabelX + LabelWidth * 1 + LabelXGap * 1, LabelY + LabelHeight * 1 + LabelYGap * 1); //310=69+163*1+78*1; 79=79+144*1+25*1;
             var LabelLocation5 = new Point(LabelX + LabelWidth * 2 + LabelXGap * 2, LabelY + LabelHeight * 1 + LabelYGap * 1); //310=69+163*2+78*2; 79=79+144*1+25*1;
-            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl5.Size = LabelSize;
+            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl6.Size = LabelSize;
             ctrlLbl0.Location = LabelLocation0;
             ctrlLbl1.Location = LabelLocation1;
             ctrlLbl2.Location = LabelLocation2;
             ctrlLbl3.Location = LabelLocation3;
             ctrlLbl4.Location = LabelLocation4;
-            ctrlLbl5.Location = LabelLocation5;
+            ctrlLbl6.Location = LabelLocation5;
         }
 
-        private void ControlResizeRelease()
+        private void ControlResizeRelease1()
         {
             var LabelX = 69;
             var LabelWidth = 163;
@@ -161,13 +190,13 @@ namespace MultipleScreen.Control
             var LabelLocation3 = GetLabelPoint(0, 1);
             var LabelLocation4 = GetLabelPoint(1, 1);
             var LabelLocation5 = GetLabelPoint(2, 1);
-            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl5.Size = LabelSize;
+            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl6.Size = LabelSize;
             ctrlLbl0.Location = LabelLocation0;
             ctrlLbl1.Location = LabelLocation1;
             ctrlLbl2.Location = LabelLocation2;
             ctrlLbl3.Location = LabelLocation3;
             ctrlLbl4.Location = LabelLocation4;
-            ctrlLbl5.Location = LabelLocation5;
+            ctrlLbl6.Location = LabelLocation5;
         }
 
         private Point GetLabelPoint(int lblXIndex, int lblYIndex)

@@ -46,6 +46,8 @@ namespace MultipleScreen.Common
                 f0.Player.Size = new Size(1920, 1080);
                 f0.Player.Dock = DockStyle.Fill;
                 f0.Player.Location = new Point(0, 0);
+                
+                f1.ControlResizeRelease();
             }
 
             foreach (var f in formlist)
