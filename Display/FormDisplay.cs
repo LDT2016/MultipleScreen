@@ -43,6 +43,7 @@ namespace MultipleScreen.Display
                     FormMain.Instance.ClickEvent += FormDisplay_ClickEvent;
                     FormLeadGuide.Instance.ClickEvent += FormDisplay_ClickEvent;
                     FormTaxPublicity.Instance.ClickEvent += FormDisplay_ClickEvent;
+                    FormBigEvent.Instance.ClickEvent += FormDisplay_ClickEvent;
                 }
 
                 return instance;
@@ -339,9 +340,9 @@ namespace MultipleScreen.Display
 
                 var currentGirl = picList[picIndex++];
 
-                instance.PicPanel.Visible = false;
+                instance.PicPanel.Visible = true;
                 instance.PicPanel.BackgroundImage = currentGirl;
-                AnimateWindow(instance.PicPanel.Handle, 400, GetRandomAnimationType());
+                //AnimateWindow(instance.PicPanel.Handle, 400, GetRandomAnimationType());
 
                 if (picIndex >= picList.Count)
                 {

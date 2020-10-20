@@ -106,7 +106,7 @@ namespace MultipleScreen.Control
         private void FormLeadGuide_Load(object sender, EventArgs e)
         {
             LeadGuidePictureShow();
-            Win32.AnimateWindow(Handle, 1000, Win32.AW_VER_POSITIVE);
+            //Win32.AnimateWindow(Handle, 1000, Win32.AW_VER_POSITIVE);
         }
 
         private void LeadGuidePictureShow()
