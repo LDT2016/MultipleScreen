@@ -183,7 +183,118 @@ namespace MultipleScreen.Control
             backLbl.Size = new Size(92, 38);
         }
 
-        public void ResizeSetupRelease() { }
+        public void ResizeSetupRelease()
+        {
+            // 
+            // backLbl
+            // 
+            backLbl.Location = new Point(1665, 970);
+            backLbl.Size = new Size(215, 82);
+
+            // 
+            // thumbnailPlayer0
+            // 
+            thumbnailPlayer0.Location = new Point(453, 235);
+            thumbnailPlayer0.Size = new Size(245, 134);
+
+            // 
+            // thumbnailLabel0
+            // 
+            thumbnailLabel0.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            thumbnailLabel0.Location = new Point(400, 391);
+            thumbnailLabel0.Size = new Size(350, 25);
+
+            // 
+            // thumbnailPlayer1
+            // 
+            thumbnailPlayer1.Location = new Point(845, 235);
+            thumbnailPlayer1.Size = new Size(251, 134);
+
+            // 
+            // thumbnailLabel1
+            // 
+            thumbnailLabel1.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold);
+            thumbnailLabel1.Location = new Point(809, 391);
+            thumbnailLabel1.Size = new Size(350, 25);
+
+            // 
+            // thumbnailPlayer2
+            // 
+            thumbnailPlayer2.Location = new Point(1243, 235);
+            thumbnailPlayer2.Size = new Size(247, 134);
+
+            // 
+            // thumbnailLabel2
+            // 
+            thumbnailLabel2.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold);
+            thumbnailLabel2.Location = new Point(1190, 391);
+            thumbnailLabel2.Size = new Size(350, 25);
+
+            // 
+            // thumbnailPlayer3
+            // 
+            thumbnailPlayer3.Location = new Point(273, 544);
+            thumbnailPlayer3.Size = new Size(140, 240);
+
+            // 
+            // thumbnailLabel3
+            // 
+            thumbnailLabel3.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold);
+            thumbnailLabel3.Location = new Point(216, 824);
+            thumbnailLabel3.Size = new Size(250, 25);
+
+            // 
+            // thumbnailPlayer4
+            // 
+            thumbnailPlayer4.Location = new Point(587, 544);
+            thumbnailPlayer4.Size = new Size(145, 240);
+
+            // 
+            // thumbnailLabel4
+            // 
+            thumbnailLabel4.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold);
+            thumbnailLabel4.Location = new Point(539, 824);
+            thumbnailLabel4.Size = new Size(250, 25);
+
+            // 
+            // thumbnailPlayer5
+            // 
+            thumbnailPlayer5.Location = new Point(907, 544);
+            thumbnailPlayer5.Size = new Size(145, 240);
+
+            // 
+            // thumbnailLabel5
+            // 
+            thumbnailLabel5.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold);
+            thumbnailLabel5.Location = new Point(864, 824);
+            thumbnailLabel5.Size = new Size(250, 25);
+
+            // 
+            // thumbnailPlayer6
+            // 
+            thumbnailPlayer6.Location = new Point(1222, 544);
+            thumbnailPlayer6.Size = new Size(145, 240);
+
+            // 
+            // thumbnailPlayer7
+            // 
+            thumbnailPlayer7.Location = new Point(1542, 544);
+            thumbnailPlayer7.Size = new Size(145, 240);
+
+            // 
+            // thumbnailLabel6
+            // 
+            thumbnailLabel6.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold);
+            thumbnailLabel6.Location = new Point(1174, 824);
+            thumbnailLabel6.Size = new Size(250, 25);
+
+            // 
+            // thumbnailLabel7
+            // 
+            thumbnailLabel7.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold);
+            thumbnailLabel7.Location = new Point(1502, 824);
+            thumbnailLabel7.Size = new Size(250, 25);
+        }
 
         public void TaxPubliclyThumbnailSetup()
         {
@@ -216,6 +327,7 @@ namespace MultipleScreen.Control
                 {
                     if (lbl.Name.IndexOf("thumbnailLabel", StringComparison.Ordinal) > -1)
                     {
+                        lbl.Text = string.Empty;
                         var cmd = lbl.Name.Replace("thumbnailLabel", string.Empty);
                         var taxPublicityText = ConfigurationManager.AppSettings["TaxPublicityText_" + cmd];
 
