@@ -78,14 +78,17 @@ namespace MultipleScreen.Control
             //领导批示
             if (cmd == 2)
             {
-
                 FormLeadGuide.Instance.ShowDialog();
             }
-
             //税收宣传
             else if (cmd == 4)
             {
                 FormTaxPublicity.Instance.ShowDialog();
+            }
+            //区局十大事件
+            else if (cmd == 5)
+            {
+                FormBigEvent.Instance.ShowDialog();
             }
             else
             {
@@ -177,16 +180,16 @@ namespace MultipleScreen.Control
         //    ctrlLbl6.Location = LabelLocation5;
         //}
 
-        private Point GetLabelPoint(int lblXIndex, int lblYIndex)
-        {
-            var LabelX = 69;
-            var LabelWidth = 163;
-            var LabelXGap = 78;
-            var LabelY = 79;
-            var LabelHeight = 144;
-            var LabelYGap = 25;
-            return new Point(LabelX + LabelWidth * lblXIndex + LabelXGap * lblXIndex, LabelY + LabelHeight * lblYIndex + LabelYGap * lblYIndex);
-        }
+        //private Point GetLabelPoint(int lblXIndex, int lblYIndex)
+        //{
+        //    var LabelX = 69;
+        //    var LabelWidth = 163;
+        //    var LabelXGap = 78;
+        //    var LabelY = 79;
+        //    var LabelHeight = 144;
+        //    var LabelYGap = 25;
+        //    return new Point(LabelX + LabelWidth * lblXIndex + LabelXGap * lblXIndex, LabelY + LabelHeight * lblYIndex + LabelYGap * lblYIndex);
+        //}
 
         private void FormMain_Load(object sender, EventArgs e) { }
 

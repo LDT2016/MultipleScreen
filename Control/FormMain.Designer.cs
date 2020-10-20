@@ -71,6 +71,7 @@
             this.ctrlLbl5.Name = "ctrlLbl5";
             this.ctrlLbl5.Size = new System.Drawing.Size(151, 132);
             this.ctrlLbl5.TabIndex = 4;
+            this.ctrlLbl5.Click += new System.EventHandler(this.command_Click);
             // 
             // ctrlLbl6
             // 

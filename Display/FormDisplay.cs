@@ -124,9 +124,8 @@ namespace MultipleScreen.Display
                 case 5://"区局十大事件":
                 {
                     DisplayReset();
-                    var regionalNetworkUrl = ConfigurationManager.AppSettings["RegionalNetworkUrl"];
-                    instance.Browser.Url = new Uri(regionalNetworkUrl);
-                    instance.Browser.Visible = true;
+                    instance.PicPanel.BackgroundImage = message.ImageUrl;
+                    instance.PicPanel.Visible = true;
                     break;
                 }
                 case 6://"局间内网":

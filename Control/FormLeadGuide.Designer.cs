@@ -46,7 +46,7 @@
             // 
             // previousLbl
             // 
-            this.previousLbl.AccessibleName = "组织架构";
+            this.previousLbl.AccessibleName = "";
             this.previousLbl.BackColor = System.Drawing.Color.Transparent;
             this.previousLbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.previousLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -60,7 +60,7 @@
             // 
             // nextLbl
             // 
-            this.nextLbl.AccessibleName = "组织架构";
+            this.nextLbl.AccessibleName = "";
             this.nextLbl.BackColor = System.Drawing.Color.Transparent;
             this.nextLbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.nextLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -74,7 +74,7 @@
             // 
             // backLbl
             // 
-            this.backLbl.AccessibleName = "组织架构";
+            this.backLbl.AccessibleName = "";
             this.backLbl.BackColor = System.Drawing.Color.Transparent;
             this.backLbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.backLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));

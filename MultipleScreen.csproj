@@ -69,6 +69,12 @@
     <Compile Include="Control\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\FormBigEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\FormBigEvent.Designer.cs">
+      <DependentUpon>FormBigEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\FormTaxPublicity.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\FormBigEvent.resx">
+      <DependentUpon>FormBigEvent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\FormTaxPublicity.resx">
       <DependentUpon>FormTaxPublicity.cs</DependentUpon>
