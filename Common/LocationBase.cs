@@ -47,7 +47,7 @@ namespace MultipleScreen.Common
                 f0.Player.Dock = DockStyle.Fill;
                 f0.Player.Location = new Point(0, 0);
                 
-                f1.ControlResizeRelease();
+                f1.ResizeSetupRelease();
                 FormLeadGuide.Instance.StartPosition = FormStartPosition.CenterScreen;
                 FormLeadGuide.Instance.FormBorderStyle = FormBorderStyle.None;
                 FormLeadGuide.Instance.ClientSize = new Size(1920, 1080);
@@ -57,6 +57,7 @@ namespace MultipleScreen.Common
                 FormTaxPublicity.Instance.FormBorderStyle = FormBorderStyle.None;
                 FormTaxPublicity.Instance.ClientSize = new Size(1920, 1080);
                 FormTaxPublicity.Instance.WindowState = FormWindowState.Maximized;
+                FormTaxPublicity.Instance.ResizeSetupRelease();
             }
 
             foreach (var f in formlist)

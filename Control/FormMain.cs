@@ -38,7 +38,7 @@ namespace MultipleScreen.Control
                 if (instance == null)
                 {
                     instance = new FormMain();
-                    instance.ControlResizeDebug();
+                    instance.ResizeSetup();
                 }
 
                 return instance;
@@ -95,7 +95,7 @@ namespace MultipleScreen.Control
                 });
             }
         }
-        public void ControlResizeDebug()
+        public void ResizeSetup()
         {
             ClientSize = new Size(800, 450);
             var labelSize = new Size(152, 132);
@@ -109,7 +109,7 @@ namespace MultipleScreen.Control
             ctrlLbl5.Location = new Point(415, 248);
             ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl6.Size = labelSize;
         }
-        public void ControlResizeRelease()
+        public void ResizeSetupRelease()
         {
             ClientSize = new Size(1920, 1080);
             var labelSize = new Size(359, 319);
