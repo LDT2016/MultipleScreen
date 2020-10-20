@@ -119,7 +119,7 @@ namespace MultipleScreen.Control
         }
         public void ControlResizeDebug()
         {
-            panel1.Size = new Size(800, 450);
+            ClientSize = new Size(800, 450);
             var labelSize = new Size(152, 132);
 
             ctrlLbl0.Location = new Point(87, 92);
@@ -133,7 +133,7 @@ namespace MultipleScreen.Control
         }
         public void ControlResizeRelease()
         {
-            panel1.Size = new Size(1920, 1080);
+            ClientSize = new Size(1920, 1080);
             var labelSize = new Size(359, 319);
             ctrlLbl0.Location = new Point(210, 215);
             ctrlLbl1.Location = new Point(741, 215);

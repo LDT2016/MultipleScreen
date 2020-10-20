@@ -48,6 +48,7 @@ namespace MultipleScreen.Common
                 f0.Player.Location = new Point(0, 0);
                 
                 f1.ControlResizeRelease();
+                FormLeadGuide.Instance.ResizeSetupRelease();
             }
 
             foreach (var f in formlist)

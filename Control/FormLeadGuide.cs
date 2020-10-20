@@ -14,9 +14,9 @@ namespace MultipleScreen.Control
         #region fields
 
         private static FormLeadGuide instance;
+        private readonly Timer picTimer = new Timer();
         private int picIndex;
         private List<Image> picList = new List<Image>();
-        private readonly Timer picTimer = new Timer();
         private float X;
         private float Y;
 
@@ -73,12 +73,29 @@ namespace MultipleScreen.Control
 
         public void ResizeSetup()
         {
+            ClientSize = new Size(800, 450);
+
             previousLbl.Location = new Point(585, 199);
             previousLbl.Size = new Size(183, 50);
             nextLbl.Location = new Point(585, 306);
             nextLbl.Size = new Size(183, 50);
             backLbl.Location = new Point(696, 406);
             backLbl.Size = new Size(92, 38);
+            PicPanel.Location = new Point(22, 69);
+            PicPanel.Size = new Size(504, 318);
+        }
+
+        public void ResizeSetupRelease()
+        {
+            ClientSize = new Size(1920, 1080);
+            previousLbl.Location = new Point(1402, 472);
+            previousLbl.Size = new Size(430, 113);
+            nextLbl.Location = new Point(1402, 727);
+            nextLbl.Size = new Size(430, 116);
+            backLbl.Location = new Point(1670, 953);
+            backLbl.Size = new Size(238, 99);
+            PicPanel.Location = new Point(57, 167);
+            PicPanel.Size = new Size(1201, 745);
         }
 
         private void backLbl_Click(object sender, EventArgs e)
