@@ -42,6 +42,7 @@ namespace MultipleScreen.Control
                 {
                     instance = new FormTaxPublicity();
                     instance.ResizeSetup();
+                    instance.TaxPubliclyThumbnailSetup();
                 }
 
                 return instance;
@@ -68,37 +69,124 @@ namespace MultipleScreen.Control
 
         public void ResizeSetup()
         {
-            var LabelX = 69;
-            var LabelWidth = 163;
-            var LabelXGap = 78;
-            var LabelY = 79;
-            var LabelHeight = 144;
-            var LabelYGap = 25;
+            ClientSize = new Size(800, 450);
 
-            //taxPublicly0Lbl.Location = new Point(184, 102);
-            //taxPublicly0Lbl.Size = new Size(108, 56);
-            //taxPublicly1Lbl.Location = new Point(350, 102);
-            //taxPublicly1Lbl.Size = new Size(108, 56);
-            //taxPublicly2Lbl.Location = new Point(514, 102);
-            //taxPublicly2Lbl.Size = new Size(108, 56);
+            // 
+            // thumbnailPlayer0
+            // 
+            thumbnailPlayer0.Location = new Point(187, 99);
+            thumbnailPlayer0.Size = new Size(105, 59);
 
-            //taxPublicly3Lbl.Location = new Point(112, 227);
-            //taxPublicly3Lbl.Size = new Size(63, 109);
-            //taxPublicly4Lbl.Location = new Point(243, 227);
-            //taxPublicly4Lbl.Size = new Size(63, 109);
-            //taxPublicly5Lbl.Location = new Point(377, 227);
-            //taxPublicly5Lbl.Size = new Size(63, 109);
-            //taxPublicly6Lbl.Location = new Point(507, 227);
-            //taxPublicly6Lbl.Size = new Size(63, 109);
-            //taxPublicly7Lbl.Location = new Point(640, 227);
-            //taxPublicly7Lbl.Size = new Size(63, 109);
+            // 
+            // thumbnailLabel0
+            // 
+            thumbnailLabel0.Location = new Point(168, 167);
+            thumbnailLabel0.Size = new Size(140, 9);
+            thumbnailLabel0.Font = new Font("Microsoft Sans Serif", 5.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
 
-            //backLbl.Location = new Point(696, 409);
-            //backLbl.Size = new Size(92, 38);
+            // 
+            // thumbnailPlayer1
+            // 
+            thumbnailPlayer1.Location = new Point(353, 99);
+            thumbnailPlayer1.Size = new Size(105, 59);
 
-            thumbnailPlayer0.Location = new Point(184, 102);
-            thumbnailPlayer0.Size = new Size(108, 56);
+            // 
+            // thumbnailLabel1
+            // 
+            thumbnailLabel1.Location = new Point(334, 167);
+            thumbnailLabel1.Size = new Size(140, 9);
+            thumbnailLabel1.Font = new Font("Microsoft Sans Serif", 5.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
 
+            // 
+            // thumbnailPlayer2
+            // 
+            thumbnailPlayer2.Location = new Point(519, 99);
+            thumbnailPlayer2.Size = new Size(105, 59);
+
+            // 
+            // thumbnailLabel2
+            // 
+            thumbnailLabel2.Font = new Font("Microsoft Sans Serif", 5.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            thumbnailLabel2.Location = new Point(501, 167);
+            thumbnailLabel2.Size = new Size(140, 9);
+
+            // 
+            // thumbnailPlayer3
+            // 
+            thumbnailPlayer3.Location = new Point(112, 229);
+            thumbnailPlayer3.Size = new Size(64, 107);
+
+            // 
+            // thumbnailLabel3
+            // 
+
+            thumbnailLabel3.Font = new Font("Microsoft Sans Serif", 5.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            thumbnailLabel3.Location = new Point(79, 350);
+            thumbnailLabel3.Size = new Size(120, 9);
+
+            // 
+            // thumbnailPlayer4
+            // 
+            thumbnailPlayer4.Location = new Point(244, 229);
+            thumbnailPlayer4.Size = new Size(64, 107);
+
+            // 
+            // thumbnailLabel4
+            // 
+            thumbnailLabel4.Font = new Font("Microsoft Sans Serif", 5.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            thumbnailLabel4.Location = new Point(213, 350);
+            thumbnailLabel4.Size = new Size(120, 9);
+
+            // 
+            // thumbnailPlayer5
+            // 
+            thumbnailPlayer5.Location = new Point(376, 229);
+            thumbnailPlayer5.Size = new Size(64, 107);
+
+            // 
+            // thumbnailLabel5
+            // 
+            thumbnailLabel5.Font = new Font("Microsoft Sans Serif", 5.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            thumbnailLabel5.Location = new Point(346, 350);
+            thumbnailLabel5.Size = new Size(120, 9);
+
+            // 
+            // thumbnailPlayer6
+            // 
+            thumbnailPlayer6.Location = new Point(507, 229);
+            thumbnailPlayer6.Size = new Size(64, 107);
+
+            // 
+            // thumbnailLabel6
+            // 
+            thumbnailLabel6.Font = new Font("Microsoft Sans Serif", 5.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            thumbnailLabel6.Location = new Point(475, 350);
+            thumbnailLabel6.Size = new Size(120, 9);
+
+            // 
+            // thumbnailPlayer7
+            // 
+            thumbnailPlayer7.Location = new Point(639, 229);
+            thumbnailPlayer7.Size = new Size(64, 107);
+
+            // 
+            // thumbnailLabel7
+            // 
+            thumbnailLabel7.Font = new Font("Microsoft Sans Serif", 5.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            thumbnailLabel7.Location = new Point(608, 350);
+            thumbnailLabel7.Size = new Size(120, 9);
+
+            // 
+            // backLbl
+            // 
+            backLbl.Location = new Point(696, 409);
+            backLbl.Size = new Size(92, 38);
+        }
+
+        public void ResizeSetupRelease() { }
+
+        public void TaxPubliclyThumbnailSetup()
+        {
             foreach (var ctrl in Controls)
             {
                 if (ctrl is AxWindowsMediaPlayer thumbPlay)
@@ -123,6 +211,7 @@ namespace MultipleScreen.Control
                         }
                     }
                 }
+
                 if (ctrl is Label lbl)
                 {
                     if (lbl.Name.IndexOf("thumbnailLabel", StringComparison.Ordinal) > -1)
@@ -139,31 +228,6 @@ namespace MultipleScreen.Control
             }
         }
 
-        private void ThumbPlay_ClickEvent(object sender, _WMPOCXEvents_ClickEvent e)
-        {
-            var thumbPlay = (AxWindowsMediaPlayer)sender;
-            var sourceURL = thumbPlay.Tag.ToString();
-            ClickEvent?.Invoke(new Notify
-            {
-                Command = 4,
-                VideoUrl = sourceURL
-            });
-        }
-
-        private void ThumbPlay_PlayStateChange(object sender, _WMPOCXEvents_PlayStateChangeEvent e)
-        {
-            var thumbPlay = (AxWindowsMediaPlayer)sender;
-            if ((int)thumbPlay.playState == 3)
-            {
-                //停顿2秒钟再重新播放
-                Thread.Sleep(100);
-
-                //重新播放  
-                ((AxWindowsMediaPlayer)sender).Ctlcontrols.pause();
-            }
-        }
-
-
         private void backLbl_Click(object sender, EventArgs e)
         {
             Close();
@@ -171,7 +235,7 @@ namespace MultipleScreen.Control
 
         private void FormTaxPublicity_Load(object sender, EventArgs e)
         {
-            Win32.AnimateWindow(Handle, 1000, Win32.AW_VER_POSITIVE);
+            //Win32.AnimateWindow(Handle, 1000, Win32.AW_VER_POSITIVE);
         }
 
         private void taxPublicly_Click(object sender, EventArgs e)
@@ -185,10 +249,36 @@ namespace MultipleScreen.Control
             if (File.Exists(taxPublicityVideoFullName))
             {
                 ClickEvent?.Invoke(new Notify
-                {
-                    Command = 4,
-                    VideoUrl = taxPublicityVideoFullName
-                });
+                                   {
+                                       Command = 4,
+                                       VideoUrl = taxPublicityVideoFullName
+                                   });
+            }
+        }
+
+        private void ThumbPlay_ClickEvent(object sender, _WMPOCXEvents_ClickEvent e)
+        {
+            var thumbPlay = (AxWindowsMediaPlayer)sender;
+            var sourceURL = thumbPlay.Tag.ToString();
+
+            ClickEvent?.Invoke(new Notify
+                               {
+                                   Command = 4,
+                                   VideoUrl = sourceURL
+                               });
+        }
+
+        private void ThumbPlay_PlayStateChange(object sender, _WMPOCXEvents_PlayStateChangeEvent e)
+        {
+            var thumbPlay = (AxWindowsMediaPlayer)sender;
+
+            if ((int)thumbPlay.playState == 3)
+            {
+                //停顿2秒钟再重新播放
+                Thread.Sleep(100);
+
+                //重新播放  
+                ((AxWindowsMediaPlayer)sender).Ctlcontrols.pause();
             }
         }
 
