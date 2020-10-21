@@ -295,34 +295,38 @@ namespace MultipleScreen.Control
             thumbnailLabel7.Location = new Point(1502, 824);
             thumbnailLabel7.Size = new Size(250, 25);
         }
-
         public void TaxPubliclyThumbnailSetup()
         {
             foreach (var ctrl in Controls)
             {
-                if (ctrl is AxWindowsMediaPlayer thumbPlay)
+                if (ctrl is PictureBox thumbPlay)
                 {
                     if (thumbPlay.Name.IndexOf("thumbnailPlayer", StringComparison.Ordinal) > -1)
                     {
                         var cmd = thumbPlay.Name.Replace("thumbnailPlayer", string.Empty);
-                        thumbPlay.uiMode = "none";
-                        thumbPlay.Enabled = true;
-                        thumbPlay.currentPlaylist.clear();
-                        thumbPlay.PlayStateChange -= ThumbPlay_PlayStateChange;
-                        thumbPlay.ClickEvent -= ThumbPlay_ClickEvent;
-                        thumbPlay.PlayStateChange += ThumbPlay_PlayStateChange;
-                        thumbPlay.ClickEvent += ThumbPlay_ClickEvent;
+
+
+
+
+
+
+
                         var taxPublicityFolder = ConfigurationManager.AppSettings["TaxPublicityFolder"];
+                        var taxPublicityThumbnail = ConfigurationManager.AppSettings["TaxPublicityThumbnail_" + cmd];
                         var taxPublicityVideoName = ConfigurationManager.AppSettings["TaxPublicityVideo_" + cmd];
                         var taxPublicityVideoFullName = $@"{Application.StartupPath}\videos\{taxPublicityFolder}\{taxPublicityVideoName}";
+                        var taxPublicityThumbnailFullName = $@"{Application.StartupPath}\videos\{taxPublicityFolder}\{taxPublicityThumbnail}";
 
                         if (File.Exists(taxPublicityVideoFullName))
                         {
-                            thumbPlay.Ctlcontrols.play();
+
                             thumbPlay.Tag = taxPublicityVideoFullName;
-                            thumbPlay.currentPlaylist.appendItem(thumbPlay.newMedia(taxPublicityVideoFullName));
-                            thumbPlay.settings.volume = 0;
-                            thumbPlay.Ctlcontrols.play();
+                            thumbPlay.Click += ThumbPlay_Click; ;
+                        }
+
+                        if (File.Exists(taxPublicityThumbnailFullName))
+                        {
+                            thumbPlay.BackgroundImage = Image.FromStream(new MemoryStream(File.ReadAllBytes(taxPublicityThumbnailFullName)));
                         }
                     }
                 }
@@ -344,6 +348,18 @@ namespace MultipleScreen.Control
             }
         }
 
+        private void ThumbPlay_Click(object sender, EventArgs e)
+        {
+            var thumbPlay = (PictureBox)sender;
+            var sourceUrl = thumbPlay.Tag?.ToString();
+
+            ClickEvent?.Invoke(new Notify
+            {
+                Command = 4,
+                VideoUrl = sourceUrl
+            });
+        }
+
         private void backLbl_Click(object sender, EventArgs e)
         {
             Close();
@@ -352,30 +368,10 @@ namespace MultipleScreen.Control
         private void FormTaxPublicity_Load(object sender, EventArgs e)
         {
             //  TaxPubliclyThumbnailSetup();
-            instance.ResizeSetupRelease();
+            //instance.ResizeSetupRelease();
         }
 
-        private void ThumbPlay_ClickEvent(object sender, _WMPOCXEvents_ClickEvent e)
-        {
-            var thumbPlay = (AxWindowsMediaPlayer)sender;
-            var sourceURL = thumbPlay.Tag.ToString();
 
-            ClickEvent?.Invoke(new Notify
-            {
-                Command = 4,
-                VideoUrl = sourceURL
-            });
-        }
-
-        private void ThumbPlay_PlayStateChange(object sender, _WMPOCXEvents_PlayStateChangeEvent e)
-        {
-            var thumbPlay = (AxWindowsMediaPlayer)sender;
-
-            if ((int)thumbPlay.playState == 3)
-            {
-                ((AxWindowsMediaPlayer)sender).Ctlcontrols.pause();
-            }
-        }
 
         #endregion
 

@@ -30,20 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTaxPublicity));
             this.backLbl = new System.Windows.Forms.Label();
-            this.thumbnailPlayer0 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.thumbnailPlayer0 = new System.Windows.Forms.PictureBox();
             this.thumbnailLabel0 = new System.Windows.Forms.Label();
-            this.thumbnailPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.thumbnailPlayer1 = new System.Windows.Forms.PictureBox();
             this.thumbnailLabel1 = new System.Windows.Forms.Label();
-            this.thumbnailPlayer2 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.thumbnailPlayer2 = new System.Windows.Forms.PictureBox();
             this.thumbnailLabel2 = new System.Windows.Forms.Label();
-            this.thumbnailPlayer3 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.thumbnailPlayer3 = new System.Windows.Forms.PictureBox();
             this.thumbnailLabel3 = new System.Windows.Forms.Label();
-            this.thumbnailPlayer4 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.thumbnailPlayer4 = new System.Windows.Forms.PictureBox();
             this.thumbnailLabel4 = new System.Windows.Forms.Label();
-            this.thumbnailPlayer5 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.thumbnailPlayer5 = new System.Windows.Forms.PictureBox();
             this.thumbnailLabel5 = new System.Windows.Forms.Label();
-            this.thumbnailPlayer6 = new AxWMPLib.AxWindowsMediaPlayer();
-            this.thumbnailPlayer7 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.thumbnailPlayer6 = new System.Windows.Forms.PictureBox();
+            this.thumbnailPlayer7 = new System.Windows.Forms.PictureBox();
             this.thumbnailLabel6 = new System.Windows.Forms.Label();
             this.thumbnailLabel7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.thumbnailPlayer0)).BeginInit();
@@ -73,12 +73,13 @@
             // thumbnailPlayer0
             // 
             this.thumbnailPlayer0.AccessibleName = "0";
-            this.thumbnailPlayer0.Enabled = true;
+            this.thumbnailPlayer0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.thumbnailPlayer0.Cursor = System.Windows.Forms.Cursors.Hand;
             this.thumbnailPlayer0.Location = new System.Drawing.Point(187, 99);
             this.thumbnailPlayer0.Name = "thumbnailPlayer0";
-            this.thumbnailPlayer0.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("thumbnailPlayer0.OcxState")));
             this.thumbnailPlayer0.Size = new System.Drawing.Size(105, 59);
             this.thumbnailPlayer0.TabIndex = 10;
+            this.thumbnailPlayer0.TabStop = false;
             // 
             // thumbnailLabel0
             // 
@@ -95,12 +96,13 @@
             // thumbnailPlayer1
             // 
             this.thumbnailPlayer1.AccessibleName = "";
-            this.thumbnailPlayer1.Enabled = true;
+            this.thumbnailPlayer1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.thumbnailPlayer1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.thumbnailPlayer1.Location = new System.Drawing.Point(353, 99);
             this.thumbnailPlayer1.Name = "thumbnailPlayer1";
-            this.thumbnailPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("thumbnailPlayer1.OcxState")));
             this.thumbnailPlayer1.Size = new System.Drawing.Size(105, 59);
             this.thumbnailPlayer1.TabIndex = 10;
+            this.thumbnailPlayer1.TabStop = false;
             // 
             // thumbnailLabel1
             // 
@@ -117,12 +119,13 @@
             // thumbnailPlayer2
             // 
             this.thumbnailPlayer2.AccessibleName = "0";
-            this.thumbnailPlayer2.Enabled = true;
+            this.thumbnailPlayer2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.thumbnailPlayer2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.thumbnailPlayer2.Location = new System.Drawing.Point(519, 99);
             this.thumbnailPlayer2.Name = "thumbnailPlayer2";
-            this.thumbnailPlayer2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("thumbnailPlayer2.OcxState")));
             this.thumbnailPlayer2.Size = new System.Drawing.Size(105, 59);
             this.thumbnailPlayer2.TabIndex = 10;
+            this.thumbnailPlayer2.TabStop = false;
             // 
             // thumbnailLabel2
             // 
@@ -139,12 +142,13 @@
             // thumbnailPlayer3
             // 
             this.thumbnailPlayer3.AccessibleName = "0";
-            this.thumbnailPlayer3.Enabled = true;
+            this.thumbnailPlayer3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.thumbnailPlayer3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.thumbnailPlayer3.Location = new System.Drawing.Point(112, 229);
             this.thumbnailPlayer3.Name = "thumbnailPlayer3";
-            this.thumbnailPlayer3.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("thumbnailPlayer3.OcxState")));
             this.thumbnailPlayer3.Size = new System.Drawing.Size(64, 107);
             this.thumbnailPlayer3.TabIndex = 10;
+            this.thumbnailPlayer3.TabStop = false;
             // 
             // thumbnailLabel3
             // 
@@ -161,12 +165,13 @@
             // thumbnailPlayer4
             // 
             this.thumbnailPlayer4.AccessibleName = "0";
-            this.thumbnailPlayer4.Enabled = true;
+            this.thumbnailPlayer4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.thumbnailPlayer4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.thumbnailPlayer4.Location = new System.Drawing.Point(244, 229);
             this.thumbnailPlayer4.Name = "thumbnailPlayer4";
-            this.thumbnailPlayer4.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("thumbnailPlayer4.OcxState")));
             this.thumbnailPlayer4.Size = new System.Drawing.Size(64, 107);
             this.thumbnailPlayer4.TabIndex = 10;
+            this.thumbnailPlayer4.TabStop = false;
             // 
             // thumbnailLabel4
             // 
@@ -183,12 +188,13 @@
             // thumbnailPlayer5
             // 
             this.thumbnailPlayer5.AccessibleName = "0";
-            this.thumbnailPlayer5.Enabled = true;
+            this.thumbnailPlayer5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.thumbnailPlayer5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.thumbnailPlayer5.Location = new System.Drawing.Point(376, 229);
             this.thumbnailPlayer5.Name = "thumbnailPlayer5";
-            this.thumbnailPlayer5.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("thumbnailPlayer5.OcxState")));
             this.thumbnailPlayer5.Size = new System.Drawing.Size(64, 107);
             this.thumbnailPlayer5.TabIndex = 10;
+            this.thumbnailPlayer5.TabStop = false;
             // 
             // thumbnailLabel5
             // 
@@ -205,22 +211,24 @@
             // thumbnailPlayer6
             // 
             this.thumbnailPlayer6.AccessibleName = "0";
-            this.thumbnailPlayer6.Enabled = true;
+            this.thumbnailPlayer6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.thumbnailPlayer6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.thumbnailPlayer6.Location = new System.Drawing.Point(507, 229);
             this.thumbnailPlayer6.Name = "thumbnailPlayer6";
-            this.thumbnailPlayer6.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("thumbnailPlayer6.OcxState")));
             this.thumbnailPlayer6.Size = new System.Drawing.Size(64, 107);
             this.thumbnailPlayer6.TabIndex = 10;
+            this.thumbnailPlayer6.TabStop = false;
             // 
             // thumbnailPlayer7
             // 
             this.thumbnailPlayer7.AccessibleName = "0";
-            this.thumbnailPlayer7.Enabled = true;
+            this.thumbnailPlayer7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.thumbnailPlayer7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.thumbnailPlayer7.Location = new System.Drawing.Point(639, 229);
             this.thumbnailPlayer7.Name = "thumbnailPlayer7";
-            this.thumbnailPlayer7.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("thumbnailPlayer7.OcxState")));
             this.thumbnailPlayer7.Size = new System.Drawing.Size(64, 107);
             this.thumbnailPlayer7.TabIndex = 10;
+            this.thumbnailPlayer7.TabStop = false;
             // 
             // thumbnailLabel6
             // 
@@ -290,20 +298,20 @@
 
         #endregion
         private System.Windows.Forms.Label backLbl;
-        public AxWMPLib.AxWindowsMediaPlayer thumbnailPlayer0;
+        public System.Windows.Forms.PictureBox thumbnailPlayer0;
         private System.Windows.Forms.Label thumbnailLabel0;
-        public AxWMPLib.AxWindowsMediaPlayer thumbnailPlayer1;
+        public System.Windows.Forms.PictureBox thumbnailPlayer1;
         private System.Windows.Forms.Label thumbnailLabel1;
-        public AxWMPLib.AxWindowsMediaPlayer thumbnailPlayer2;
+        public System.Windows.Forms.PictureBox thumbnailPlayer2;
         private System.Windows.Forms.Label thumbnailLabel2;
-        public AxWMPLib.AxWindowsMediaPlayer thumbnailPlayer3;
+        public System.Windows.Forms.PictureBox thumbnailPlayer3;
         private System.Windows.Forms.Label thumbnailLabel3;
-        public AxWMPLib.AxWindowsMediaPlayer thumbnailPlayer4;
+        public System.Windows.Forms.PictureBox thumbnailPlayer4;
         private System.Windows.Forms.Label thumbnailLabel4;
-        public AxWMPLib.AxWindowsMediaPlayer thumbnailPlayer5;
+        public System.Windows.Forms.PictureBox thumbnailPlayer5;
         private System.Windows.Forms.Label thumbnailLabel5;
-        public AxWMPLib.AxWindowsMediaPlayer thumbnailPlayer6;
-        public AxWMPLib.AxWindowsMediaPlayer thumbnailPlayer7;
+        public System.Windows.Forms.PictureBox thumbnailPlayer6;
+        public System.Windows.Forms.PictureBox thumbnailPlayer7;
         private System.Windows.Forms.Label thumbnailLabel6;
         private System.Windows.Forms.Label thumbnailLabel7;
     }

@@ -199,6 +199,7 @@
             this.eventThumbnail0.Location = new System.Drawing.Point(112, 84);
             this.eventThumbnail0.Name = "eventThumbnail0";
             this.eventThumbnail0.Size = new System.Drawing.Size(64, 107);
+            this.eventThumbnail0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.eventThumbnail0.TabIndex = 10;
             this.eventThumbnail0.TabStop = false;
             // 

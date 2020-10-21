@@ -361,7 +361,7 @@ namespace MultipleScreen.Control
 
                         if (File.Exists(bigEventPictFullName))
                         {
-                            thumb.Image = Image.FromStream(new MemoryStream(File.ReadAllBytes(bigEventPictFullName)));
+                            thumb.BackgroundImage = Image.FromStream(new MemoryStream(File.ReadAllBytes(bigEventPictFullName)));
                         }
                     }
                 }
@@ -400,8 +400,8 @@ namespace MultipleScreen.Control
             ClickEvent?.Invoke(new Notify
                                {
                                    Command = 5,
-                                   ImageUrl = thumb.Image
-                               });
+                                   ImageUrl = thumb.BackgroundImage
+            });
         }
 
         #endregion
