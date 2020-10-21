@@ -106,7 +106,7 @@ namespace MultipleScreen.Control
             ctrlLbl0.Location = new Point(87, 92);
             ctrlLbl1.Location = new Point(310, 92);
             ctrlLbl2.Location = new Point(533, 92);
-            ctrlLbl3.Location = new Point(27, 248);
+            ctrlLbl3.Location = new Point(21, 261);
             ctrlLbl4.Location = new Point(219, 248);
             ctrlLbl5.Location = new Point(415, 248);
             ctrlLbl6.Location = new Point(612, 248);
@@ -119,7 +119,7 @@ namespace MultipleScreen.Control
             ctrlLbl0.Location = new Point(210, 215);
             ctrlLbl1.Location = new Point(741, 215);
             ctrlLbl2.Location = new Point(1283, 215);
-            ctrlLbl3.Location = new Point(61, 586);
+            ctrlLbl3.Location = new Point(50, 619);
             ctrlLbl4.Location = new Point(530, 586);
             ctrlLbl5.Location = new Point(999, 586);
             ctrlLbl6.Location = new Point(1469, 586);

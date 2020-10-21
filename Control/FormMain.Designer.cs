@@ -115,7 +115,7 @@
             this.ctrlLbl3.BackColor = System.Drawing.Color.Transparent;
             this.ctrlLbl3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ctrlLbl3.ForeColor = System.Drawing.Color.Transparent;
-            this.ctrlLbl3.Location = new System.Drawing.Point(27, 248);
+            this.ctrlLbl3.Location = new System.Drawing.Point(21, 261);
             this.ctrlLbl3.Name = "ctrlLbl3";
             this.ctrlLbl3.Size = new System.Drawing.Size(152, 132);
             this.ctrlLbl3.TabIndex = 1;
