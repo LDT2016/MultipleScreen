@@ -40,10 +40,10 @@
             // Player
             // 
             this.Player.Enabled = true;
-            this.Player.Location = new System.Drawing.Point(12, 12);
+            this.Player.Location = new System.Drawing.Point(3, 61);
             this.Player.Name = "Player";
             this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
-            this.Player.Size = new System.Drawing.Size(415, 313);
+            this.Player.Size = new System.Drawing.Size(415, 222);
             this.Player.TabIndex = 3;
             this.Player.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.Player_PlayStateChange);
             // 
@@ -51,9 +51,9 @@
             // 
             this.PicPanel.BackColor = System.Drawing.Color.Transparent;
             this.PicPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PicPanel.Location = new System.Drawing.Point(449, 12);
+            this.PicPanel.Location = new System.Drawing.Point(449, 72);
             this.PicPanel.Name = "PicPanel";
-            this.PicPanel.Size = new System.Drawing.Size(346, 313);
+            this.PicPanel.Size = new System.Drawing.Size(346, 253);
             this.PicPanel.TabIndex = 4;
             // 
             // Browser
@@ -71,7 +71,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(822, 536);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.Browser);
             this.Controls.Add(this.PicPanel);
             this.Controls.Add(this.Player);

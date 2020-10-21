@@ -44,10 +44,38 @@ namespace MultipleScreen.Display
                     FormLeadGuide.Instance.ClickEvent += FormDisplay_ClickEvent;
                     FormTaxPublicity.Instance.ClickEvent += FormDisplay_ClickEvent;
                     FormBigEvent.Instance.ClickEvent += FormDisplay_ClickEvent;
+                    instance.ResizeSetup();
+
                 }
 
                 return instance;
             }
+        }
+        public void ResizeSetup()
+        {
+            ClientSize = new Size(800, 450);
+            instance.Player.Visible = false;
+            instance.PicPanel.Visible = false;
+            instance.Browser.Visible = false;
+            instance.Player.Location = new Point(0, 125);
+            instance.PicPanel.Location = new Point(0, 125);
+            instance.Browser.Location = new Point(0, 125);
+            instance.Player.Size = new Size(800, 325);
+            instance.PicPanel.Size = new Size(800, 325);
+            instance.Browser.Size = new Size(800, 325);
+        }
+        public void ResizeSetupRelease()
+        {
+            ClientSize = new Size(1920, 1080);
+            instance.Player.Visible = false;
+            instance.PicPanel.Visible = false;
+            instance.Browser.Visible = false;
+            instance.Player.Location = new Point(0, 125);
+            instance.PicPanel.Location = new Point(0, 125);
+            instance.Browser.Location = new Point(0, 125);
+            instance.Player.Size = new Size(1920, 955);
+            instance.PicPanel.Size = new Size(1920, 955);
+            instance.Browser.Size = new Size(1920, 955);
         }
 
         /// <summary>
@@ -123,20 +151,20 @@ namespace MultipleScreen.Display
                         break;
                     }
                 case 5://"区局十大事件":
-                {
-                    DisplayReset();
-                    instance.PicPanel.BackgroundImage = message.ImageUrl;
-                    instance.PicPanel.Visible = true;
-                    break;
-                }
+                    {
+                        DisplayReset();
+                        instance.PicPanel.BackgroundImage = message.ImageUrl;
+                        instance.PicPanel.Visible = true;
+                        break;
+                    }
                 case 6://"局间内网":
-                {
-                    DisplayReset();
-                    var regionalNetworkUrl = ConfigurationManager.AppSettings["RegionalNetworkUrl"];
-                    instance.Browser.Url = new Uri(regionalNetworkUrl);
-                    instance.Browser.Visible = true;
-                    break;
-                }
+                    {
+                        DisplayReset();
+                        var regionalNetworkUrl = ConfigurationManager.AppSettings["RegionalNetworkUrl"];
+                        instance.Browser.Url = new Uri(regionalNetworkUrl);
+                        instance.Browser.Visible = true;
+                        break;
+                    }
             }
 
         }

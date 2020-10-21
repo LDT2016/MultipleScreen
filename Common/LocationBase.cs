@@ -15,11 +15,6 @@ namespace MultipleScreen.Common
         {
             var screens = Screen.AllScreens;
             var f0 = FormDisplay.Instance;
-            f0.PicPanel.Dock = DockStyle.Fill;
-            f0.Browser.Dock = DockStyle.Fill;
-            f0.Player.Visible = false;
-            f0.PicPanel.Visible = false;
-            f0.Browser.Visible = false;
             var f1 = FormMain.Instance;
             var formlist = new List<Form>
                            {
@@ -43,10 +38,7 @@ namespace MultipleScreen.Common
                                            screens[i]
                                                .Bounds.Top);
                 }
-                f0.Player.Size = new Size(1920, 1080);
-                f0.Player.Dock = DockStyle.Fill;
-                f0.Player.Location = new Point(0, 0);
-                
+                f0.ResizeSetupRelease();
                 f1.ResizeSetupRelease();
                 FormLeadGuide.Instance.StartPosition = FormStartPosition.CenterScreen;
                 FormLeadGuide.Instance.FormBorderStyle = FormBorderStyle.None;
@@ -76,10 +68,8 @@ namespace MultipleScreen.Common
                     f.ClientSize = new Size(1920, 1080);
                     f.WindowState = FormWindowState.Maximized;
                 }
-                f0.Player.Size = new Size(1920, 1080);
-                f0.Player.Dock = DockStyle.Fill;
-                f0.Player.Location = new Point(0, 0);
 
+                f0.ResizeSetupRelease();
                 f1.ResizeSetupRelease();
                 FormLeadGuide.Instance.StartPosition = FormStartPosition.CenterScreen;
                 FormLeadGuide.Instance.FormBorderStyle = FormBorderStyle.None;
