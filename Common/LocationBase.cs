@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
 using MultipleScreen.Control;
@@ -13,6 +14,9 @@ namespace MultipleScreen.Common
 
         public LocationBase()
         {
+            var dispalyModeSetting = ConfigurationManager.AppSettings["DispalyMode"];
+            int.TryParse(dispalyModeSetting, out var dispalyMode);
+
             var screens = Screen.AllScreens;
             var f0 = FormDisplay.Instance;
             var f1 = FormMain.Instance;
@@ -22,6 +26,10 @@ namespace MultipleScreen.Common
                                f1
                            };
 
+            if (dispalyMode > 0)
+            {
+                formlist.Reverse();
+            }
             if (screens.Length > 1 && formlist.Count == screens.Length)
             {
 
