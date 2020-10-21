@@ -188,7 +188,7 @@ namespace MultipleScreen.Control
             // 
             // backLbl
             // 
-            backLbl.Location = new Point(1665, 970);
+            backLbl.Location = new Point(1665, 990);
             backLbl.Size = new Size(215, 82);
 
             // 
@@ -308,6 +308,8 @@ namespace MultipleScreen.Control
                         thumbPlay.uiMode = "none";
                         thumbPlay.Enabled = true;
                         thumbPlay.currentPlaylist.clear();
+                        thumbPlay.PlayStateChange -= ThumbPlay_PlayStateChange;
+                        thumbPlay.ClickEvent -= ThumbPlay_ClickEvent;
                         thumbPlay.PlayStateChange += ThumbPlay_PlayStateChange;
                         thumbPlay.ClickEvent += ThumbPlay_ClickEvent;
                         var taxPublicityFolder = ConfigurationManager.AppSettings["TaxPublicityFolder"];
@@ -316,8 +318,10 @@ namespace MultipleScreen.Control
 
                         if (File.Exists(taxPublicityVideoFullName))
                         {
+                            thumbPlay.Ctlcontrols.play();
                             thumbPlay.Tag = taxPublicityVideoFullName;
                             thumbPlay.currentPlaylist.appendItem(thumbPlay.newMedia(taxPublicityVideoFullName));
+                            thumbPlay.settings.volume = 0;
                             thumbPlay.Ctlcontrols.play();
                         }
                     }
@@ -347,25 +351,8 @@ namespace MultipleScreen.Control
 
         private void FormTaxPublicity_Load(object sender, EventArgs e)
         {
-            //Win32.AnimateWindow(Handle, 1000, Win32.AW_VER_POSITIVE);
-        }
-
-        private void taxPublicly_Click(object sender, EventArgs e)
-        {
-            int.TryParse(((Label)sender).AccessibleName, out var cmd);
-
-            var taxPublicityFolder = ConfigurationManager.AppSettings["TaxPublicityFolder"];
-            var taxPublicityVideoName = ConfigurationManager.AppSettings["TaxPublicityVideo_" + cmd];
-            var taxPublicityVideoFullName = $@"{Application.StartupPath}\videos\{taxPublicityFolder}\{taxPublicityVideoName}";
-
-            if (File.Exists(taxPublicityVideoFullName))
-            {
-                ClickEvent?.Invoke(new Notify
-                                   {
-                                       Command = 4,
-                                       VideoUrl = taxPublicityVideoFullName
-                                   });
-            }
+            //  TaxPubliclyThumbnailSetup();
+            instance.ResizeSetupRelease();
         }
 
         private void ThumbPlay_ClickEvent(object sender, _WMPOCXEvents_ClickEvent e)
@@ -374,10 +361,10 @@ namespace MultipleScreen.Control
             var sourceURL = thumbPlay.Tag.ToString();
 
             ClickEvent?.Invoke(new Notify
-                               {
-                                   Command = 4,
-                                   VideoUrl = sourceURL
-                               });
+            {
+                Command = 4,
+                VideoUrl = sourceURL
+            });
         }
 
         private void ThumbPlay_PlayStateChange(object sender, _WMPOCXEvents_PlayStateChangeEvent e)
@@ -386,14 +373,15 @@ namespace MultipleScreen.Control
 
             if ((int)thumbPlay.playState == 3)
             {
-                //停顿2秒钟再重新播放
-                Thread.Sleep(100);
-
-                //重新播放  
                 ((AxWindowsMediaPlayer)sender).Ctlcontrols.pause();
             }
         }
 
         #endregion
+
+        private void FormTaxPublicity_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            instance.ResizeSetupRelease();
+        }
     }
 }

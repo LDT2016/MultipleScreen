@@ -211,7 +211,7 @@ namespace MultipleScreen.Control
             // 
             // backLbl
             // 
-            backLbl.Location = new Point(1665, 970);
+            backLbl.Location = new Point(1665, 990);
             backLbl.Size = new Size(215, 82);
 
             // 

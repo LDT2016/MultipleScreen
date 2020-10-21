@@ -75,12 +75,12 @@ namespace MultipleScreen.Control
         {
             ClientSize = new Size(800, 450);
 
+            backLbl.Location = new Point(696, 406);
+            backLbl.Size = new Size(92, 38);
             previousLbl.Location = new Point(585, 199);
             previousLbl.Size = new Size(183, 50);
             nextLbl.Location = new Point(585, 306);
             nextLbl.Size = new Size(183, 50);
-            backLbl.Location = new Point(696, 406);
-            backLbl.Size = new Size(92, 38);
             PicPanel.Location = new Point(22, 69);
             PicPanel.Size = new Size(504, 318);
         }
@@ -88,12 +88,13 @@ namespace MultipleScreen.Control
         public void ResizeSetupRelease()
         {
             ClientSize = new Size(1920, 1080);
+
+            backLbl.Location = new Point(1670, 990);
+            backLbl.Size = new Size(238, 99);
             previousLbl.Location = new Point(1402, 472);
             previousLbl.Size = new Size(430, 113);
             nextLbl.Location = new Point(1402, 727);
             nextLbl.Size = new Size(430, 116);
-            backLbl.Location = new Point(1670, 953);
-            backLbl.Size = new Size(238, 99);
             PicPanel.Location = new Point(57, 167);
             PicPanel.Size = new Size(1201, 745);
         }

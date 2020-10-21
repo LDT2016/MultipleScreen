@@ -68,7 +68,7 @@
             this.backLbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.backLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.backLbl.ForeColor = System.Drawing.Color.Transparent;
-            this.backLbl.Location = new System.Drawing.Point(696, 409);
+            this.backLbl.Location = new System.Drawing.Point(696, 407);
             this.backLbl.Name = "backLbl";
             this.backLbl.Size = new System.Drawing.Size(92, 38);
             this.backLbl.TabIndex = 9;
@@ -333,7 +333,7 @@
             this.Controls.Add(this.eventThumbnail0);
             this.Controls.Add(this.eventThumbnail5);
             this.Controls.Add(this.backLbl);
-            this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "FormBigEvent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormTaxPublicity";

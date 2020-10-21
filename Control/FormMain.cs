@@ -108,9 +108,9 @@ namespace MultipleScreen.Control
             ctrlLbl2.Location = new Point(533, 92);
             ctrlLbl3.Location = new Point(27, 248);
             ctrlLbl4.Location = new Point(219, 248);
-            ctrlLbl6.Location = new Point(612, 248);
             ctrlLbl5.Location = new Point(415, 248);
-            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl6.Size = labelSize;
+            ctrlLbl6.Location = new Point(612, 248);
+            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl5.Size = ctrlLbl6.Size = labelSize;
         }
         public void ResizeSetupRelease()
         {
@@ -123,7 +123,7 @@ namespace MultipleScreen.Control
             ctrlLbl4.Location = new Point(530, 586);
             ctrlLbl5.Location = new Point(999, 586);
             ctrlLbl6.Location = new Point(1469, 586);
-            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl6.Size = labelSize;
+            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl5.Size = ctrlLbl6.Size = labelSize;
         }
 
         //private void ControlResizeDebug1()

@@ -90,7 +90,6 @@
             this.thumbnailLabel0.Name = "thumbnailLabel0";
             this.thumbnailLabel0.Size = new System.Drawing.Size(140, 9);
             this.thumbnailLabel0.TabIndex = 11;
-            this.thumbnailLabel0.Text = "";
             this.thumbnailLabel0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // thumbnailPlayer1
@@ -113,7 +112,6 @@
             this.thumbnailLabel1.Name = "thumbnailLabel1";
             this.thumbnailLabel1.Size = new System.Drawing.Size(140, 9);
             this.thumbnailLabel1.TabIndex = 11;
-            this.thumbnailLabel1.Text = "";
             this.thumbnailLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // thumbnailPlayer2
@@ -136,7 +134,6 @@
             this.thumbnailLabel2.Name = "thumbnailLabel2";
             this.thumbnailLabel2.Size = new System.Drawing.Size(140, 9);
             this.thumbnailLabel2.TabIndex = 11;
-            this.thumbnailLabel2.Text = "";
             this.thumbnailLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // thumbnailPlayer3
@@ -159,7 +156,6 @@
             this.thumbnailLabel3.Name = "thumbnailLabel3";
             this.thumbnailLabel3.Size = new System.Drawing.Size(120, 9);
             this.thumbnailLabel3.TabIndex = 11;
-            this.thumbnailLabel3.Text = "";
             this.thumbnailLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // thumbnailPlayer4
@@ -182,7 +178,6 @@
             this.thumbnailLabel4.Name = "thumbnailLabel4";
             this.thumbnailLabel4.Size = new System.Drawing.Size(120, 9);
             this.thumbnailLabel4.TabIndex = 11;
-            this.thumbnailLabel4.Text = "";
             this.thumbnailLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // thumbnailPlayer5
@@ -205,7 +200,6 @@
             this.thumbnailLabel5.Name = "thumbnailLabel5";
             this.thumbnailLabel5.Size = new System.Drawing.Size(120, 9);
             this.thumbnailLabel5.TabIndex = 11;
-            this.thumbnailLabel5.Text = "";
             this.thumbnailLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // thumbnailPlayer6
@@ -238,7 +232,6 @@
             this.thumbnailLabel6.Name = "thumbnailLabel6";
             this.thumbnailLabel6.Size = new System.Drawing.Size(120, 9);
             this.thumbnailLabel6.TabIndex = 11;
-            this.thumbnailLabel6.Text = "";
             this.thumbnailLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // thumbnailLabel7
@@ -251,7 +244,6 @@
             this.thumbnailLabel7.Name = "thumbnailLabel7";
             this.thumbnailLabel7.Size = new System.Drawing.Size(120, 9);
             this.thumbnailLabel7.TabIndex = 11;
-            this.thumbnailLabel7.Text = "";
             this.thumbnailLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormTaxPublicity
@@ -279,8 +271,10 @@
             this.Controls.Add(this.thumbnailPlayer0);
             this.Controls.Add(this.backLbl);
             this.Name = "FormTaxPublicity";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormTaxPublicity";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormTaxPublicity_FormClosing);
             this.Load += new System.EventHandler(this.FormTaxPublicity_Load);
             ((System.ComponentModel.ISupportInitialize)(this.thumbnailPlayer0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.thumbnailPlayer1)).EndInit();
