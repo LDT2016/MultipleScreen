@@ -55,6 +55,7 @@
             this.PicPanel.Name = "PicPanel";
             this.PicPanel.Size = new System.Drawing.Size(346, 253);
             this.PicPanel.TabIndex = 4;
+            this.PicPanel.Click += new System.EventHandler(this.RestoreEvent);
             // 
             // Browser
             // 
@@ -77,6 +78,7 @@
             this.Controls.Add(this.Player);
             this.Name = "FormDisplay";
             this.Text = "FormDisplay";
+            this.Load += new System.EventHandler(this.RestoreEvent);
             ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
             this.ResumeLayout(false);
 

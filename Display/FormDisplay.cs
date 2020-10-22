@@ -42,10 +42,10 @@ namespace MultipleScreen.Display
                 if (instance == null)
                 {
                     instance = new FormDisplay();
-                    FormMain.Instance.ClickEvent += FormDisplay_ClickEvent;
-                    FormLeadGuide.Instance.ClickEvent += FormDisplay_ClickEvent;
-                    FormTaxPublicity.Instance.ClickEvent += FormDisplay_ClickEvent;
-                    FormBigEvent.Instance.ClickEvent += FormDisplay_ClickEvent;
+                    FormMain.Instance.ClickEvent += ProgramShow;
+                    FormLeadGuide.Instance.ClickEvent += ProgramShow;
+                    FormTaxPublicity.Instance.ClickEvent += ProgramShow;
+                    FormBigEvent.Instance.ClickEvent += ProgramShow;
                     instance.ResizeSetup();
                     instance.WaitingTimerStart();
                 }
@@ -100,80 +100,87 @@ namespace MultipleScreen.Display
 
         public Notify CurrentNotidy { set; get; } = new Notify();
 
-        private static void FormDisplay_ClickEvent(Notify message)
+        private static void ProgramShow(Notify notify)
         {
-            instance.CurrentNotidy = message;
-            switch (message.Command)
+            instance.CurrentNotidy = notify;
+
+            DisplayReset();
+
+            switch (notify.Command)
             {
-                case 0:// "组织架构":【显示图片】
-                    {
-                        DisplayReset();
-                        var orgPicName = ConfigurationManager.AppSettings["Organization"];
-                        var orgPicPath = $@"{Application.StartupPath}\pictures\{orgPicName}";
+                case 0: // "组织架构":【显示图片】
+                {
+                    var orgPicName = ConfigurationManager.AppSettings["Organization"];
+                    var orgPicPath = $@"{Application.StartupPath}\pictures\{orgPicName}";
 
-                        if (File.Exists(orgPicPath))
-                        {
-                            instance.PicPanel.BackgroundImage = Image.FromStream(new MemoryStream(File.ReadAllBytes(orgPicPath)));
-                        }
+                    if (File.Exists(orgPicPath))
+                    {
+                        instance.PicPanel.BackgroundImage = Image.FromStream(new MemoryStream(File.ReadAllBytes(orgPicPath)));
+                    }
 
-                        instance.PicPanel.Visible = true;
-                        instance.WaitingTimerStart();
-                        break;
-                    }
-                case 1://"领导关怀":【显示图片】
-                    {
-                        DisplayReset();
-                        instance.LeadShipPictureShow();
-                        instance.PicPanel.Visible = true;
-                        instance.WaitingTimerStart();
-                        break;
-                    }
-                case 2://"领导批示":【显示图片】
-                    {
-                        DisplayReset();
-                        instance.PicPanel.BackgroundImage = message.ImageUrl;
-                        instance.PicPanel.Visible = true;
-                        instance.WaitingTimerStart();
-                        break;
-                    }
-                case 3://"法制示范":
-                    {
-                        DisplayReset();
-                        instance.LegalDemoVideoShow();
-                        instance.Player.Visible = true;
-                        break;
-                    }
-                case 4://"税收宣传":
-                    {
-                        DisplayReset();
-                        instance.Player.settings.setMode("loop", true);
-                        instance.Player.uiMode = "none";
-                        instance.Player.Enabled = false;
-                        instance.Player.currentPlaylist.clear();
-                        instance.Player.currentPlaylist.appendItem(instance.Player.newMedia(message.VideoUrl));
-                        instance.Player.Ctlcontrols.play();
-                        instance.Player.Visible = true;
-                        break;
-                    }
-                case 5://"区局十大事件":【显示图片】
-                    {
-                        DisplayReset();
-                        instance.PicPanel.BackgroundImage = message.ImageUrl;
-                        instance.PicPanel.Visible = true;
-                        instance.WaitingTimerStart();
-                        break;
-                    }
-                case 6://"局间内网":
-                    {
-                        DisplayReset();
-                        var regionalNetworkUrl = ConfigurationManager.AppSettings["RegionalNetworkUrl"];
-                        instance.Browser.Url = new Uri(regionalNetworkUrl);
-                        instance.Browser.Visible = true;
-                        instance.WaitingTimerStart();
-                        break;
-                    }
+                    instance.PicPanel.Visible = true;
+                    instance.WaitingTimerStart();
+
+                    break;
+                }
+                case 1: //"领导关怀":【显示图片】
+                {
+                    instance.LeadShipPictureShow();
+                    instance.PicPanel.Visible = true;
+                    instance.WaitingTimerStart();
+
+                    break;
+                }
+                case 2: //"领导批示":【显示图片】
+                {
+                    instance.PicPanel.BackgroundImage = notify.ImageUrl;
+                    instance.PicPanel.Visible = true;
+                    instance.WaitingTimerStart();
+
+                    break;
+                }
+                case 3: //"法制示范":
+                {
+                    instance.LegalDemoVideoShow();
+                    instance.Player.Visible = true;
+
+                    break;
+                }
+                case 4: //"税收宣传":
+                {
+                    instance.Player.settings.setMode("loop", true);
+                    instance.Player.uiMode = "none";
+                    instance.Player.Enabled = false;
+                    instance.Player.currentPlaylist.clear();
+                    instance.Player.currentPlaylist.appendItem(instance.Player.newMedia(notify.VideoUrl));
+                    instance.Player.Ctlcontrols.play();
+                    instance.Player.Visible = true;
+
+                    break;
+                }
+                case 5: //"区局十大事件":【显示图片】
+                {
+                    instance.PicPanel.BackgroundImage = notify.ImageUrl;
+                    instance.PicPanel.Visible = true;
+                    instance.WaitingTimerStart();
+
+                    break;
+                }
+                case 6: //"局间内网":
+                {
+                    var regionalNetworkUrl = ConfigurationManager.AppSettings["RegionalNetworkUrl"];
+                    instance.Browser.Url = new Uri(regionalNetworkUrl);
+                    instance.Browser.Visible = true;
+                    instance.WaitingTimerStart();
+
+                    break;
+                }
+
+                default:
+                {
+                    return;
+                }
             }
-
         }
 
         private static void DisplayReset()
@@ -439,6 +446,11 @@ namespace MultipleScreen.Display
             instance.LeadShipPictureShow();
             instance.PicPanel.Visible = true;
             instance.WaitingTimer.Stop();
+        }
+
+        private void RestoreEvent(object sender, EventArgs e)
+        {
+            ProgramShow(instance.CurrentNotidy);
         }
     }
 }
