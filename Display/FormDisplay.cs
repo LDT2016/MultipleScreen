@@ -19,6 +19,8 @@ namespace MultipleScreen.Display
         #region fields
 
         private static FormDisplay instance;
+        private Timer WaitingTimer = new Timer();
+
 
         #endregion
 
@@ -45,7 +47,7 @@ namespace MultipleScreen.Display
                     FormTaxPublicity.Instance.ClickEvent += FormDisplay_ClickEvent;
                     FormBigEvent.Instance.ClickEvent += FormDisplay_ClickEvent;
                     instance.ResizeSetup();
-
+                    instance.WaitingTimerStart();
                 }
 
                 return instance;
@@ -103,7 +105,7 @@ namespace MultipleScreen.Display
             instance.CurrentNotidy = message;
             switch (message.Command)
             {
-                case 0:// "组织架构":
+                case 0:// "组织架构":【显示图片】
                     {
                         DisplayReset();
                         var orgPicName = ConfigurationManager.AppSettings["Organization"];
@@ -115,20 +117,23 @@ namespace MultipleScreen.Display
                         }
 
                         instance.PicPanel.Visible = true;
+                        instance.WaitingTimerStart();
                         break;
                     }
-                case 1://"领导关怀":
+                case 1://"领导关怀":【显示图片】
                     {
                         DisplayReset();
                         instance.LeadShipPictureShow();
                         instance.PicPanel.Visible = true;
+                        instance.WaitingTimerStart();
                         break;
                     }
-                case 2://"领导批示":
+                case 2://"领导批示":【显示图片】
                     {
                         DisplayReset();
                         instance.PicPanel.BackgroundImage = message.ImageUrl;
                         instance.PicPanel.Visible = true;
+                        instance.WaitingTimerStart();
                         break;
                     }
                 case 3://"法制示范":
@@ -150,11 +155,12 @@ namespace MultipleScreen.Display
                         instance.Player.Visible = true;
                         break;
                     }
-                case 5://"区局十大事件":
+                case 5://"区局十大事件":【显示图片】
                     {
                         DisplayReset();
                         instance.PicPanel.BackgroundImage = message.ImageUrl;
                         instance.PicPanel.Visible = true;
+                        instance.WaitingTimerStart();
                         break;
                     }
                 case 6://"局间内网":
@@ -163,6 +169,7 @@ namespace MultipleScreen.Display
                         var regionalNetworkUrl = ConfigurationManager.AppSettings["RegionalNetworkUrl"];
                         instance.Browser.Url = new Uri(regionalNetworkUrl);
                         instance.Browser.Visible = true;
+                        instance.WaitingTimerStart();
                         break;
                     }
             }
@@ -179,6 +186,7 @@ namespace MultipleScreen.Display
             instance.PicTimer.Enabled = false;
             instance.PicPanel.Visible = false;
             instance.Browser.Visible = false;
+            instance.WaitingTimer.Stop();
         }
 
         private void Player_PlayStateChange(object sender, _WMPOCXEvents_PlayStateChangeEvent e)
@@ -197,14 +205,11 @@ namespace MultipleScreen.Display
                 11 Reconnecting Reconnecting to stream.(重新连接) 
             */
             //判断视频是否已停止播放  
-            //if ((int)Player.playState == 3)
-            //{
-            //    //停顿2秒钟再重新播放
-            //    Thread.Sleep(100);
-
-            //    //重新播放  
-            //    Player.Ctlcontrols.pause();
-            //}
+            if ((int)Player.playState == 1)
+            {
+                Thread.Sleep(100);
+                instance.WaitingTimerStart();
+            }
         }
 
         #endregion
@@ -258,7 +263,7 @@ namespace MultipleScreen.Display
             var legalDemoPath = $@"{Application.StartupPath}\videos\{legalDemoFolder}";
 
             #region play videos
-            Player.settings.setMode("loop", true);  // 将播放列表设置为循环播放 
+            Player.settings.setMode("loop", false);  // 将播放列表设置为循环播放
             Player.uiMode = "none";
             Player.Enabled = false;
             Player.currentPlaylist.clear();
@@ -408,5 +413,32 @@ namespace MultipleScreen.Display
         }
         #endregion
 
+        #region WaitingTimer
+
+
+
+        #endregion
+
+        private void WaitingTimerStart()
+        {
+            int.TryParse(ConfigurationManager.AppSettings["WaitingTimeTick"], out var waitingTimeTick);
+
+            #region show pictures
+
+            instance.WaitingTimer.Interval = waitingTimeTick > 0
+                                                 ? waitingTimeTick * 1000
+                                                 : 40 * 60 * 1000;
+            instance.WaitingTimer.Tick += WaitingTimer_Tick;
+            instance.WaitingTimer.Start();
+            #endregion
+        }
+
+        private void WaitingTimer_Tick(object sender, EventArgs e)
+        {
+            DisplayReset();
+            instance.LeadShipPictureShow();
+            instance.PicPanel.Visible = true;
+            instance.WaitingTimer.Stop();
+        }
     }
 }
