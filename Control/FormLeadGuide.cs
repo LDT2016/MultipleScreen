@@ -46,7 +46,18 @@ namespace MultipleScreen.Control
                 if (instance == null)
                 {
                     instance = new FormLeadGuide();
-                    instance.ResizeSetup();
+
+                    if (Screen.AllScreens.Length > 1)
+                    {
+                        instance.ResizeSetupRelease();
+                    }
+                    else
+                    {
+                        instance.ResizeSetup();
+                    }
+                    
+                    instance.LeadGuidePictureShow();
+
                 }
 
                 return instance;
@@ -87,16 +98,18 @@ namespace MultipleScreen.Control
 
         public void ResizeSetupRelease()
         {
-            ClientSize = new Size(1920, 1080);
-
-            backLbl.Location = new Point(1670, 990);
-            backLbl.Size = new Size(238, 99);
-            previousLbl.Location = new Point(1402, 472);
-            previousLbl.Size = new Size(430, 113);
-            nextLbl.Location = new Point(1402, 727);
-            nextLbl.Size = new Size(430, 116);
-            PicPanel.Location = new Point(57, 167);
-            PicPanel.Size = new Size(1201, 745);
+            instance.Location = FormMain.Instance.Location;
+            instance.ClientSize = new Size(1920, 1080);
+            instance.FormBorderStyle = FormBorderStyle.None;
+            instance.StartPosition = FormStartPosition.Manual;
+            instance.backLbl.Location = new Point(1670, 990);
+            instance.backLbl.Size = new Size(238, 99);
+            instance.previousLbl.Location = new Point(1402, 472);
+            instance.previousLbl.Size = new Size(430, 113);
+            instance.nextLbl.Location = new Point(1402, 727);
+            instance.nextLbl.Size = new Size(430, 116);
+            instance.PicPanel.Location = new Point(57, 167);
+            instance.PicPanel.Size = new Size(1201, 745);
         }
 
         private void backLbl_Click(object sender, EventArgs e)
@@ -106,7 +119,6 @@ namespace MultipleScreen.Control
 
         private void FormLeadGuide_Load(object sender, EventArgs e)
         {
-            LeadGuidePictureShow();
             //Win32.AnimateWindow(Handle, 1000, Win32.AW_VER_POSITIVE);
         }
 

@@ -41,7 +41,14 @@ namespace MultipleScreen.Control
                 if (instance == null)
                 {
                     instance = new FormTaxPublicity();
-                    instance.ResizeSetup();
+                    if (Screen.AllScreens.Length > 1)
+                    {
+                        instance.ResizeSetupRelease();
+                    }
+                    else
+                    {
+                        instance.ResizeSetup();
+                    }
                     instance.TaxPubliclyThumbnailSetup();
                 }
 
@@ -185,6 +192,10 @@ namespace MultipleScreen.Control
 
         public void ResizeSetupRelease()
         {
+            instance.Location = FormMain.Instance.Location;
+            instance.ClientSize = new Size(1920, 1080);
+            instance.FormBorderStyle = FormBorderStyle.None;
+            instance.StartPosition = FormStartPosition.Manual;
             // 
             // backLbl
             // 
@@ -305,12 +316,6 @@ namespace MultipleScreen.Control
                     {
                         var cmd = thumbPlay.Name.Replace("thumbnailPlayer", string.Empty);
 
-
-
-
-
-
-
                         var taxPublicityFolder = ConfigurationManager.AppSettings["TaxPublicityFolder"];
                         var taxPublicityThumbnail = ConfigurationManager.AppSettings["TaxPublicityThumbnail_" + cmd];
                         var taxPublicityVideoName = ConfigurationManager.AppSettings["TaxPublicityVideo_" + cmd];
@@ -374,10 +379,5 @@ namespace MultipleScreen.Control
 
 
         #endregion
-
-        private void FormTaxPublicity_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            instance.ResizeSetupRelease();
-        }
     }
 }

@@ -282,7 +282,6 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormTaxPublicity";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormTaxPublicity_FormClosing);
             this.Load += new System.EventHandler(this.FormTaxPublicity_Load);
             ((System.ComponentModel.ISupportInitialize)(this.thumbnailPlayer0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.thumbnailPlayer1)).EndInit();

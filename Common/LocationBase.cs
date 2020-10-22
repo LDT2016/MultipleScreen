@@ -14,8 +14,8 @@ namespace MultipleScreen.Common
 
         public LocationBase()
         {
-            var dispalyModeSetting = ConfigurationManager.AppSettings["DispalyMode"];
-            int.TryParse(dispalyModeSetting, out var dispalyMode);
+            var displayModeSetting = ConfigurationManager.AppSettings["DisplayMode"];
+            int.TryParse(displayModeSetting, out var displayMode);
 
             var screens = Screen.AllScreens;
             var f0 = FormDisplay.Instance;
@@ -26,76 +26,30 @@ namespace MultipleScreen.Common
                                f1
                            };
 
-            if (dispalyMode > 0)
+            if (displayMode > 0)
             {
                 formlist.Reverse();
             }
-            if (screens.Length > 1 && formlist.Count == screens.Length)
-            {
 
+            if (screens.Length > 1 && formlist.Count <= screens.Length)
+            {
                 for (var i = 0; i < formlist.Count; i++)
                 {
                     var f = formlist[i];
-                    f.StartPosition = FormStartPosition.CenterScreen;
                     f.FormBorderStyle = FormBorderStyle.None;
                     f.ClientSize = new Size(1920, 1080);
-                    f.WindowState = FormWindowState.Maximized;
-                    
+                    f.WindowState = FormWindowState.Normal;
+                    f.StartPosition = FormStartPosition.Manual;
+
                     f.Location = new Point(screens[i]
                                            .Bounds.Left,
                                            screens[i]
                                                .Bounds.Top);
                 }
+
                 f0.ResizeSetupRelease();
                 f1.ResizeSetupRelease();
-                FormLeadGuide.Instance.StartPosition = FormStartPosition.CenterScreen;
-                FormLeadGuide.Instance.FormBorderStyle = FormBorderStyle.None;
-                FormLeadGuide.Instance.ClientSize = new Size(1920, 1080);
-                FormLeadGuide.Instance.WindowState = FormWindowState.Maximized;
-                FormLeadGuide.Instance.ResizeSetupRelease();
-                FormTaxPublicity.Instance.StartPosition = FormStartPosition.CenterScreen;
-                FormTaxPublicity.Instance.FormBorderStyle = FormBorderStyle.None;
-                FormTaxPublicity.Instance.ClientSize = new Size(1920, 1080);
-                FormTaxPublicity.Instance.WindowState = FormWindowState.Maximized;
-                FormTaxPublicity.Instance.ResizeSetupRelease();
-                FormBigEvent.Instance.StartPosition = FormStartPosition.CenterScreen;
-                FormBigEvent.Instance.FormBorderStyle = FormBorderStyle.None;
-                FormBigEvent.Instance.ClientSize = new Size(1920, 1080);
-                FormBigEvent.Instance.WindowState = FormWindowState.Maximized;
-                FormBigEvent.Instance.ResizeSetupRelease();
             }
-
-#if DEBUG
-
-
-                //for (var i = 0; i < formlist.Count; i++)
-                //{
-                //    var f = formlist[i];
-                //    f.StartPosition = FormStartPosition.CenterScreen;
-                //    f.FormBorderStyle = FormBorderStyle.None;
-                //    f.ClientSize = new Size(1920, 1080);
-                //    f.WindowState = FormWindowState.Maximized;
-                //}
-
-                //f0.ResizeSetupRelease();
-                //f1.ResizeSetupRelease();
-                //FormLeadGuide.Instance.StartPosition = FormStartPosition.CenterScreen;
-                //FormLeadGuide.Instance.FormBorderStyle = FormBorderStyle.None;
-                //FormLeadGuide.Instance.ClientSize = new Size(1920, 1080);
-                //FormLeadGuide.Instance.WindowState = FormWindowState.Maximized;
-                //FormLeadGuide.Instance.ResizeSetupRelease();
-                //FormTaxPublicity.Instance.StartPosition = FormStartPosition.CenterScreen;
-                //FormTaxPublicity.Instance.FormBorderStyle = FormBorderStyle.None;
-                //FormTaxPublicity.Instance.ClientSize = new Size(1920, 1080);
-                //FormTaxPublicity.Instance.WindowState = FormWindowState.Maximized;
-                //FormTaxPublicity.Instance.ResizeSetupRelease();
-                //FormBigEvent.Instance.StartPosition = FormStartPosition.CenterScreen;
-                //FormBigEvent.Instance.FormBorderStyle = FormBorderStyle.None;
-                //FormBigEvent.Instance.ClientSize = new Size(1920, 1080);
-                //FormBigEvent.Instance.WindowState = FormWindowState.Maximized;
-                //FormBigEvent.Instance.ResizeSetupRelease();
-
-#endif
 
             foreach (var f in formlist)
             {

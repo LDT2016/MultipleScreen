@@ -39,7 +39,15 @@ namespace MultipleScreen.Control
                 if (instance == null)
                 {
                     instance = new FormBigEvent();
-                    instance.ResizeSetup();
+                    if (Screen.AllScreens.Length > 1)
+                    {
+                        instance.ResizeSetupRelease();
+                    }
+                    else
+                    {
+                        instance.ResizeSetup();
+                    }
+
                     instance.TaxPubliclyThumbnailSetup();
                 }
 
@@ -208,6 +216,11 @@ namespace MultipleScreen.Control
 
         public void ResizeSetupRelease()
         {
+            instance.Location = FormMain.Instance.Location;
+            instance.ClientSize = new Size(1920, 1080);
+            instance.FormBorderStyle = FormBorderStyle.None;
+            instance.StartPosition = FormStartPosition.Manual;
+
             // 
             // backLbl
             // 
