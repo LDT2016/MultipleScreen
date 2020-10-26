@@ -340,6 +340,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormTaxPublicity";
             this.Load += new System.EventHandler(this.FormBigEvent_Load);
+            this.Click += new System.EventHandler(this.FormBigEvent_Click);
             ((System.ComponentModel.ISupportInitialize)(this.eventThumbnail5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventThumbnail6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventThumbnail7)).EndInit();

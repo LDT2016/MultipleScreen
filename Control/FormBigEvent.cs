@@ -384,6 +384,7 @@ namespace MultipleScreen.Control
                     if (lbl.Name.IndexOf("eventInfo", StringComparison.Ordinal) > -1)
                     {
                         lbl.Text = string.Empty;
+                        lbl.Click += Lbl_Click;
                         var cmd = lbl.Name.Replace("eventInfo", string.Empty);
                         var taxPublicityText = ConfigurationManager.AppSettings["BigEventText_" + cmd];
 
@@ -396,9 +397,16 @@ namespace MultipleScreen.Control
             }
         }
 
+        private void Lbl_Click(object sender, EventArgs e)
+        {
+            CloseDialogTimerStart();
+        }
+
         private void backLbl_Click(object sender, EventArgs e)
         {
-            Close();
+            CloseDialogTimerStop();
+
+            instance.Close();
         }
 
         private void FormBigEvent_Load(object sender, EventArgs e)
@@ -408,15 +416,49 @@ namespace MultipleScreen.Control
 
         private void Thumb_Click(object sender, EventArgs e)
         {
+            CloseDialogTimerStart();
+
             var thumb = (PictureBox)sender;
 
             ClickEvent?.Invoke(new Notify
-                               {
-                                   Command = 5,
-                                   ImageUrl = thumb.BackgroundImage
+            {
+                Command = 5,
+                ImageUrl = thumb.BackgroundImage
             });
         }
 
         #endregion
+
+        #region CloseDialogTimer
+
+        private Timer CloseDialogTimer = new Timer();
+        private void CloseDialogTimerStart()
+        {
+            instance.CloseDialogTimer.Stop();
+            instance.CloseDialogTimer.Interval = 5 * 60 * 1000;
+            instance.CloseDialogTimer.Tick += CloseDialogTimer_Tick;
+            instance.CloseDialogTimer.Enabled = true;
+            instance.CloseDialogTimer.Start();
+        }
+
+        private void CloseDialogTimer_Tick(object sender, EventArgs e)
+        {
+            CloseDialogTimerStop();
+
+            instance.Close();
+        }
+
+        private static void CloseDialogTimerStop()
+        {
+            instance.CloseDialogTimer.Enabled = false;
+            instance.CloseDialogTimer.Stop();
+        }
+
+        #endregion
+
+        private void FormBigEvent_Click(object sender, EventArgs e)
+        {
+            CloseDialogTimerStart();
+        }
     }
 }

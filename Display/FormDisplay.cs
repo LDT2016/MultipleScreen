@@ -298,7 +298,6 @@ namespace MultipleScreen.Display
 
         #endregion
 
-
         #region show pictures
 
         [Flags]
