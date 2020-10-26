@@ -283,6 +283,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormTaxPublicity";
             this.Load += new System.EventHandler(this.FormTaxPublicity_Load);
+            this.Click += new System.EventHandler(this.FormTaxPublicity_Click);
             ((System.ComponentModel.ISupportInitialize)(this.thumbnailPlayer0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.thumbnailPlayer1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.thumbnailPlayer2)).EndInit();

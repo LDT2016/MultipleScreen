@@ -412,6 +412,7 @@ namespace MultipleScreen.Control
         private void FormBigEvent_Load(object sender, EventArgs e)
         {
             //Win32.AnimateWindow(Handle, 1000, Win32.AW_VER_POSITIVE);
+            CloseDialogTimerStart();
         }
 
         private void Thumb_Click(object sender, EventArgs e)
