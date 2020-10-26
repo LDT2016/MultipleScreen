@@ -47,7 +47,6 @@ namespace MultipleScreen.Display
                     FormTaxPublicity.Instance.ClickEvent += ProgramShow;
                     FormBigEvent.Instance.ClickEvent += ProgramShow;
                     instance.ResizeSetup();
-                    instance.WaitingTimerStart();
                 }
 
                 return instance;
@@ -178,6 +177,7 @@ namespace MultipleScreen.Display
 
                 default:
                 {
+                    instance.WaitingTimerStart();
                     return;
                 }
             }
