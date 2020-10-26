@@ -43,6 +43,7 @@
             this.PicPanel.Name = "PicPanel";
             this.PicPanel.Size = new System.Drawing.Size(504, 318);
             this.PicPanel.TabIndex = 5;
+            this.PicPanel.Click += new System.EventHandler(this.PicPanel_Click);
             // 
             // previousLbl
             // 
@@ -101,6 +102,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormLeadGuide";
             this.Load += new System.EventHandler(this.FormLeadGuide_Load);
+            this.Click += new System.EventHandler(this.FormLeadGuide_Click);
             this.ResumeLayout(false);
 
         }
