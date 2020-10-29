@@ -108,78 +108,79 @@ namespace MultipleScreen.Display
             switch (notify.Command)
             {
                 case 0: // "组织架构":【显示图片】
-                {
-                    var orgPicName = ConfigurationManager.AppSettings["Organization"];
-                    var orgPicPath = $@"{Application.StartupPath}\pictures\{orgPicName}";
-
-                    if (File.Exists(orgPicPath))
                     {
-                        instance.PicPanel.BackgroundImage = Image.FromStream(new MemoryStream(File.ReadAllBytes(orgPicPath)));
+                        var orgPicName = ConfigurationManager.AppSettings["Organization"];
+                        var orgPicPath = $@"{Application.StartupPath}\pictures\{orgPicName}";
+
+                        if (File.Exists(orgPicPath))
+                        {
+                            instance.PicPanel.BackgroundImage = Image.FromStream(new MemoryStream(File.ReadAllBytes(orgPicPath)));
+                        }
+
+                        instance.PicPanel.Visible = true;
+                        instance.WaitingTimerStart();
+
+                        break;
+                    }
+                case 1: //"领导关怀":【显示图片】
+                    {
+                        instance.LeadShipPictureShow();
+                        instance.PicPanel.Visible = true;
+                        instance.WaitingTimerStart();
+
+                        break;
+                    }
+                case 2: //"领导批示":【显示图片】
+                    {
+                        instance.PicPanel.BackgroundImage = notify.ImageUrl;
+                        instance.PicPanel.Visible = true;
+                        instance.WaitingTimerStart();
+
+                        break;
+                    }
+                case 3: //"法制示范":
+                    {
+                        instance.LegalDemoVideoShow();
+                        instance.Player.Visible = true;
+
+                        break;
+                    }
+                case 4: //"税收宣传":
+                    {
+                        instance.Player.settings.setMode("loop", true);
+                        instance.Player.uiMode = "none";
+                        instance.Player.Enabled = false;
+                        instance.Player.currentPlaylist.clear();
+                        instance.Player.currentPlaylist.appendItem(instance.Player.newMedia(notify.VideoUrl));
+                        instance.Player.Ctlcontrols.play();
+                        instance.Player.Visible = true;
+
+                        break;
+                    }
+                case 5: //"区局十大事件":【显示图片】
+                    {
+                        instance.PicPanel.BackgroundImage = notify.ImageUrl;
+                        instance.PicPanel.Visible = true;
+                        instance.WaitingTimerStart();
+
+                        break;
+                    }
+                case 6: //"局间内网":
+                    {
+                        var regionalNetworkUrl = ConfigurationManager.AppSettings["RegionalNetworkUrl"];
+                        instance.Browser.Url = new Uri(regionalNetworkUrl);
+                        instance.Browser.Visible = true;
+                        instance.WaitingTimerStart();
+
+                        break;
                     }
 
-                    instance.PicPanel.Visible = true;
-                    instance.WaitingTimerStart();
-
-                    break;
-                }
-                case 1: //"领导关怀":【显示图片】
-                {
-                    instance.LeadShipPictureShow();
-                    instance.PicPanel.Visible = true;
-                    instance.WaitingTimerStart();
-
-                    break;
-                }
-                case 2: //"领导批示":【显示图片】
-                {
-                    instance.PicPanel.BackgroundImage = notify.ImageUrl;
-                    instance.PicPanel.Visible = true;
-                    instance.WaitingTimerStart();
-
-                    break;
-                }
-                case 3: //"法制示范":
-                {
-                    instance.LegalDemoVideoShow();
-                    instance.Player.Visible = true;
-
-                    break;
-                }
-                case 4: //"税收宣传":
-                {
-                    instance.Player.settings.setMode("loop", true);
-                    instance.Player.uiMode = "none";
-                    instance.Player.Enabled = false;
-                    instance.Player.currentPlaylist.clear();
-                    instance.Player.currentPlaylist.appendItem(instance.Player.newMedia(notify.VideoUrl));
-                    instance.Player.Ctlcontrols.play();
-                    instance.Player.Visible = true;
-
-                    break;
-                }
-                case 5: //"区局十大事件":【显示图片】
-                {
-                    instance.PicPanel.BackgroundImage = notify.ImageUrl;
-                    instance.PicPanel.Visible = true;
-                    instance.WaitingTimerStart();
-
-                    break;
-                }
-                case 6: //"局间内网":
-                {
-                    var regionalNetworkUrl = ConfigurationManager.AppSettings["RegionalNetworkUrl"];
-                    instance.Browser.Url = new Uri(regionalNetworkUrl);
-                    instance.Browser.Visible = true;
-                    instance.WaitingTimerStart();
-
-                    break;
-                }
-
                 default:
-                {
-                    instance.WaitingTimerStart();
-                    return;
-                }
+                    {
+                        instance.WaitingTimerStart();
+
+                        return;
+                    }
             }
         }
 
@@ -318,12 +319,13 @@ namespace MultipleScreen.Display
         public static extern bool AnimateWindow(IntPtr hwnd, uint dwTime, AnimationType dwFlags);
 
         private List<Image> picList = new List<Image>();
+        private List<FileInfo> picInfoList = new List<FileInfo>();
         private Timer PicTimer = new Timer();
         private int picIndex = 0;
         private Random random = new Random();
         private AnimationType[] animationTypes = null;
 
-        private void LeadShipPictureShow()
+        public void LeadShipPictureShow()
         {
             var leadShipPicFolder = ConfigurationManager.AppSettings["LeadShip"];
             var leadShipPic = $@"{Application.StartupPath}\pictures\{leadShipPicFolder}";
@@ -342,14 +344,15 @@ namespace MultipleScreen.Display
                 files.AddRange(dir.GetFiles("*.png").ToList());
                 files.AddRange(dir.GetFiles("*.bmp").ToList());
                 files.AddRange(dir.GetFiles("*.gif").ToList());
-                foreach (var file in files)
-                {
-                    if (File.Exists(file.FullName))
-                    {
-                        var image = Image.FromStream(new MemoryStream(File.ReadAllBytes(file.FullName)));
-                        picList.Add(image);
-                    }
-                }
+                picInfoList = files;
+                //foreach (var file in files)
+                //{
+                //    //if (File.Exists(file.FullName))
+                //    {
+                //        var image = Image.FromStream(new MemoryStream(File.ReadAllBytes(file.FullName)));
+                //        picList.Add(image);
+                //    }
+                //}
 
                 instance.PicTimer.Interval = intLeadShipTimerTick > 0
                                                  ? intLeadShipTimerTick * 1000
@@ -367,28 +370,36 @@ namespace MultipleScreen.Display
             ShowPictures();
         }
 
-        private void ShowPictures()
+        public void ShowPictures()
         {
             try
             {
-                if (picList.Count == 0)
+                if (picInfoList.Count == 0)
                 {
                     return;
                 }
                 instance.PicTimer.Enabled = false;
+                var picInfo = picInfoList[picIndex++];
 
-                var currentGirl = picList[picIndex++];
+                if (File.Exists(picInfo.FullName))
+                {
+                    var image = Image.FromStream(new MemoryStream(File.ReadAllBytes(picInfo.FullName)));
+                    //picList.Add(image);
 
-                instance.PicPanel.Visible = true;
-                instance.PicPanel.BackgroundImage = currentGirl;
-                //AnimateWindow(instance.PicPanel.Handle, 400, GetRandomAnimationType());
+                    // var currentGirl = picList[picIndex];
+                    instance.PicPanel.Visible = true;
+                    instance.PicPanel.BackgroundImage = image;
 
-                if (picIndex >= picList.Count)
+                    //AnimateWindow(instance.PicPanel.Handle, 400, GetRandomAnimationType());
+                }
+
+
+                if (picIndex >= picInfoList.Count)
                 {
                     picIndex = 0;
                 }
-                instance.PicTimer.Enabled = true;
 
+                instance.PicTimer.Enabled = true;
             }
             catch
             {
@@ -450,6 +461,11 @@ namespace MultipleScreen.Display
         private void RestoreEvent(object sender, EventArgs e)
         {
             ProgramShow(instance.CurrentNotidy);
+        }
+
+        private void FormDisplay_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

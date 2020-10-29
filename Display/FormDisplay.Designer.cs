@@ -78,6 +78,7 @@
             this.Controls.Add(this.Player);
             this.Name = "FormDisplay";
             this.Text = "FormDisplay";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormDisplay_FormClosed);
             this.Load += new System.EventHandler(this.RestoreEvent);
             ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
             this.ResumeLayout(false);
