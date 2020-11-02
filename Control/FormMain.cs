@@ -90,6 +90,11 @@ namespace MultipleScreen.Control
             {
                 FormBigEvent.Instance.ShowDialog();
             }
+            //区局内网
+            else if (cmd == 6)
+            {
+                FormNetInner.Instance.ShowDialog();
+            }
             else
             {
                 ClickEvent?.Invoke(new Notify

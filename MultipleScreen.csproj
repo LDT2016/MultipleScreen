@@ -47,8 +47,10 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\DependentFiles.cs" />
@@ -57,6 +59,12 @@
     <Compile Include="Common\ShowStatusEnum.cs" />
     <Compile Include="Common\Util.cs" />
     <Compile Include="Common\Win32.cs" />
+    <Compile Include="Control\FormNetInner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\FormNetInner.Designer.cs">
+      <DependentUpon>FormNetInner.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\FormLeadGuide.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +89,12 @@
     <Compile Include="Control\FormTaxPublicity.Designer.cs">
       <DependentUpon>FormTaxPublicity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\WebBrowserControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\WebBrowserControl.Designer.cs">
+      <DependentUpon>WebBrowserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Display\FormDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +105,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Control\FormNetInner.resx">
+      <DependentUpon>FormNetInner.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\FormLeadGuide.resx">
       <DependentUpon>FormLeadGuide.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +153,16 @@
     <None Include="Resources\图片31.jpg" />
     <None Include="Resources\图片3.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="SHDocVw">
+      <Guid>{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

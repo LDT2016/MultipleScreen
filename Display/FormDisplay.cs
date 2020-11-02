@@ -46,6 +46,7 @@ namespace MultipleScreen.Display
                     FormLeadGuide.Instance.ClickEvent += ProgramShow;
                     FormTaxPublicity.Instance.ClickEvent += ProgramShow;
                     FormBigEvent.Instance.ClickEvent += ProgramShow;
+                    FormNetInner.Instance.ClickEvent += ProgramShow;
                     instance.ResizeSetup();
                 }
 
@@ -167,11 +168,12 @@ namespace MultipleScreen.Display
                     }
                 case 6: //"局间内网":
                     {
-                        var regionalNetworkUrl = ConfigurationManager.AppSettings["RegionalNetworkUrl"];
-                        instance.Browser.Url = new Uri(regionalNetworkUrl);
-                        instance.Browser.Visible = true;
+                        //var regionalNetworkUrl = ConfigurationManager.AppSettings["RegionalNetworkUrl"];
+                        //instance.Browser.Url = new Uri(regionalNetworkUrl);
+                        //instance.Browser.Visible = true;
+                        instance.PicPanel.BackgroundImage = notify.ImageUrl;
+                        instance.PicPanel.Visible = true;
                         instance.WaitingTimerStart();
-
                         break;
                     }
 
