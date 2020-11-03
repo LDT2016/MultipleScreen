@@ -7,7 +7,7 @@ using MultipleScreen.Common;
 
 namespace MultipleScreen.Control
 {
-    public partial class FormBigEvent : Form
+    public partial class FormBigEvent : FormBase
     {
         #region fields
 
@@ -404,8 +404,7 @@ namespace MultipleScreen.Control
 
         private void backLbl_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Abort;
-            instance.Close();
+            CloseForm();
         }
 
         private void FormBigEvent_Load(object sender, EventArgs e)
@@ -432,6 +431,12 @@ namespace MultipleScreen.Control
         private void FormBigEvent_Click(object sender, EventArgs e)
         {
             FormMain.Instance.CloseDialogTimerReset();
+        }
+
+        public override void CloseForm()
+        {
+            FormMain.Instance.CloseDialogTimerStop();
+            instance.Close();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace MultipleScreen.Control
 {
     public partial class FormMain : Form
     {
-        private Form subForm = null;
+        private FormBase subForm = null;
         #region fields
 
         private static FormMain instance;
@@ -105,36 +105,50 @@ namespace MultipleScreen.Control
             }
         }
 
-        private void ShowDialogProcess(Form frm)
+        private void ShowDialogProcess(FormBase frm)
         {
             CloseDialogTimerReset();
+            CloseDialogTimerStart();
             subForm = frm;
-            if (frm.ShowDialog() == DialogResult.Abort)
-            {
-                CloseDialogTimerStop();
-            }
+            frm.ShowDialog();
         }
 
         #region CloseDialogTimer
 
+        private TimeSpan closeDialogTimeSpan;
         private Timer _closeDialogTimer = new Timer();
         public void CloseDialogTimerReset()
         {
-            _closeDialogTimer = new Timer();
+            //closeDialogTimeSpan = new TimeSpan(5 * 60 * 1000);
+            closeDialogTimeSpan = new TimeSpan(0, 5, 0);
+
+        }
+
+        public void CloseDialogTimerStart()
+        {
+            instance._closeDialogTimer = new Timer();
             instance._closeDialogTimer.Stop();
-            instance._closeDialogTimer.Interval = 5 * 60 * 1000;
+            instance._closeDialogTimer.Interval = 1000;
             instance._closeDialogTimer.Tick += CloseDialogTimer_Tick;
             instance._closeDialogTimer.Start();
         }
 
         private void CloseDialogTimer_Tick(object sender, EventArgs e)
         {
-            subForm?.Close();
+            closeDialogTimeSpan -= new TimeSpan(0, 0, 1);
+            Console.WriteLine("closeDialogTimeSpan--" + closeDialogTimeSpan.TotalSeconds);
+            if (closeDialogTimeSpan.TotalSeconds <= 0)
+            {
+                subForm?.CloseForm();
+                instance._closeDialogTimer.Interval = int.MaxValue;
+                CloseDialogTimerStop();
+            }
         }
 
-        private void CloseDialogTimerStop()
+        public void CloseDialogTimerStop()
         {
             subForm = null;
+            instance._closeDialogTimer.Enabled = false;
             instance._closeDialogTimer.Stop();
         }
 

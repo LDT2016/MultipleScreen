@@ -10,7 +10,7 @@ using Timer = System.Windows.Forms.Timer;
 
 namespace MultipleScreen.Control
 {
-    public partial class FormTaxPublicity : Form
+    public partial class FormTaxPublicity : FormBase
     {
         #region fields
 
@@ -374,8 +374,7 @@ namespace MultipleScreen.Control
 
         private void backLbl_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Abort;
-            instance.Close();
+            CloseForm();
         }
 
         private void FormTaxPublicity_Load(object sender, EventArgs e)
@@ -388,5 +387,12 @@ namespace MultipleScreen.Control
         {
             FormMain.Instance.CloseDialogTimerReset();
         }
+        public override void CloseForm()
+        {
+            FormMain.Instance.CloseDialogTimerStop();
+            instance.Close();
+        }
+
+
     }
 }

@@ -224,48 +224,6 @@ namespace MultipleScreen.Display
 
         #endregion
 
-        //        #region play videos
-        //        Player.settings.setMode("loop", true);  // 将播放列表设置为循环播放 
-        //            Player.uiMode = "none";
-        //            Player.Enabled = false;
-        //            Player.currentPlaylist.clear();
-        //            var temppath = $@"{Application.StartupPath}\tempvedios\";
-        //            if (!Directory.Exists(temppath))
-        //            {
-        //                Directory.CreateDirectory(temppath);
-        //            }
-        //            foreach (var file in new DirectoryInfo(temppath).GetFiles())
-        //            {
-        //                File.Delete(file.FullName);
-        //            }
-
-        //            if (Directory.Exists(videopath))
-        //            {
-        //                var videoDir = new DirectoryInfo(videopath);
-        //var videoFiles = videoDir.GetFiles("*.mp4").ToList();
-        //videoFiles.AddRange(videoDir.GetFiles("*.wav").ToList());
-        //                videoFiles.AddRange(videoDir.GetFiles("*.avi").ToList());
-        //                #region
-
-        //                foreach (var file in videoFiles)
-        //                {
-        //                    if (File.Exists(file.FullName))
-        //                    {
-        //                        Thread.Sleep(20);
-        //                        var savefullname = temppath + DateTime.Now.Ticks + Path.GetExtension(file.FullName);
-        //                        var fswrite = new FileStream(savefullname, FileMode.Create);
-        //                        var array = File.ReadAllBytes(file.FullName);
-        //                        fswrite.Write(array, 0, array.Length);
-        //                        fswrite.Close();
-
-        //                        Player.currentPlaylist.appendItem(Player.newMedia(savefullname)); // 将视频逐个添加至播放列表 
-        //                    }
-        //                }
-        //                Player.Ctlcontrols.play();
-        //            }
-
-        //            #endregion
-
         #region video pictures
         private void LegalDemoVideoShow()
         {

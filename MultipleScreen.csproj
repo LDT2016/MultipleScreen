@@ -50,8 +50,10 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\DependentFiles.cs" />
@@ -60,6 +62,12 @@
     <Compile Include="Common\ShowStatusEnum.cs" />
     <Compile Include="Common\Util.cs" />
     <Compile Include="Common\Win32.cs" />
+    <Compile Include="Control\FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\FormBase.Designer.cs">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\FormLeadGuide.cs">
       <SubType>Form</SubType>
     </Compile>

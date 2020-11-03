@@ -7,7 +7,7 @@ using MultipleScreen.Common;
 
 namespace MultipleScreen.Control
 {
-    public partial class FormNetInner : Form
+    public partial class FormNetInner : FormBase
     {
         #region fields
 
@@ -161,8 +161,7 @@ namespace MultipleScreen.Control
 
         private void backLbl_Click(object sender, EventArgs e)
         {
-            CaptureTimerReset();
-            instance.Close();
+            CloseForm();
         }
 
         private void CaptureTimer_Tick(object sender, EventArgs e)
@@ -212,7 +211,23 @@ namespace MultipleScreen.Control
         /// <param name="e"></param>
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
+            FormMain.Instance.CloseDialogTimerReset();
             CaptureTimer.Start();
+
+            //将所有的链接的目标，指向本窗体
+            if (Browser.Document != null)
+            {
+                foreach (HtmlElement archor in Browser.Document.Links)
+                {
+                    archor.SetAttribute("target", "_self");
+                }
+
+                //将所有的FORM的提交目标，指向本窗体
+                foreach (HtmlElement form in Browser.Document.Forms)
+                {
+                    form.SetAttribute("target", "_self");
+                }
+            }
         }
 
         #endregion
@@ -222,16 +237,26 @@ namespace MultipleScreen.Control
             FormMain.Instance.CloseDialogTimerReset();
 
             //将所有的链接的目标，指向本窗体
-            foreach (HtmlElement archor in this.Browser.Document.Links)
+            if (Browser.Document != null)
             {
-                archor.SetAttribute("target", "_self");
-            }
+                foreach (HtmlElement archor in Browser.Document.Links)
+                {
+                    archor.SetAttribute("target", "_self");
+                }
 
-            //将所有的FORM的提交目标，指向本窗体
-            foreach (HtmlElement form in this.Browser.Document.Forms)
-            {
-                form.SetAttribute("target", "_self");
+                //将所有的FORM的提交目标，指向本窗体
+                foreach (HtmlElement form in Browser.Document.Forms)
+                {
+                    form.SetAttribute("target", "_self");
+                }
             }
         }
+        public override void CloseForm()
+        {
+            FormMain.Instance.CloseDialogTimerStop();
+            CaptureTimerReset();
+            instance.Close();
+        }
+
     }
 }
