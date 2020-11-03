@@ -336,7 +336,7 @@ namespace MultipleScreen.Display
             #region show pictures
 
             instance.picIndex = 0;
-            instance.picList = new List<Image>();
+            instance.picList = new List<Image>(); 
             if (Directory.Exists(leadShipPic))
             {
                 //show pictures

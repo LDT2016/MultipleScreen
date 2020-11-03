@@ -241,6 +241,38 @@ namespace MultipleScreen.Control
             CaptureTimer.Start();
         }
 
+
+        //private void browser_NewWindow(object sender, CancelEventArgs e)
+        //{
+        //    //打开新窗口的方式是在已有的窗口内打开...可能为空
+        //    webBrowser.Url = new Uri(((WebBrowser)sender).StatusText);
+        //    e.Cancel = true;
+        //}
+        //private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        //{
+        //    //将所有的链接的目标，指向本窗体...实测，没啥用
+        //    foreach (HtmlElement archor in this.webBrowser.Document.Links)
+        //    {
+        //        archor.SetAttribute("target", "_self");
+        //    }
+        //    //将所有的FORM的提交目标，指向本窗体
+        //    foreach (HtmlElement form in this.webBrowser.Document.Forms)
+        //    {
+        //        form.SetAttribute("target", "_self");
+        //    }
+        //}
+        //private void wB_MainBrowser_NewWindow(object sender, CancelEventArgs e)
+        //{
+        //    e.Cancel = true;
+        //    try
+        //    {            //有javascript: {0}这样的东西
+        //        string url = this.wB_MainBrowser.Document.ActiveElement.GetAttribute("href");
+        //        this.wB_MainBrowser.Url = new Uri(url);
+        //    }
+        //    catch
+        //    {
+        //    }
+        //}
         #endregion
     }
 }
