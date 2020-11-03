@@ -8,6 +8,7 @@ namespace MultipleScreen.Control
 {
     public partial class FormMain : Form
     {
+        private Form subForm = null;
         #region fields
 
         private static FormMain instance;
@@ -78,22 +79,22 @@ namespace MultipleScreen.Control
             //领导批示
             if (cmd == 2)
             {
-                FormLeadGuide.Instance.ShowDialog();
+                ShowDialogProcess(FormLeadGuide.Instance);
             }
             //税收宣传
             else if (cmd == 4)
             {
-                FormTaxPublicity.Instance.ShowDialog();
+                ShowDialogProcess(FormTaxPublicity.Instance);
             }
             //区局十大事件
             else if (cmd == 5)
             {
-                FormBigEvent.Instance.ShowDialog();
+                ShowDialogProcess(FormBigEvent.Instance);
             }
             //区局内网
             else if (cmd == 6)
             {
-                FormNetInner.Instance.ShowDialog();
+                ShowDialogProcess(FormNetInner.Instance);
             }
             else
             {
@@ -103,6 +104,41 @@ namespace MultipleScreen.Control
                 });
             }
         }
+
+        private void ShowDialogProcess(Form frm)
+        {
+            CloseDialogTimerReset();
+            subForm = frm;
+            if (frm.ShowDialog() == DialogResult.Abort)
+            {
+                CloseDialogTimerStop();
+            }
+        }
+
+        #region CloseDialogTimer
+
+        private Timer _closeDialogTimer = new Timer();
+        public void CloseDialogTimerReset()
+        {
+            _closeDialogTimer = new Timer();
+            instance._closeDialogTimer.Stop();
+            instance._closeDialogTimer.Interval = 5 * 60 * 1000;
+            instance._closeDialogTimer.Tick += CloseDialogTimer_Tick;
+            instance._closeDialogTimer.Start();
+        }
+
+        private void CloseDialogTimer_Tick(object sender, EventArgs e)
+        {
+            subForm?.Close();
+        }
+
+        private void CloseDialogTimerStop()
+        {
+            subForm = null;
+            instance._closeDialogTimer.Stop();
+        }
+
+        #endregion
         public void ResizeSetup()
         {
             ClientSize = new Size(800, 450);
@@ -131,72 +167,9 @@ namespace MultipleScreen.Control
             ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl5.Size = ctrlLbl6.Size = labelSize;
         }
 
-        //private void ControlResizeDebug1()
-        //{
-        //    this.panel1.Size = new System.Drawing.Size(800, 450);
-
-        //    var LabelX = 69;
-        //    var LabelWidth = 163;
-        //    var LabelXGap = 78;
-        //    var LabelY = 79;
-        //    var LabelHeight = 144;
-        //    var LabelYGap = 25;
-
-        //    var LabelSize = new Size(LabelWidth, LabelHeight);
-        //    var LabelLocation0 = new Point(LabelX + LabelWidth * 0 + LabelXGap * 0, LabelY + LabelHeight * 0 + LabelYGap * 0); //69=69+163*0+78*0; 79=79+144*0+25*0;
-        //    var LabelLocation1 = new Point(LabelX + LabelWidth * 1 + LabelXGap * 1, LabelY + LabelHeight * 0 + LabelYGap * 0); //310=69+163*1+78*1; 79=79+144*0+25*0;
-        //    var LabelLocation2 = new Point(LabelX + LabelWidth * 2 + LabelXGap * 2, LabelY + LabelHeight * 0 + LabelYGap * 0); //555=69+163*2+78*2; 79=79+144*0+25*0;
-
-        //    var LabelLocation3 = new Point(LabelX + LabelWidth * 0 + LabelXGap * 0, LabelY + LabelHeight * 1 + LabelYGap * 1); //69=69+163*0+78*0; 79=79+144*1+25*1;
-        //    var LabelLocation4 = new Point(LabelX + LabelWidth * 1 + LabelXGap * 1, LabelY + LabelHeight * 1 + LabelYGap * 1); //310=69+163*1+78*1; 79=79+144*1+25*1;
-        //    var LabelLocation5 = new Point(LabelX + LabelWidth * 2 + LabelXGap * 2, LabelY + LabelHeight * 1 + LabelYGap * 1); //310=69+163*2+78*2; 79=79+144*1+25*1;
-        //    ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl6.Size = LabelSize;
-        //    ctrlLbl0.Location = LabelLocation0;
-        //    ctrlLbl1.Location = LabelLocation1;
-        //    ctrlLbl2.Location = LabelLocation2;
-        //    ctrlLbl3.Location = LabelLocation3;
-        //    ctrlLbl4.Location = LabelLocation4;
-        //    ctrlLbl6.Location = LabelLocation5;
-        //}
-
-        //private void ControlResizeRelease1()
-        //{
-        //    var LabelX = 69;
-        //    var LabelWidth = 163;
-        //    var LabelXGap = 78;
-        //    var LabelY = 79;
-        //    var LabelHeight = 144;
-        //    var LabelYGap = 25;
-
-        //    var LabelSize = new Size(LabelWidth, LabelHeight);
-        //    var LabelLocation0 = GetLabelPoint(0, 0);
-        //    var LabelLocation1 = GetLabelPoint(1, 0);
-        //    var LabelLocation2 = GetLabelPoint(2, 0);
-
-        //    var LabelLocation3 = GetLabelPoint(0, 1);
-        //    var LabelLocation4 = GetLabelPoint(1, 1);
-        //    var LabelLocation5 = GetLabelPoint(2, 1);
-        //    ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl6.Size = LabelSize;
-        //    ctrlLbl0.Location = LabelLocation0;
-        //    ctrlLbl1.Location = LabelLocation1;
-        //    ctrlLbl2.Location = LabelLocation2;
-        //    ctrlLbl3.Location = LabelLocation3;
-        //    ctrlLbl4.Location = LabelLocation4;
-        //    ctrlLbl6.Location = LabelLocation5;
-        //}
-
-        //private Point GetLabelPoint(int lblXIndex, int lblYIndex)
-        //{
-        //    var LabelX = 69;
-        //    var LabelWidth = 163;
-        //    var LabelXGap = 78;
-        //    var LabelY = 79;
-        //    var LabelHeight = 144;
-        //    var LabelYGap = 25;
-        //    return new Point(LabelX + LabelWidth * lblXIndex + LabelXGap * lblXIndex, LabelY + LabelHeight * lblYIndex + LabelYGap * lblYIndex);
-        //}
-
-        private void FormMain_Load(object sender, EventArgs e) { }
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+        }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {

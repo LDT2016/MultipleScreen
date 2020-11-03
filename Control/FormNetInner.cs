@@ -181,12 +181,6 @@ namespace MultipleScreen.Control
             }
         }
 
-        private void CloseDialogTimer_Tick(object sender, EventArgs e)
-        {
-            CaptureTimerReset();
-            instance.Close();
-        }
-
         private void CaptureTimerReset()
         {
             instance.CaptureTimer.Stop();
@@ -225,6 +219,8 @@ namespace MultipleScreen.Control
 
         private void Browser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
+            FormMain.Instance.CloseDialogTimerReset();
+
             //将所有的链接的目标，指向本窗体
             foreach (HtmlElement archor in this.Browser.Document.Links)
             {

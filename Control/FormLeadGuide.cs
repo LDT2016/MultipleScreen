@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using MultipleScreen.Common;
+using MultipleScreen.Display;
 
 namespace MultipleScreen.Control
 {
@@ -58,7 +59,6 @@ namespace MultipleScreen.Control
                     }
 
                     instance.LeadGuidePictureShow();
-
                 }
 
                 return instance;
@@ -115,7 +115,8 @@ namespace MultipleScreen.Control
 
         private void backLbl_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult = DialogResult.Abort;
+            instance.Close();
         }
 
         private void FormLeadGuide_Load(object sender, EventArgs e)
@@ -227,7 +228,7 @@ namespace MultipleScreen.Control
                         ImageUrl = currentGirl
                     });
                 }
-
+                FormMain.Instance.CloseDialogTimerReset();
             }
             catch { }
         }
@@ -236,10 +237,12 @@ namespace MultipleScreen.Control
 
         private void PicPanel_Click(object sender, EventArgs e)
         {
+            FormMain.Instance.CloseDialogTimerReset();
         }
 
         private void FormLeadGuide_Click(object sender, EventArgs e)
         {
+            FormMain.Instance.CloseDialogTimerReset();
         }
     }
 }

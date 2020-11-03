@@ -399,10 +399,12 @@ namespace MultipleScreen.Control
 
         private void Lbl_Click(object sender, EventArgs e)
         {
+            FormMain.Instance.CloseDialogTimerReset();
         }
 
         private void backLbl_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Abort;
             instance.Close();
         }
 
@@ -413,6 +415,8 @@ namespace MultipleScreen.Control
 
         private void Thumb_Click(object sender, EventArgs e)
         {
+            FormMain.Instance.CloseDialogTimerReset();
+
             var thumb = (PictureBox)sender;
 
             ClickEvent?.Invoke(new Notify
@@ -427,6 +431,7 @@ namespace MultipleScreen.Control
 
         private void FormBigEvent_Click(object sender, EventArgs e)
         {
+            FormMain.Instance.CloseDialogTimerReset();
         }
     }
 }

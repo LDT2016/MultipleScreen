@@ -357,6 +357,7 @@ namespace MultipleScreen.Control
 
         private void Lbl_Click(object sender, EventArgs e)
         {
+            FormMain.Instance.CloseDialogTimerReset();
         }
 
         private void ThumbPlay_Click(object sender, EventArgs e)
@@ -373,23 +374,19 @@ namespace MultipleScreen.Control
 
         private void backLbl_Click(object sender, EventArgs e)
         {
-
-            Close();
+            DialogResult = DialogResult.Abort;
+            instance.Close();
         }
 
         private void FormTaxPublicity_Load(object sender, EventArgs e)
         {
-            //  TaxPubliclyThumbnailSetup();
-            //instance.ResizeSetupRelease();
         }
-
-
 
         #endregion
 
         private void FormTaxPublicity_Click(object sender, EventArgs e)
         {
-
+            FormMain.Instance.CloseDialogTimerReset();
         }
     }
 }

@@ -47,7 +47,7 @@ namespace MultipleScreen
 
             public void OnThreadException(object sender, ThreadExceptionEventArgs e)
             {
-
+                MessageBox.Show(e.Exception.Message);
             }
 
             #endregion
