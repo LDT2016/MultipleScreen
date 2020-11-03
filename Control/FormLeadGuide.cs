@@ -17,6 +17,7 @@ namespace MultipleScreen.Control
         private readonly Timer picTimer = new Timer();
         private int picIndex;
         private List<Image> picList = new List<Image>();
+        private List<FileInfo> picInfoList = new List<FileInfo>();
         private float X;
         private float Y;
 
@@ -55,7 +56,7 @@ namespace MultipleScreen.Control
                     {
                         instance.ResizeSetup();
                     }
-                    
+
                     instance.LeadGuidePictureShow();
 
                 }
@@ -121,6 +122,8 @@ namespace MultipleScreen.Control
         private void FormLeadGuide_Load(object sender, EventArgs e)
         {
             //Win32.AnimateWindow(Handle, 1000, Win32.AW_VER_POSITIVE);
+            instance.picIndex = 0;
+            instance.ShowPictures();
             CloseDialogTimerStart();
         }
 
@@ -161,15 +164,15 @@ namespace MultipleScreen.Control
                                                  return intName;
                                              })
                                     .ToList();
-
-                foreach (var file in fileList)
-                {
-                    if (File.Exists(file.FullName))
-                    {
-                        var image = Image.FromStream(new MemoryStream(File.ReadAllBytes(file.FullName)));
-                        picList.Add(image);
-                    }
-                }
+                picInfoList = fileList;
+                //foreach (var file in fileList)
+                //{
+                //    if (File.Exists(file.FullName))
+                //    {
+                //        var image = Image.FromStream(new MemoryStream(File.ReadAllBytes(file.FullName)));
+                //        picList.Add(image);
+                //    }
+                //}
 
                 instance.ShowPictures();
             }
@@ -181,7 +184,7 @@ namespace MultipleScreen.Control
         {
             picIndex += 1;
 
-            if (picIndex >= picList.Count)
+            if (picIndex >= picInfoList.Count)
             {
                 picIndex = 0;
             }
@@ -195,7 +198,7 @@ namespace MultipleScreen.Control
 
             if (picIndex < 0)
             {
-                picIndex = picList.Count - 1;
+                picIndex = picInfoList.Count - 1;
             }
 
             instance.ShowPictures();
@@ -205,22 +208,27 @@ namespace MultipleScreen.Control
         {
             try
             {
-                if (picList.Count == 0)
+                if (picInfoList.Count == 0)
                 {
                     return;
                 }
 
                 instance.picTimer.Enabled = false;
 
-                var currentGirl = picList[picIndex];
-                instance.PicPanel.BackgroundImage = currentGirl;
-                instance.picTimer.Enabled = true;
+                var picInfo = picInfoList[picIndex];
 
-                ClickEvent?.Invoke(new Notify
-                                   {
-                                       Command = 2,
-                                       ImageUrl = currentGirl
-                                   });
+                if (File.Exists(picInfo.FullName))
+                {
+                    var currentGirl = Image.FromStream(new MemoryStream(File.ReadAllBytes(picInfo.FullName)));
+                    instance.PicPanel.BackgroundImage = currentGirl;
+                    instance.picTimer.Enabled = true;
+
+                    ClickEvent?.Invoke(new Notify
+                    {
+                        Command = 2,
+                        ImageUrl = currentGirl
+                    });
+                }
 
                 CloseDialogTimerStart();
             }
@@ -237,8 +245,8 @@ namespace MultipleScreen.Control
             instance.CloseDialogTimer.Stop();
             instance.CloseDialogTimer.Interval = 5 * 60 * 1000;
             instance.CloseDialogTimer.Tick += CloseDialogTimer_Tick;
-            instance.CloseDialogTimer.Enabled = true;
-            instance.CloseDialogTimer.Start();
+            ////instance.CloseDialogTimer.Enabled = true;
+            //instance.CloseDialogTimer.Start();
         }
 
         private void CloseDialogTimer_Tick(object sender, EventArgs e)
