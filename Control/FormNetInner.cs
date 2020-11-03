@@ -13,7 +13,6 @@ namespace MultipleScreen.Control
 
         private static FormNetInner instance;
         private readonly Timer CaptureTimer = new Timer();
-        private readonly Timer CloseDialogTimer = new Timer();
 
         #endregion
 
@@ -139,12 +138,6 @@ namespace MultipleScreen.Control
             panel1.Size = new Size(1920, 850);
         }
 
-        private static void CloseDialogTimerStop()
-        {
-            instance.CloseDialogTimer.Enabled = false;
-            instance.CloseDialogTimer.Stop();
-        }
-
         [DllImport("gdi32.dll")]
         private static extern IntPtr CreateCompatibleBitmap(IntPtr hdc, int nWidth, int nHeight);
 
@@ -168,7 +161,6 @@ namespace MultipleScreen.Control
 
         private void backLbl_Click(object sender, EventArgs e)
         {
-            CloseDialogTimerStop();
             CaptureTimerReset();
             instance.Close();
         }
@@ -191,7 +183,6 @@ namespace MultipleScreen.Control
 
         private void CloseDialogTimer_Tick(object sender, EventArgs e)
         {
-            CloseDialogTimerStop();
             CaptureTimerReset();
             instance.Close();
         }
@@ -209,24 +200,13 @@ namespace MultipleScreen.Control
                                });
         }
 
-        private void CloseDialogTimerStart()
-        {
-            instance.CloseDialogTimer.Stop();
-            instance.CloseDialogTimer.Interval = 5 * 60 * 1000;
-            instance.CloseDialogTimer.Tick += CloseDialogTimer_Tick;
-            instance.CloseDialogTimer.Enabled = true;
-            instance.CloseDialogTimer.Start();
-        }
-
         private void FormBigEvent_Click(object sender, EventArgs e)
         {
-            CloseDialogTimerStart();
         }
 
         private void FormBigEvent_Load(object sender, EventArgs e)
         {
             //Win32.AnimateWindow(Handle, 1000, Win32.AW_VER_POSITIVE);
-            CloseDialogTimerStart();
             var regionalNetworkUrl = ConfigurationManager.AppSettings["RegionalNetworkUrl"];
             instance.Browser.Navigate(regionalNetworkUrl);
         }

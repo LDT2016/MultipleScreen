@@ -115,7 +115,6 @@ namespace MultipleScreen.Control
 
         private void backLbl_Click(object sender, EventArgs e)
         {
-            CloseDialogTimerStop();
             Close();
         }
 
@@ -124,7 +123,6 @@ namespace MultipleScreen.Control
             //Win32.AnimateWindow(Handle, 1000, Win32.AW_VER_POSITIVE);
             instance.picIndex = 0;
             instance.ShowPictures();
-            CloseDialogTimerStart();
         }
 
         private void LeadGuidePictureShow()
@@ -230,48 +228,18 @@ namespace MultipleScreen.Control
                     });
                 }
 
-                CloseDialogTimerStart();
             }
             catch { }
         }
 
         #endregion
 
-        #region CloseDialogTimer
-
-        private Timer CloseDialogTimer = new Timer();
-        private void CloseDialogTimerStart()
-        {
-            instance.CloseDialogTimer.Stop();
-            instance.CloseDialogTimer.Interval = 5 * 60 * 1000;
-            instance.CloseDialogTimer.Tick += CloseDialogTimer_Tick;
-            instance.CloseDialogTimer.Enabled = true;
-            instance.CloseDialogTimer.Start();
-        }
-
-        private void CloseDialogTimer_Tick(object sender, EventArgs e)
-        {
-            CloseDialogTimerStop();
-
-            instance.Close();
-        }
-
-        private static void CloseDialogTimerStop()
-        {
-            instance.CloseDialogTimer.Enabled = false;
-            instance.CloseDialogTimer.Stop();
-        }
-
-        #endregion
-
         private void PicPanel_Click(object sender, EventArgs e)
         {
-            CloseDialogTimerStart();
         }
 
         private void FormLeadGuide_Click(object sender, EventArgs e)
         {
-            CloseDialogTimerStart();
         }
     }
 }

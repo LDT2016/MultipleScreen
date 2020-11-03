@@ -357,7 +357,6 @@ namespace MultipleScreen.Control
 
         private void Lbl_Click(object sender, EventArgs e)
         {
-            CloseDialogTimerStart();
         }
 
         private void ThumbPlay_Click(object sender, EventArgs e)
@@ -370,12 +369,10 @@ namespace MultipleScreen.Control
                 Command = 4,
                 VideoUrl = sourceUrl
             });
-            CloseDialogTimerStart();
         }
 
         private void backLbl_Click(object sender, EventArgs e)
         {
-            CloseDialogTimerStop();
 
             Close();
         }
@@ -384,42 +381,14 @@ namespace MultipleScreen.Control
         {
             //  TaxPubliclyThumbnailSetup();
             //instance.ResizeSetupRelease();
-            CloseDialogTimerStart();
         }
 
 
-        #region CloseDialogTimer
-
-        private Timer CloseDialogTimer = new Timer();
-        private void CloseDialogTimerStart()
-        {
-            instance.CloseDialogTimer.Stop();
-            instance.CloseDialogTimer.Interval = 5 * 60 * 1000;
-            instance.CloseDialogTimer.Tick += CloseDialogTimer_Tick;
-            instance.CloseDialogTimer.Enabled = true;
-            instance.CloseDialogTimer.Start();
-        }
-
-        private void CloseDialogTimer_Tick(object sender, EventArgs e)
-        {
-            CloseDialogTimerStop();
-
-            instance.Close();
-        }
-
-        private static void CloseDialogTimerStop()
-        {
-            instance.CloseDialogTimer.Enabled = false;
-            instance.CloseDialogTimer.Stop();
-        }
-
-        #endregion
 
         #endregion
 
         private void FormTaxPublicity_Click(object sender, EventArgs e)
         {
-            CloseDialogTimerStart();
 
         }
     }
