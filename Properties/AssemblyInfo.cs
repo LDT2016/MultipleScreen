@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MultipleScreen")]
+[assembly: AssemblyTitle("税务展示系统")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("南京环盟科技有限责任公司")]
 [assembly: AssemblyProduct("MultipleScreen")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCopyright("Copyright ©  2020南京环盟")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

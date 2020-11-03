@@ -67,7 +67,7 @@
             this.ctrlLbl5.BackColor = System.Drawing.Color.Transparent;
             this.ctrlLbl5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ctrlLbl5.ForeColor = System.Drawing.Color.Transparent;
-            this.ctrlLbl5.Location = new System.Drawing.Point(415, 248);
+            this.ctrlLbl5.Location = new System.Drawing.Point(430, 261);
             this.ctrlLbl5.Name = "ctrlLbl5";
             this.ctrlLbl5.Size = new System.Drawing.Size(151, 132);
             this.ctrlLbl5.TabIndex = 4;
@@ -79,7 +79,7 @@
             this.ctrlLbl6.BackColor = System.Drawing.Color.Transparent;
             this.ctrlLbl6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ctrlLbl6.ForeColor = System.Drawing.Color.Transparent;
-            this.ctrlLbl6.Location = new System.Drawing.Point(612, 248);
+            this.ctrlLbl6.Location = new System.Drawing.Point(624, 270);
             this.ctrlLbl6.Name = "ctrlLbl6";
             this.ctrlLbl6.Size = new System.Drawing.Size(152, 132);
             this.ctrlLbl6.TabIndex = 3;
@@ -91,7 +91,7 @@
             this.ctrlLbl4.BackColor = System.Drawing.Color.Transparent;
             this.ctrlLbl4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ctrlLbl4.ForeColor = System.Drawing.Color.Transparent;
-            this.ctrlLbl4.Location = new System.Drawing.Point(219, 248);
+            this.ctrlLbl4.Location = new System.Drawing.Point(227, 261);
             this.ctrlLbl4.Name = "ctrlLbl4";
             this.ctrlLbl4.Size = new System.Drawing.Size(152, 132);
             this.ctrlLbl4.TabIndex = 2;
@@ -103,7 +103,7 @@
             this.ctrlLbl2.BackColor = System.Drawing.Color.Transparent;
             this.ctrlLbl2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ctrlLbl2.ForeColor = System.Drawing.Color.Transparent;
-            this.ctrlLbl2.Location = new System.Drawing.Point(533, 92);
+            this.ctrlLbl2.Location = new System.Drawing.Point(550, 92);
             this.ctrlLbl2.Name = "ctrlLbl2";
             this.ctrlLbl2.Size = new System.Drawing.Size(152, 132);
             this.ctrlLbl2.TabIndex = 3;
@@ -115,7 +115,7 @@
             this.ctrlLbl3.BackColor = System.Drawing.Color.Transparent;
             this.ctrlLbl3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ctrlLbl3.ForeColor = System.Drawing.Color.Transparent;
-            this.ctrlLbl3.Location = new System.Drawing.Point(21, 261);
+            this.ctrlLbl3.Location = new System.Drawing.Point(32, 270);
             this.ctrlLbl3.Name = "ctrlLbl3";
             this.ctrlLbl3.Size = new System.Drawing.Size(152, 132);
             this.ctrlLbl3.TabIndex = 1;
@@ -127,7 +127,7 @@
             this.ctrlLbl1.BackColor = System.Drawing.Color.Transparent;
             this.ctrlLbl1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ctrlLbl1.ForeColor = System.Drawing.Color.Transparent;
-            this.ctrlLbl1.Location = new System.Drawing.Point(310, 92);
+            this.ctrlLbl1.Location = new System.Drawing.Point(322, 92);
             this.ctrlLbl1.Name = "ctrlLbl1";
             this.ctrlLbl1.Size = new System.Drawing.Size(152, 132);
             this.ctrlLbl1.TabIndex = 2;
@@ -140,7 +140,7 @@
             this.ctrlLbl0.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ctrlLbl0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ctrlLbl0.ForeColor = System.Drawing.Color.Transparent;
-            this.ctrlLbl0.Location = new System.Drawing.Point(85, 92);
+            this.ctrlLbl0.Location = new System.Drawing.Point(102, 92);
             this.ctrlLbl0.Name = "ctrlLbl0";
             this.ctrlLbl0.Size = new System.Drawing.Size(152, 132);
             this.ctrlLbl0.TabIndex = 1;

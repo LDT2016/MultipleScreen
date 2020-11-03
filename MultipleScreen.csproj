@@ -7,14 +7,14 @@
     <ProjectGuid>{A2CE6AA8-C483-4B73-A4FE-EA17E297E920}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>MultipleScreen</RootNamespace>
-    <AssemblyName>MultipleScreen</AssemblyName>
+    <AssemblyName>税务展示系统</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>HM.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxInterop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -47,10 +50,8 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\DependentFiles.cs" />
@@ -59,12 +60,6 @@
     <Compile Include="Common\ShowStatusEnum.cs" />
     <Compile Include="Common\Util.cs" />
     <Compile Include="Common\Win32.cs" />
-    <Compile Include="Control\FormNetInner.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Control\FormNetInner.Designer.cs">
-      <DependentUpon>FormNetInner.cs</DependentUpon>
-    </Compile>
     <Compile Include="Control\FormLeadGuide.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +77,12 @@
     </Compile>
     <Compile Include="Control\FormBigEvent.Designer.cs">
       <DependentUpon>FormBigEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\FormNetInner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\FormNetInner.designer.cs">
+      <DependentUpon>FormNetInner.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\FormTaxPublicity.cs">
       <SubType>Form</SubType>
@@ -105,9 +106,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Control\FormNetInner.resx">
-      <DependentUpon>FormNetInner.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Control\FormLeadGuide.resx">
       <DependentUpon>FormLeadGuide.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,6 +114,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\FormBigEvent.resx">
       <DependentUpon>FormBigEvent.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\FormNetInner.resx">
+      <DependentUpon>FormNetInner.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\FormTaxPublicity.resx">
       <DependentUpon>FormTaxPublicity.cs</DependentUpon>
@@ -145,6 +147,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HM.ico" />
     <Content Include="Lib\AxInterop.SHDocVw.dll" />
     <Content Include="Lib\AxInterop.WMPLib.dll" />
     <Content Include="Lib\Interop.SHDocVw.dll" />

@@ -438,7 +438,7 @@ namespace MultipleScreen.Control
             instance.CloseDialogTimer.Stop();
             instance.CloseDialogTimer.Interval = 5 * 60 * 1000;
             instance.CloseDialogTimer.Tick += CloseDialogTimer_Tick;
-            //instance.CloseDialogTimer.Enabled = true;
+            instance.CloseDialogTimer.Enabled = true;
             instance.CloseDialogTimer.Start();
         }
 
