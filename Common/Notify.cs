@@ -9,8 +9,9 @@ namespace MultipleScreen.Common
         #region properties
 
         public int Command { get; set; } = -1;
-        public Image ImageUrl{ get; set; }
+        public Image ImageUrl { get; set; }
         public string VideoUrl { get; set; } = string.Empty;
+
         #endregion
     }
 }

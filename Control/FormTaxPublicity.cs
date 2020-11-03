@@ -2,11 +2,8 @@
 using System.Configuration;
 using System.Drawing;
 using System.IO;
-using System.Threading;
 using System.Windows.Forms;
-using AxWMPLib;
 using MultipleScreen.Common;
-using Timer = System.Windows.Forms.Timer;
 
 namespace MultipleScreen.Control
 {
@@ -42,6 +39,7 @@ namespace MultipleScreen.Control
                 if (instance == null)
                 {
                     instance = new FormTaxPublicity();
+
                     if (Screen.AllScreens.Length > 1)
                     {
                         instance.ResizeSetupRelease();
@@ -50,6 +48,7 @@ namespace MultipleScreen.Control
                     {
                         instance.ResizeSetup();
                     }
+
                     instance.TaxPubliclyThumbnailSetup();
                 }
 
@@ -74,6 +73,12 @@ namespace MultipleScreen.Control
         #endregion
 
         #region methods
+
+        public override void CloseForm()
+        {
+            FormMain.Instance.CloseDialogTimerStop();
+            instance.Close();
+        }
 
         public void ResizeSetup()
         {
@@ -197,6 +202,7 @@ namespace MultipleScreen.Control
             instance.ClientSize = new Size(1920, 1080);
             instance.FormBorderStyle = FormBorderStyle.None;
             instance.StartPosition = FormStartPosition.Manual;
+
             // 
             // backLbl
             // 
@@ -307,6 +313,7 @@ namespace MultipleScreen.Control
             thumbnailLabel7.Location = new Point(1502, 824);
             thumbnailLabel7.Size = new Size(250, 25);
         }
+
         public void TaxPubliclyThumbnailSetup()
         {
             foreach (var ctrl in Controls)
@@ -325,7 +332,6 @@ namespace MultipleScreen.Control
 
                         if (File.Exists(taxPublicityVideoFullName))
                         {
-
                             thumbPlay.Tag = taxPublicityVideoFullName;
                             thumbPlay.Click += ThumbPlay_Click;
                         }
@@ -355,6 +361,18 @@ namespace MultipleScreen.Control
             }
         }
 
+        private void backLbl_Click(object sender, EventArgs e)
+        {
+            CloseForm();
+        }
+
+        private void FormTaxPublicity_Click(object sender, EventArgs e)
+        {
+            FormMain.Instance.CloseDialogTimerReset();
+        }
+
+        private void FormTaxPublicity_Load(object sender, EventArgs e) { }
+
         private void Lbl_Click(object sender, EventArgs e)
         {
             FormMain.Instance.CloseDialogTimerReset();
@@ -366,33 +384,12 @@ namespace MultipleScreen.Control
             var sourceUrl = thumbPlay.Tag?.ToString();
 
             ClickEvent?.Invoke(new Notify
-            {
-                Command = 4,
-                VideoUrl = sourceUrl
-            });
-        }
-
-        private void backLbl_Click(object sender, EventArgs e)
-        {
-            CloseForm();
-        }
-
-        private void FormTaxPublicity_Load(object sender, EventArgs e)
-        {
+                               {
+                                   Command = 4,
+                                   VideoUrl = sourceUrl
+                               });
         }
 
         #endregion
-
-        private void FormTaxPublicity_Click(object sender, EventArgs e)
-        {
-            FormMain.Instance.CloseDialogTimerReset();
-        }
-        public override void CloseForm()
-        {
-            FormMain.Instance.CloseDialogTimerStop();
-            instance.Close();
-        }
-
-
     }
 }

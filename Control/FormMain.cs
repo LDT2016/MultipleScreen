@@ -8,10 +8,12 @@ namespace MultipleScreen.Control
 {
     public partial class FormMain : Form
     {
-        private FormBase subForm = null;
         #region fields
 
         private static FormMain instance;
+        private Timer _closeDialogTimer = new Timer();
+        private TimeSpan closeDialogTimeSpan;
+        private FormBase subForm;
 
         #endregion
 
@@ -64,6 +66,70 @@ namespace MultipleScreen.Control
 
         #region methods
 
+        public void CloseDialogTimerReset()
+        {
+            //closeDialogTimeSpan = new TimeSpan(5 * 60 * 1000);
+            closeDialogTimeSpan = new TimeSpan(0, 5, 0);
+        }
+
+        public void CloseDialogTimerStart()
+        {
+            instance._closeDialogTimer = new Timer();
+            instance._closeDialogTimer.Stop();
+            instance._closeDialogTimer.Interval = 1000;
+            instance._closeDialogTimer.Tick += CloseDialogTimer_Tick;
+            instance._closeDialogTimer.Start();
+        }
+
+        public void CloseDialogTimerStop()
+        {
+            subForm = null;
+            instance._closeDialogTimer.Enabled = false;
+            instance._closeDialogTimer.Stop();
+        }
+
+        public void ResizeSetup()
+        {
+            ClientSize = new Size(800, 450);
+            var labelSize = new Size(152, 132);
+
+            ctrlLbl0.Location = new Point(87, 92);
+            ctrlLbl1.Location = new Point(310, 92);
+            ctrlLbl2.Location = new Point(533, 92);
+            ctrlLbl3.Location = new Point(21, 261);
+            ctrlLbl4.Location = new Point(219, 248);
+            ctrlLbl5.Location = new Point(415, 248);
+            ctrlLbl6.Location = new Point(612, 248);
+            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl5.Size = ctrlLbl6.Size = labelSize;
+        }
+
+        public void ResizeSetupRelease()
+        {
+            ClientSize = new Size(1920, 1080);
+            var labelSize = new Size(359, 319);
+            ctrlLbl0.Location = new Point(210, 215);
+            ctrlLbl1.Location = new Point(741, 215);
+            ctrlLbl2.Location = new Point(1283, 215);
+            ctrlLbl3.Location = new Point(50, 619);
+            ctrlLbl4.Location = new Point(530, 586);
+            ctrlLbl5.Location = new Point(999, 586);
+            ctrlLbl6.Location = new Point(1469, 586);
+            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl5.Size = ctrlLbl6.Size = labelSize;
+        }
+
+        private void CloseDialogTimer_Tick(object sender, EventArgs e)
+        {
+            closeDialogTimeSpan -= new TimeSpan(0, 0, 1);
+            Console.WriteLine("closeDialogTimeSpan--" + closeDialogTimeSpan.TotalSeconds);
+
+            if (closeDialogTimeSpan.TotalSeconds <= 0)
+            {
+                subForm?.CloseForm();
+                instance._closeDialogTimer.Interval = int.MaxValue;
+                CloseDialogTimerStop();
+            }
+        }
+
         private void closeLbl_Click(object sender, EventArgs e)
         {
             notifyIcon1.Dispose();
@@ -81,16 +147,19 @@ namespace MultipleScreen.Control
             {
                 ShowDialogProcess(FormLeadGuide.Instance);
             }
+
             //税收宣传
             else if (cmd == 4)
             {
                 ShowDialogProcess(FormTaxPublicity.Instance);
             }
+
             //区局十大事件
             else if (cmd == 5)
             {
                 ShowDialogProcess(FormBigEvent.Instance);
             }
+
             //区局内网
             else if (cmd == 6)
             {
@@ -99,10 +168,25 @@ namespace MultipleScreen.Control
             else
             {
                 ClickEvent?.Invoke(new Notify
-                {
-                    Command = cmd
-                });
+                                   {
+                                       Command = cmd
+                                   });
             }
+        }
+
+        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void FormMain_Load(object sender, EventArgs e) { }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            notifyIcon1.Dispose();
+            FormDisplay.Instance.Close();
+            Instance.Close();
+            Application.Exit();
         }
 
         private void ShowDialogProcess(FormBase frm)
@@ -113,91 +197,6 @@ namespace MultipleScreen.Control
             frm.ShowDialog();
         }
 
-        #region CloseDialogTimer
-
-        private TimeSpan closeDialogTimeSpan;
-        private Timer _closeDialogTimer = new Timer();
-        public void CloseDialogTimerReset()
-        {
-            //closeDialogTimeSpan = new TimeSpan(5 * 60 * 1000);
-            closeDialogTimeSpan = new TimeSpan(0, 5, 0);
-
-        }
-
-        public void CloseDialogTimerStart()
-        {
-            instance._closeDialogTimer = new Timer();
-            instance._closeDialogTimer.Stop();
-            instance._closeDialogTimer.Interval = 1000;
-            instance._closeDialogTimer.Tick += CloseDialogTimer_Tick;
-            instance._closeDialogTimer.Start();
-        }
-
-        private void CloseDialogTimer_Tick(object sender, EventArgs e)
-        {
-            closeDialogTimeSpan -= new TimeSpan(0, 0, 1);
-            Console.WriteLine("closeDialogTimeSpan--" + closeDialogTimeSpan.TotalSeconds);
-            if (closeDialogTimeSpan.TotalSeconds <= 0)
-            {
-                subForm?.CloseForm();
-                instance._closeDialogTimer.Interval = int.MaxValue;
-                CloseDialogTimerStop();
-            }
-        }
-
-        public void CloseDialogTimerStop()
-        {
-            subForm = null;
-            instance._closeDialogTimer.Enabled = false;
-            instance._closeDialogTimer.Stop();
-        }
-
         #endregion
-        public void ResizeSetup()
-        {
-            ClientSize = new Size(800, 450);
-            var labelSize = new Size(152, 132);
-
-            ctrlLbl0.Location = new Point(87, 92);
-            ctrlLbl1.Location = new Point(310, 92);
-            ctrlLbl2.Location = new Point(533, 92);
-            ctrlLbl3.Location = new Point(21, 261);
-            ctrlLbl4.Location = new Point(219, 248);
-            ctrlLbl5.Location = new Point(415, 248);
-            ctrlLbl6.Location = new Point(612, 248);
-            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl5.Size = ctrlLbl6.Size = labelSize;
-        }
-        public void ResizeSetupRelease()
-        {
-            ClientSize = new Size(1920, 1080);
-            var labelSize = new Size(359, 319);
-            ctrlLbl0.Location = new Point(210, 215);
-            ctrlLbl1.Location = new Point(741, 215);
-            ctrlLbl2.Location = new Point(1283, 215);
-            ctrlLbl3.Location = new Point(50, 619);
-            ctrlLbl4.Location = new Point(530, 586);
-            ctrlLbl5.Location = new Point(999, 586);
-            ctrlLbl6.Location = new Point(1469, 586);
-            ctrlLbl0.Size = ctrlLbl1.Size = ctrlLbl2.Size = ctrlLbl3.Size = ctrlLbl4.Size = ctrlLbl5.Size = ctrlLbl6.Size = labelSize;
-        }
-
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            notifyIcon1.Dispose();
-            FormDisplay.Instance.Close();
-            Instance.Close();
-            Application.Exit();
-        }
-
-        #endregion
-
-        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
     }
 }

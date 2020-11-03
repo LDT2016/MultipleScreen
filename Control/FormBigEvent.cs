@@ -39,6 +39,7 @@ namespace MultipleScreen.Control
                 if (instance == null)
                 {
                     instance = new FormBigEvent();
+
                     if (Screen.AllScreens.Length > 1)
                     {
                         instance.ResizeSetupRelease();
@@ -72,6 +73,12 @@ namespace MultipleScreen.Control
         #endregion
 
         #region methods
+
+        public override void CloseForm()
+        {
+            FormMain.Instance.CloseDialogTimerStop();
+            instance.Close();
+        }
 
         public void ResizeSetup()
         {
@@ -397,19 +404,24 @@ namespace MultipleScreen.Control
             }
         }
 
-        private void Lbl_Click(object sender, EventArgs e)
-        {
-            FormMain.Instance.CloseDialogTimerReset();
-        }
-
         private void backLbl_Click(object sender, EventArgs e)
         {
             CloseForm();
         }
 
+        private void FormBigEvent_Click(object sender, EventArgs e)
+        {
+            FormMain.Instance.CloseDialogTimerReset();
+        }
+
         private void FormBigEvent_Load(object sender, EventArgs e)
         {
             //Win32.AnimateWindow(Handle, 1000, Win32.AW_VER_POSITIVE);
+        }
+
+        private void Lbl_Click(object sender, EventArgs e)
+        {
+            FormMain.Instance.CloseDialogTimerReset();
         }
 
         private void Thumb_Click(object sender, EventArgs e)
@@ -419,24 +431,12 @@ namespace MultipleScreen.Control
             var thumb = (PictureBox)sender;
 
             ClickEvent?.Invoke(new Notify
-            {
-                Command = 5,
-                ImageUrl = thumb.BackgroundImage
-            });
+                               {
+                                   Command = 5,
+                                   ImageUrl = thumb.BackgroundImage
+                               });
         }
 
         #endregion
-
-
-        private void FormBigEvent_Click(object sender, EventArgs e)
-        {
-            FormMain.Instance.CloseDialogTimerReset();
-        }
-
-        public override void CloseForm()
-        {
-            FormMain.Instance.CloseDialogTimerStop();
-            instance.Close();
-        }
     }
 }

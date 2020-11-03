@@ -1,24 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace MultipleScreen.Control
 {
     public partial class FormBase : Form
     {
+        #region constructors
+
         public FormBase()
         {
             InitializeComponent();
         }
 
-        public virtual void CloseForm()
-        {
+        #endregion
 
-        }
+        #region methods
+
+        public virtual void CloseForm() { }
+
+        #endregion
     }
 }

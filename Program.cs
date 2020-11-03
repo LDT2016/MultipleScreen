@@ -15,11 +15,10 @@ namespace MultipleScreen
         [STAThread]
         private static void Main()
         {
-            System.Threading.Mutex mutex = new System.Threading.Mutex(true, Application.ProductName, out var flag);
+            var mutex = new Mutex(true, Application.ProductName, out var flag);
 
             if (flag)
             {
-
                 // 全局异常注册
                 var appEvents = new ApplicationEventHandlerClass();
                 Application.ThreadException += appEvents.OnThreadException;
@@ -39,6 +38,7 @@ namespace MultipleScreen
 
         #endregion
 
+        #region nested types
 
         // 全局异常处理
         public class ApplicationEventHandlerClass
@@ -52,5 +52,7 @@ namespace MultipleScreen
 
             #endregion
         }
+
+        #endregion
     }
 }

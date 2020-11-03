@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using MultipleScreen.Common;
-using MultipleScreen.Display;
 
 namespace MultipleScreen.Control
 {
@@ -79,6 +78,12 @@ namespace MultipleScreen.Control
 
         #region methods
 
+        public override void CloseForm()
+        {
+            FormMain.Instance.CloseDialogTimerStop();
+            instance.Close();
+        }
+
         public void ResizeSetup()
         {
             instance.ClientSize = new Size(800, 450);
@@ -112,6 +117,11 @@ namespace MultipleScreen.Control
         private void backLbl_Click(object sender, EventArgs e)
         {
             CloseForm();
+        }
+
+        private void FormLeadGuide_Click(object sender, EventArgs e)
+        {
+            FormMain.Instance.CloseDialogTimerReset();
         }
 
         private void FormLeadGuide_Load(object sender, EventArgs e)
@@ -158,6 +168,7 @@ namespace MultipleScreen.Control
                                              })
                                     .ToList();
                 picInfoList = fileList;
+
                 //foreach (var file in fileList)
                 //{
                 //    if (File.Exists(file.FullName))
@@ -183,6 +194,11 @@ namespace MultipleScreen.Control
             }
 
             instance.ShowPictures();
+        }
+
+        private void PicPanel_Click(object sender, EventArgs e)
+        {
+            FormMain.Instance.CloseDialogTimerReset();
         }
 
         private void previousLbl_Click(object sender, EventArgs e)
@@ -214,33 +230,17 @@ namespace MultipleScreen.Control
                     instance.PicPanel.BackgroundImage = currentGirl;
 
                     ClickEvent?.Invoke(new Notify
-                    {
-                        Command = 2,
-                        ImageUrl = currentGirl
-                    });
+                                       {
+                                           Command = 2,
+                                           ImageUrl = currentGirl
+                                       });
                 }
+
                 FormMain.Instance.CloseDialogTimerReset();
             }
             catch { }
         }
 
         #endregion
-
-        private void PicPanel_Click(object sender, EventArgs e)
-        {
-            FormMain.Instance.CloseDialogTimerReset();
-        }
-
-        private void FormLeadGuide_Click(object sender, EventArgs e)
-        {
-            FormMain.Instance.CloseDialogTimerReset();
-        }
-
-        public override void CloseForm()
-        {
-            FormMain.Instance.CloseDialogTimerStop();
-            instance.Close();
-        }
-
     }
 }

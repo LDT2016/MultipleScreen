@@ -20,6 +20,7 @@ namespace MultipleScreen.Common
             var screens = Screen.AllScreens;
             var f0 = FormDisplay.Instance;
             var f1 = FormMain.Instance;
+
             var formlist = new List<Form>
                            {
                                f0,

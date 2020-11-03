@@ -33,107 +33,107 @@ using System;
 // ReSharper disable InconsistentNaming
 namespace MultipleScreen.Annotations
 {
-  /// <summary>
-  /// Indicates that the value of the marked element could be <c>null</c> sometimes,
-  /// so checking for <c>null</c> is required before its usage.
-  /// </summary>
-  /// <example>
-  ///     <code>
-  /// [CanBeNull] object Test() => null;
-  /// 
-  /// void UseTest() {
-  ///   var p = Test();
-  ///   var s = p.ToString(); // Warning: Possible 'System.NullReferenceException'
-  /// }
-  /// </code>
-  /// </example>
-  [AttributeUsage(AttributeTargets.Method
-                  | AttributeTargets.Parameter
-                  | AttributeTargets.Property
-                  | AttributeTargets.Delegate
-                  | AttributeTargets.Field
-                  | AttributeTargets.Event
-                  | AttributeTargets.Class
-                  | AttributeTargets.Interface
-                  | AttributeTargets.GenericParameter)]
+    /// <summary>
+    /// Indicates that the value of the marked element could be <c>null</c> sometimes,
+    /// so checking for <c>null</c> is required before its usage.
+    /// </summary>
+    /// <example>
+    ///     <code>
+    /// [CanBeNull] object Test() => null;
+    /// 
+    /// void UseTest() {
+    ///   var p = Test();
+    ///   var s = p.ToString(); // Warning: Possible 'System.NullReferenceException'
+    /// }
+    /// </code>
+    /// </example>
+    [AttributeUsage(AttributeTargets.Method
+                    | AttributeTargets.Parameter
+                    | AttributeTargets.Property
+                    | AttributeTargets.Delegate
+                    | AttributeTargets.Field
+                    | AttributeTargets.Event
+                    | AttributeTargets.Class
+                    | AttributeTargets.Interface
+                    | AttributeTargets.GenericParameter)]
     public sealed class CanBeNullAttribute : Attribute { }
 
-  /// <summary>
-  /// Indicates that the value of the marked element can never be <c>null</c>.
-  /// </summary>
-  /// <example>
-  ///     <code>
-  /// [NotNull] object Foo() {
-  ///   return null; // Warning: Possible 'null' assignment
-  /// }
-  /// </code>
-  /// </example>
-  [AttributeUsage(AttributeTargets.Method
-                  | AttributeTargets.Parameter
-                  | AttributeTargets.Property
-                  | AttributeTargets.Delegate
-                  | AttributeTargets.Field
-                  | AttributeTargets.Event
-                  | AttributeTargets.Class
-                  | AttributeTargets.Interface
-                  | AttributeTargets.GenericParameter)]
+    /// <summary>
+    /// Indicates that the value of the marked element can never be <c>null</c>.
+    /// </summary>
+    /// <example>
+    ///     <code>
+    /// [NotNull] object Foo() {
+    ///   return null; // Warning: Possible 'null' assignment
+    /// }
+    /// </code>
+    /// </example>
+    [AttributeUsage(AttributeTargets.Method
+                    | AttributeTargets.Parameter
+                    | AttributeTargets.Property
+                    | AttributeTargets.Delegate
+                    | AttributeTargets.Field
+                    | AttributeTargets.Event
+                    | AttributeTargets.Class
+                    | AttributeTargets.Interface
+                    | AttributeTargets.GenericParameter)]
     public sealed class NotNullAttribute : Attribute { }
 
-  /// <summary>
-  /// Can be applied to symbols of types derived from IEnumerable as well as to symbols of Task
-  /// and Lazy classes to indicate that the value of a collection item, of the Task.Result property
-  /// or of the Lazy.Value property can never be null.
-  /// </summary>
-  /// <example>
-  ///     <code>
-  /// public void Foo([ItemNotNull]List&lt;string&gt; books)
-  /// {
-  ///   foreach (var book in books) {
-  ///     if (book != null) // Warning: Expression is always true
-  ///      Console.WriteLine(book.ToUpper());
-  ///   }
-  /// }
-  /// </code>
-  /// </example>
-  [AttributeUsage(AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Delegate | AttributeTargets.Field)]
+    /// <summary>
+    /// Can be applied to symbols of types derived from IEnumerable as well as to symbols of Task
+    /// and Lazy classes to indicate that the value of a collection item, of the Task.Result property
+    /// or of the Lazy.Value property can never be null.
+    /// </summary>
+    /// <example>
+    ///     <code>
+    /// public void Foo([ItemNotNull]List&lt;string&gt; books)
+    /// {
+    ///   foreach (var book in books) {
+    ///     if (book != null) // Warning: Expression is always true
+    ///      Console.WriteLine(book.ToUpper());
+    ///   }
+    /// }
+    /// </code>
+    /// </example>
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Delegate | AttributeTargets.Field)]
     public sealed class ItemNotNullAttribute : Attribute { }
 
-  /// <summary>
-  /// Can be applied to symbols of types derived from IEnumerable as well as to symbols of Task
-  /// and Lazy classes to indicate that the value of a collection item, of the Task.Result property
-  /// or of the Lazy.Value property can be null.
-  /// </summary>
-  /// <example>
-  ///     <code>
-  /// public void Foo([ItemCanBeNull]List&lt;string&gt; books)
-  /// {
-  ///   foreach (var book in books)
-  ///   {
-  ///     // Warning: Possible 'System.NullReferenceException'
-  ///     Console.WriteLine(book.ToUpper());
-  ///   }
-  /// }
-  /// </code>
-  /// </example>
-  [AttributeUsage(AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Delegate | AttributeTargets.Field)]
+    /// <summary>
+    /// Can be applied to symbols of types derived from IEnumerable as well as to symbols of Task
+    /// and Lazy classes to indicate that the value of a collection item, of the Task.Result property
+    /// or of the Lazy.Value property can be null.
+    /// </summary>
+    /// <example>
+    ///     <code>
+    /// public void Foo([ItemCanBeNull]List&lt;string&gt; books)
+    /// {
+    ///   foreach (var book in books)
+    ///   {
+    ///     // Warning: Possible 'System.NullReferenceException'
+    ///     Console.WriteLine(book.ToUpper());
+    ///   }
+    /// }
+    /// </code>
+    /// </example>
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Delegate | AttributeTargets.Field)]
     public sealed class ItemCanBeNullAttribute : Attribute { }
 
-  /// <summary>
-  /// Indicates that the marked method builds string by the format pattern and (optional) arguments.
-  /// The parameter, which contains the format string, should be given in constructor. The format string
-  /// should be in <see cref="string.Format(IFormatProvider,string,object[])"/>-like form.
-  /// </summary>
-  /// <example>
-  ///     <code>
-  /// [StringFormatMethod("message")]
-  /// void ShowError(string message, params object[] args) { /* do something */ }
-  /// 
-  /// void Foo() {
-  ///   ShowError("Failed: {0}"); // Warning: Non-existing argument in format string
-  /// }
-  /// </code>
-  /// </example>
-  [AttributeUsage(AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Delegate)]
+    /// <summary>
+    /// Indicates that the marked method builds string by the format pattern and (optional) arguments.
+    /// The parameter, which contains the format string, should be given in constructor. The format string
+    /// should be in <see cref="string.Format(IFormatProvider,string,object[])"/>-like form.
+    /// </summary>
+    /// <example>
+    ///     <code>
+    /// [StringFormatMethod("message")]
+    /// void ShowError(string message, params object[] args) { /* do something */ }
+    /// 
+    /// void Foo() {
+    ///   ShowError("Failed: {0}"); // Warning: Non-existing argument in format string
+    /// }
+    /// </code>
+    /// </example>
+    [AttributeUsage(AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Delegate)]
     public sealed class StringFormatMethodAttribute : Attribute
     {
         #region constructors
@@ -156,36 +156,36 @@ namespace MultipleScreen.Annotations
         #endregion
     }
 
-  /// <summary>
-  /// Use this annotation to specify a type that contains static or const fields
-  /// with values for the annotated property/field/parameter.
-  /// The specified type will be used to improve completion suggestions.
-  /// </summary>
-  /// <example>
-  ///     <code>
-  /// namespace TestNamespace
-  /// {
-  ///   public class Constants
-  ///   {
-  ///     public static int INT_CONST = 1;
-  ///     public const string STRING_CONST = "1";
-  ///   }
-  /// 
-  ///   public class Class1
-  ///   {
-  ///     [ValueProvider("TestNamespace.Constants")] public int myField;
-  ///     public void Foo([ValueProvider("TestNamespace.Constants")] string str) { }
-  /// 
-  ///     public void Test()
-  ///     {
-  ///       Foo(/*try completion here*/);//
-  ///       myField = /*try completion here*/
-  ///     }
-  ///   }
-  /// }
-  /// </code>
-  /// </example>
-  [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = true)]
+    /// <summary>
+    /// Use this annotation to specify a type that contains static or const fields
+    /// with values for the annotated property/field/parameter.
+    /// The specified type will be used to improve completion suggestions.
+    /// </summary>
+    /// <example>
+    ///     <code>
+    /// namespace TestNamespace
+    /// {
+    ///   public class Constants
+    ///   {
+    ///     public static int INT_CONST = 1;
+    ///     public const string STRING_CONST = "1";
+    ///   }
+    /// 
+    ///   public class Class1
+    ///   {
+    ///     [ValueProvider("TestNamespace.Constants")] public int myField;
+    ///     public void Foo([ValueProvider("TestNamespace.Constants")] string str) { }
+    /// 
+    ///     public void Test()
+    ///     {
+    ///       Foo(/*try completion here*/);//
+    ///       myField = /*try completion here*/
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </example>
+    [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = true)]
     public sealed class ValueProviderAttribute : Attribute
     {
         #region constructors
@@ -205,21 +205,21 @@ namespace MultipleScreen.Annotations
         #endregion
     }
 
-  /// <summary>
-  /// Indicates that the integral value falls into the specified interval.
-  /// It's allowed to specify multiple non-intersecting intervals.
-  /// Values of interval boundaries are inclusive.
-  /// </summary>
-  /// <example>
-  ///     <code>
-  /// void Foo([ValueRange(0, 100)] int value) {
-  ///   if (value == -1) { // Warning: Expression is always 'false'
-  ///     ...
-  ///   }
-  /// }
-  /// </code>
-  /// </example>
-  [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Method | AttributeTargets.Delegate, AllowMultiple = true)]
+    /// <summary>
+    /// Indicates that the integral value falls into the specified interval.
+    /// It's allowed to specify multiple non-intersecting intervals.
+    /// Values of interval boundaries are inclusive.
+    /// </summary>
+    /// <example>
+    ///     <code>
+    /// void Foo([ValueRange(0, 100)] int value) {
+    ///   if (value == -1) { // Warning: Expression is always 'false'
+    ///     ...
+    ///   }
+    /// }
+    /// </code>
+    /// </example>
+    [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Method | AttributeTargets.Delegate, AllowMultiple = true)]
     public sealed class ValueRangeAttribute : Attribute
     {
         #region constructors
@@ -256,95 +256,95 @@ namespace MultipleScreen.Annotations
         #endregion
     }
 
-  /// <summary>
-  /// Indicates that the integral value never falls below zero.
-  /// </summary>
-  /// <example>
-  ///     <code>
-  /// void Foo([NonNegativeValue] int value) {
-  ///   if (value == -1) { // Warning: Expression is always 'false'
-  ///     ...
-  ///   }
-  /// }
-  /// </code>
-  /// </example>
-  [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Method | AttributeTargets.Delegate)]
+    /// <summary>
+    /// Indicates that the integral value never falls below zero.
+    /// </summary>
+    /// <example>
+    ///     <code>
+    /// void Foo([NonNegativeValue] int value) {
+    ///   if (value == -1) { // Warning: Expression is always 'false'
+    ///     ...
+    ///   }
+    /// }
+    /// </code>
+    /// </example>
+    [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Method | AttributeTargets.Delegate)]
     public sealed class NonNegativeValueAttribute : Attribute { }
 
-  /// <summary>
-  /// Indicates that the function argument should be a string literal and match one
-  /// of the parameters of the caller function. For example, ReSharper annotates
-  /// the parameter of <see cref="System.ArgumentNullException"/>.
-  /// </summary>
-  /// <example>
-  ///     <code>
-  /// void Foo(string param) {
-  ///   if (param == null)
-  ///     throw new ArgumentNullException("par"); // Warning: Cannot resolve symbol
-  /// }
-  /// </code>
-  /// </example>
-  [AttributeUsage(AttributeTargets.Parameter)]
+    /// <summary>
+    /// Indicates that the function argument should be a string literal and match one
+    /// of the parameters of the caller function. For example, ReSharper annotates
+    /// the parameter of <see cref="System.ArgumentNullException"/>.
+    /// </summary>
+    /// <example>
+    ///     <code>
+    /// void Foo(string param) {
+    ///   if (param == null)
+    ///     throw new ArgumentNullException("par"); // Warning: Cannot resolve symbol
+    /// }
+    /// </code>
+    /// </example>
+    [AttributeUsage(AttributeTargets.Parameter)]
     public sealed class InvokerParameterNameAttribute : Attribute { }
 
-  /// <summary>
-  /// Indicates that the method is contained in a type that implements
-  /// <c>System.ComponentModel.INotifyPropertyChanged</c> interface and this method
-  /// is used to notify that some property value changed.
-  /// </summary>
-  /// <remarks>
-  /// The method should be non-static and conform to one of the supported signatures:
-  /// <list>
-  ///     <item>
-  ///         <c>NotifyChanged(string)</c>
-  ///     </item>
-  ///     <item>
-  ///         <c>NotifyChanged(params string[])</c>
-  ///     </item>
-  ///     <item>
-  ///         <c>NotifyChanged{T}(Expression{Func{T}})</c>
-  ///     </item>
-  ///     <item>
-  ///         <c>NotifyChanged{T,U}(Expression{Func{T,U}})</c>
-  ///     </item>
-  ///     <item>
-  ///         <c>SetProperty{T}(ref T, T, string)</c>
-  ///     </item>
-  /// </list>
-  /// </remarks>
-  /// <example>
-  /// <code>
-  /// public class Foo : INotifyPropertyChanged {
-  ///   public event PropertyChangedEventHandler PropertyChanged;
-  /// 
-  ///   [NotifyPropertyChangedInvocator]
-  ///   protected virtual void NotifyChanged(string propertyName) { ... }
-  /// 
-  ///   string _name;
-  /// 
-  ///   public string Name {
-  ///     get { return _name; }
-  ///     set { _name = value; NotifyChanged("LastName"); /* Warning */ }
-  ///   }
-  /// }
-  /// </code>
-  /// Examples of generated notifications:
-  /// <list>
-  ///     <item>
-  ///         <c>NotifyChanged("Property")</c>
-  ///     </item>
-  ///     <item>
-  ///         <c>NotifyChanged(() =&gt; Property)</c>
-  ///     </item>
-  ///     <item>
-  ///         <c>NotifyChanged((VM x) =&gt; x.Property)</c>
-  ///     </item>
-  ///     <item>
-  ///         <c>SetProperty(ref myField, value, "Property")</c>
-  ///     </item>
-  /// </list>
-  /// </example>
-  [AttributeUsage(AttributeTargets.Method)]
+    /// <summary>
+    /// Indicates that the method is contained in a type that implements
+    /// <c>System.ComponentModel.INotifyPropertyChanged</c> interface and this method
+    /// is used to notify that some property value changed.
+    /// </summary>
+    /// <remarks>
+    /// The method should be non-static and conform to one of the supported signatures:
+    /// <list>
+    ///     <item>
+    ///         <c>NotifyChanged(string)</c>
+    ///     </item>
+    ///     <item>
+    ///         <c>NotifyChanged(params string[])</c>
+    ///     </item>
+    ///     <item>
+    ///         <c>NotifyChanged{T}(Expression{Func{T}})</c>
+    ///     </item>
+    ///     <item>
+    ///         <c>NotifyChanged{T,U}(Expression{Func{T,U}})</c>
+    ///     </item>
+    ///     <item>
+    ///         <c>SetProperty{T}(ref T, T, string)</c>
+    ///     </item>
+    /// </list>
+    /// </remarks>
+    /// <example>
+    /// <code>
+    /// public class Foo : INotifyPropertyChanged {
+    ///   public event PropertyChangedEventHandler PropertyChanged;
+    /// 
+    ///   [NotifyPropertyChangedInvocator]
+    ///   protected virtual void NotifyChanged(string propertyName) { ... }
+    /// 
+    ///   string _name;
+    /// 
+    ///   public string Name {
+    ///     get { return _name; }
+    ///     set { _name = value; NotifyChanged("LastName"); /* Warning */ }
+    ///   }
+    /// }
+    /// </code>
+    /// Examples of generated notifications:
+    /// <list>
+    ///     <item>
+    ///         <c>NotifyChanged("Property")</c>
+    ///     </item>
+    ///     <item>
+    ///         <c>NotifyChanged(() =&gt; Property)</c>
+    ///     </item>
+    ///     <item>
+    ///         <c>NotifyChanged((VM x) =&gt; x.Property)</c>
+    ///     </item>
+    ///     <item>
+    ///         <c>SetProperty(ref myField, value, "Property")</c>
+    ///     </item>
+    /// </list>
+    /// </example>
+    [AttributeUsage(AttributeTargets.Method)]
     public sealed class NotifyPropertyChangedInvocatorAttribute : Attribute
     {
         #region constructors
@@ -366,63 +366,63 @@ namespace MultipleScreen.Annotations
         #endregion
     }
 
-  /// <summary>
-  /// Describes dependency between method input and output.
-  /// </summary>
-  /// <syntax>
-  /// <p>Function Definition Table syntax:</p>
-  /// <list>
-  ///     <item>FDT      ::= FDTRow [;FDTRow]*</item>
-  ///     <item>FDTRow   ::= Input =&gt; Output | Output &lt;= Input</item>
-  ///     <item>Input    ::= ParameterName: Value [, Input]*</item>
-  ///     <item>Output   ::= [ParameterName: Value]* {halt|stop|void|nothing|Value}</item>
-  ///     <item>Value    ::= true | false | null | notnull | canbenull</item>
-  /// </list>
-  /// If the method has a single input parameter, its name could be omitted.<br/>
-  /// Using <c>halt</c> (or <c>void</c>/<c>nothing</c>, which is the same) for the method output
-  /// means that the method doesn't return normally (throws or terminates the process).<br/>
-  /// Value <c>canbenull</c> is only applicable for output parameters.<br/>
-  /// You can use multiple <c>[ContractAnnotation]</c> for each FDT row, or use single attribute
-  /// with rows separated by semicolon. There is no notion of order rows, all rows are checked
-  /// for applicability and applied per each program state tracked by the analysis engine.<br/>
-  /// </syntax>
-  /// <examples>
-  ///     <list>
-  ///         <item>
-  ///             <code>
-  /// [ContractAnnotation("=&gt; halt")]
-  /// public void TerminationMethod()
-  /// </code>
-  ///         </item>
-  ///         <item>
-  ///             <code>
-  /// [ContractAnnotation("null &lt;= param:null")] // reverse condition syntax
-  /// public string GetName(string surname)
-  /// </code>
-  ///         </item>
-  ///         <item>
-  ///             <code>
-  /// [ContractAnnotation("s:null =&gt; true")]
-  /// public bool IsNullOrEmpty(string s) // string.IsNullOrEmpty()
-  /// </code>
-  ///         </item>
-  ///         <item>
-  ///             <code>
-  /// // A method that returns null if the parameter is null,
-  /// // and not null if the parameter is not null
-  /// [ContractAnnotation("null =&gt; null; notnull =&gt; notnull")]
-  /// public object Transform(object data)
-  /// </code>
-  ///         </item>
-  ///         <item>
-  ///             <code>
-  /// [ContractAnnotation("=&gt; true, result: notnull; =&gt; false, result: null")]
-  /// public bool TryParse(string s, out Person result)
-  /// </code>
-  ///         </item>
-  ///     </list>
-  /// </examples>
-  [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+    /// <summary>
+    /// Describes dependency between method input and output.
+    /// </summary>
+    /// <syntax>
+    /// <p>Function Definition Table syntax:</p>
+    /// <list>
+    ///     <item>FDT      ::= FDTRow [;FDTRow]*</item>
+    ///     <item>FDTRow   ::= Input =&gt; Output | Output &lt;= Input</item>
+    ///     <item>Input    ::= ParameterName: Value [, Input]*</item>
+    ///     <item>Output   ::= [ParameterName: Value]* {halt|stop|void|nothing|Value}</item>
+    ///     <item>Value    ::= true | false | null | notnull | canbenull</item>
+    /// </list>
+    /// If the method has a single input parameter, its name could be omitted.<br/>
+    /// Using <c>halt</c> (or <c>void</c>/<c>nothing</c>, which is the same) for the method output
+    /// means that the method doesn't return normally (throws or terminates the process).<br/>
+    /// Value <c>canbenull</c> is only applicable for output parameters.<br/>
+    /// You can use multiple <c>[ContractAnnotation]</c> for each FDT row, or use single attribute
+    /// with rows separated by semicolon. There is no notion of order rows, all rows are checked
+    /// for applicability and applied per each program state tracked by the analysis engine.<br/>
+    /// </syntax>
+    /// <examples>
+    ///     <list>
+    ///         <item>
+    ///             <code>
+    /// [ContractAnnotation("=&gt; halt")]
+    /// public void TerminationMethod()
+    /// </code>
+    ///         </item>
+    ///         <item>
+    ///             <code>
+    /// [ContractAnnotation("null &lt;= param:null")] // reverse condition syntax
+    /// public string GetName(string surname)
+    /// </code>
+    ///         </item>
+    ///         <item>
+    ///             <code>
+    /// [ContractAnnotation("s:null =&gt; true")]
+    /// public bool IsNullOrEmpty(string s) // string.IsNullOrEmpty()
+    /// </code>
+    ///         </item>
+    ///         <item>
+    ///             <code>
+    /// // A method that returns null if the parameter is null,
+    /// // and not null if the parameter is not null
+    /// [ContractAnnotation("null =&gt; null; notnull =&gt; notnull")]
+    /// public object Transform(object data)
+    /// </code>
+    ///         </item>
+    ///         <item>
+    ///             <code>
+    /// [ContractAnnotation("=&gt; true, result: notnull; =&gt; false, result: null")]
+    /// public bool TryParse(string s, out Person result)
+    /// </code>
+    ///         </item>
+    ///     </list>
+    /// </examples>
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public sealed class ContractAnnotationAttribute : Attribute
     {
         #region constructors
@@ -447,18 +447,18 @@ namespace MultipleScreen.Annotations
         #endregion
     }
 
-  /// <summary>
-  /// Indicates whether the marked element should be localized.
-  /// </summary>
-  /// <example>
-  ///     <code>
-  /// [LocalizationRequiredAttribute(true)]
-  /// class Foo {
-  ///   string str = "my string"; // Warning: Localizable string
-  /// }
-  /// </code>
-  /// </example>
-  [AttributeUsage(AttributeTargets.All)]
+    /// <summary>
+    /// Indicates whether the marked element should be localized.
+    /// </summary>
+    /// <example>
+    ///     <code>
+    /// [LocalizationRequiredAttribute(true)]
+    /// class Foo {
+    ///   string str = "my string"; // Warning: Localizable string
+    /// }
+    /// </code>
+    /// </example>
+    [AttributeUsage(AttributeTargets.All)]
     public sealed class LocalizationRequiredAttribute : Attribute
     {
         #region constructors
@@ -479,45 +479,45 @@ namespace MultipleScreen.Annotations
         #endregion
     }
 
-  /// <summary>
-  /// Indicates that the value of the marked type (or its derivatives)
-  /// cannot be compared using '==' or '!=' operators and <c>Equals()</c>
-  /// should be used instead. However, using '==' or '!=' for comparison
-  /// with <c>null</c> is always permitted.
-  /// </summary>
-  /// <example>
-  ///     <code>
-  /// [CannotApplyEqualityOperator]
-  /// class NoEquality { }
-  /// 
-  /// class UsesNoEquality {
-  ///   void Test() {
-  ///     var ca1 = new NoEquality();
-  ///     var ca2 = new NoEquality();
-  ///     if (ca1 != null) { // OK
-  ///       bool condition = ca1 == ca2; // Warning
-  ///     }
-  ///   }
-  /// }
-  /// </code>
-  /// </example>
-  [AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Struct)]
+    /// <summary>
+    /// Indicates that the value of the marked type (or its derivatives)
+    /// cannot be compared using '==' or '!=' operators and <c>Equals()</c>
+    /// should be used instead. However, using '==' or '!=' for comparison
+    /// with <c>null</c> is always permitted.
+    /// </summary>
+    /// <example>
+    ///     <code>
+    /// [CannotApplyEqualityOperator]
+    /// class NoEquality { }
+    /// 
+    /// class UsesNoEquality {
+    ///   void Test() {
+    ///     var ca1 = new NoEquality();
+    ///     var ca2 = new NoEquality();
+    ///     if (ca1 != null) { // OK
+    ///       bool condition = ca1 == ca2; // Warning
+    ///     }
+    ///   }
+    /// }
+    /// </code>
+    /// </example>
+    [AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Struct)]
     public sealed class CannotApplyEqualityOperatorAttribute : Attribute { }
 
-  /// <summary>
-  /// When applied to a target attribute, specifies a requirement for any type marked
-  /// with the target attribute to implement or inherit specific type or types.
-  /// </summary>
-  /// <example>
-  ///     <code>
-  /// [BaseTypeRequired(typeof(IComponent)] // Specify requirement
-  /// class ComponentAttribute : Attribute { }
-  /// 
-  /// [Component] // ComponentAttribute requires implementing IComponent interface
-  /// class MyComponent : IComponent { }
-  /// </code>
-  /// </example>
-  [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+    /// <summary>
+    /// When applied to a target attribute, specifies a requirement for any type marked
+    /// with the target attribute to implement or inherit specific type or types.
+    /// </summary>
+    /// <example>
+    ///     <code>
+    /// [BaseTypeRequired(typeof(IComponent)] // Specify requirement
+    /// class ComponentAttribute : Attribute { }
+    /// 
+    /// [Component] // ComponentAttribute requires implementing IComponent interface
+    /// class MyComponent : IComponent { }
+    /// </code>
+    /// </example>
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     [BaseTypeRequired(typeof(Attribute))]
     public sealed class BaseTypeRequiredAttribute : Attribute
     {

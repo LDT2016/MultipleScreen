@@ -93,18 +93,19 @@ namespace MultipleScreen.Control
             return bmp;
         }
 
+        public override void CloseForm()
+        {
+            FormMain.Instance.CloseDialogTimerStop();
+            CaptureTimerReset();
+            instance.Close();
+        }
+
         public void NetInnerSetup()
         {
             instance.Browser.DocumentCompleted += webBrowser_DocumentCompleted; // 增加网页加载完成事件处理函数
             instance.Browser.NewWindowSelf += Browser_NewWindowSelf;
             CaptureTimer.Interval = 2000;
             CaptureTimer.Tick += CaptureTimer_Tick;
-        }
-
-        private void Browser_NewWindowSelf(ref bool cancel, string bstrUrl)
-        {
-            cancel = true;
-            Browser.Navigate(bstrUrl);
         }
 
         public void ResizeSetup()
@@ -164,6 +165,32 @@ namespace MultipleScreen.Control
             CloseForm();
         }
 
+        private void Browser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            FormMain.Instance.CloseDialogTimerReset();
+
+            //将所有的链接的目标，指向本窗体
+            if (Browser.Document != null)
+            {
+                foreach (HtmlElement archor in Browser.Document.Links)
+                {
+                    archor.SetAttribute("target", "_self");
+                }
+
+                //将所有的FORM的提交目标，指向本窗体
+                foreach (HtmlElement form in Browser.Document.Forms)
+                {
+                    form.SetAttribute("target", "_self");
+                }
+            }
+        }
+
+        private void Browser_NewWindowSelf(ref bool cancel, string bstrUrl)
+        {
+            cancel = true;
+            Browser.Navigate(bstrUrl);
+        }
+
         private void CaptureTimer_Tick(object sender, EventArgs e)
         {
             if (instance.Browser.Document != null)
@@ -171,11 +198,12 @@ namespace MultipleScreen.Control
                 if (instance.Browser.Document.Body != null)
                 {
                     var bitmap1 = ScreenshotControlIntPtr(Browser.Handle);
+
                     ClickEvent?.Invoke(new Notify
-                    {
-                        Command = 2,
-                        ImageUrl = bitmap1
-                    });
+                                       {
+                                           Command = 2,
+                                           ImageUrl = bitmap1
+                                       });
                 }
             }
         }
@@ -193,9 +221,7 @@ namespace MultipleScreen.Control
                                });
         }
 
-        private void FormBigEvent_Click(object sender, EventArgs e)
-        {
-        }
+        private void FormBigEvent_Click(object sender, EventArgs e) { }
 
         private void FormBigEvent_Load(object sender, EventArgs e)
         {
@@ -231,32 +257,5 @@ namespace MultipleScreen.Control
         }
 
         #endregion
-
-        private void Browser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-            FormMain.Instance.CloseDialogTimerReset();
-
-            //将所有的链接的目标，指向本窗体
-            if (Browser.Document != null)
-            {
-                foreach (HtmlElement archor in Browser.Document.Links)
-                {
-                    archor.SetAttribute("target", "_self");
-                }
-
-                //将所有的FORM的提交目标，指向本窗体
-                foreach (HtmlElement form in Browser.Document.Forms)
-                {
-                    form.SetAttribute("target", "_self");
-                }
-            }
-        }
-        public override void CloseForm()
-        {
-            FormMain.Instance.CloseDialogTimerStop();
-            CaptureTimerReset();
-            instance.Close();
-        }
-
     }
 }
